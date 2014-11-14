@@ -1,0 +1,13 @@
+LATEX           = platex
+TETEX2_ENABLED  = false     # falseにしないとthesis.flsを探しに行って失敗する
+#BIBTEX          = bibtex   # bibtexのコマンドも指定してあげる
+DVIPDFM         = dvipdfmx
+DVIPDFMFLAGS    = -p a4     # デフォルトではUS-Letterサイズが出力される
+
+# 複数に分割しているファイル達 (.bibファイルも指定しておく)
+TEXDEPS[]   =
+	slide.tex
+
+LaTeXDocument(slide, slide)
+
+.DEFAULT: slide.pdf slide.dvi

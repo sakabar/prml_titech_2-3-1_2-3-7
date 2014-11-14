@@ -1,3 +1,15 @@
+#OMake
+.omakedb
+.omakedb.lock
+OMakefile.omc
+OMakeroot.omc
+
+#
+slide.pdf
+
+
+##### default .gitignore of TeX #####
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
