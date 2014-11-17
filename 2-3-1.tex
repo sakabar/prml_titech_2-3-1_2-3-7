@@ -1,0 +1,64 @@
+%%TODO 縦ベクトルはどう書く?
+\begin{frame}{条件付きガウス分布(導入)}
+\begin{itemize}
+ \item 多変量ガウス分布の条件付き分布を考える
+       \begin{equation}
+				x\sim N(x|\mu, \Sigma)
+       \end{equation}
+       \begin{equation}
+	x = (x_a, x_b)
+       \end{equation}
+       \begin{equation}
+	\mu = (\mu_a, \mu_b)
+       \end{equation}
+
+ \item 精度行列$\Lambda$を導入する
+ \begin{equation}
+	\Lambda \equiv \Sigma^{-1}
+ \end{equation}
+
+ \item ベクトル$x$の分割に対応する、分割された形式の精度行列を導入する
+       \begin{equation}
+				\Lambda=
+				 \begin{pmatrix}
+					\Lambda_{aa} && \Lambda_{ab}\\
+					\Lambda_{ba} && \Lambda_{bb}\\
+				 \end{pmatrix}
+       \end{equation}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{条件付き分布の表現}
+\begin{itemize}
+ \item ガウス分布の指数部分に注目する
+			 \begin{eqnarray*}
+				-\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x-\mu) &= &
+				 -\frac{1}{2}(x_a - \mu_a)^{T}\Sigma_{aa}^{-1}(x_a-\mu_a) \\
+				&&-\frac{1}{2}(x_a - \mu_a)^{T}\Sigma_{ab}^{-1}(x_b-\mu_b) \\
+				 &&-\frac{1}{2}(x_b - \mu_b)^{T}\Sigma_{ba}^{-1}(x_a-\mu_a) \\
+				 &&-\frac{1}{2}(x_b - \mu_b)^{T}\Sigma_{bb}^{-1}(x_b-\mu_b)
+			 \end{eqnarray*}
+ \item $x_a$の関数として見ると、これも二次形式になっている
+ \item 対応する条件付き分布$p(x_a | x_b)$もガウス分布となる
+\end{itemize}
+\end{frame}
+
+\begin{frame}{平方完成}
+\begin{itemize}
+ \item 平方完成とは、○○すること %TODO
+\begin{equation}
+ -\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu) = -\frac{1}{2}x^T\Sigma^{-1}x+x^T\Sigma^{-1}\mu + const\label{135015_17Nov14}
+\end{equation}
+ \item 平方完成したい式を式\ref{135015_17Nov14}の右辺の形式で表現する
+ \item $x$の2次の項と1次の項の係数を比較することで、$\Sigma$と$\mu$を求める
+\end{itemize}
+\end{frame}
+
+
+% \begin{frame}{条件付きガウス分布の平均と共分散}
+% \begin{itemize}
+%  \item 一般のガウスの指数部分に注目する
+
+
+% \end{itemize}
+% \end{frame}
