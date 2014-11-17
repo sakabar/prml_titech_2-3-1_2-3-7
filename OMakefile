@@ -11,6 +11,9 @@ TEXDEPS[]   =
 	2-3-1.tex
 	2-3-2.tex
 	2-3-3.tex
+	2-3-4.tex
+
+
 
 LaTeXDocument(slide, slide)
 
