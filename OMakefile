@@ -13,7 +13,7 @@ TEXDEPS[]   =
 	2-3-3.tex
 	2-3-4.tex
 	2-3-5.tex
-
+	2-3-6.tex
 
 LaTeXDocument(slide, slide)
 
