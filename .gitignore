@@ -6,7 +6,7 @@ OMakeroot.omc
 
 #
 slide.pdf
-
+*.bak
 
 ##### default .gitignore of TeX #####
 
