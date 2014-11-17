@@ -1,12 +1,12 @@
-\begin{frame}{$BC`<!?dDj!&A0CV$-(B}
+\begin{frame}{逐次推定・前置き}
  \begin{itemize}
-	\item $BN,(B
+	\item 略
  \end{itemize}
 \end{frame}
 
-\begin{frame}{$BC`<!?dDj(B}
+\begin{frame}{逐次推定}
  \begin{itemize}
-	\item $B$5$F(B
+	\item さて
 				\begin{eqnarray}
 				 \mu_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \\
 				 & =& \frac{1}{N}x_n+\frac{1}{N}\sum_{n=1}^{n-1}x_n \\
@@ -16,103 +16,103 @@
  \end{itemize}
 \end{frame}
 
-\begin{frame}{$BC`<!?dDj(B}
+\begin{frame}{逐次推定}
  \begin{itemize}
-	\item $B$3$N7k2L$O<!$N$h$&$KJ,$+$j$d$9$/2r<a$G$-$k(B($B$&!<$s(B?)
+	\item この結果は次のように分かりやすく解釈できる(うーん?)
 				\begin{eqnarray}
 				 \mu_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \\
 				 & =& \mu_{ML}^{(N-1)} +\frac{1}{N} (x_N-\mu_{ML}^{(N-1)})
 				\end{eqnarray}
-	\item $N-1$$B8D$N%G!<%?$r4QB,$7$?;~E@$G!"(B$\mu$$B$N?dDjCM$O(B$\mu_{ML}^{(N-1)}$$B$H$J$C$F$$$k!#(B
-	\item $B$3$3$G!"%G!<%?E@(B$x_N$$B$r4QB,$9$k$H!"(B$1/N$$B$KHfNc$9$k>.$5$JNL$@$1!V8m:9?.9f!W(B$(x_N-\mu_{ML}^{(N-1)})$$B$NJ}$X!"8E$$?dDjNL$r0\F0$5$;$F?dDjNL(B$\mu_{ML}^{(N)}$$B$r=$@5$9$k(B
-	\item N$B$,A}$($k$K$D$l$F!"8eB3$N%G!<%?E@$+$i$N1F6A$O$h$j>.$5$/$J$k(B
+	\item $N-1$個のデータを観測した時点で、$\mu$の推定値は$\mu_{ML}^{(N-1)}$となっている。
+	\item ここで、データ点$x_N$を観測すると、$1/N$に比例する小さな量だけ「誤差信号」$(x_N-\mu_{ML}^{(N-1)})$の方へ、古い推定量を移動させて推定量$\mu_{ML}^{(N)}$を修正する
+	\item Nが増えるにつれて、後続のデータ点からの影響はより小さくなる
  \end{itemize}
 \end{frame}
 
-\begin{frame}{$BHFMQE*$JC`<!3X=,$NDj<02=(B}
+\begin{frame}{汎用的な逐次学習の定式化}
  \begin{itemize}
-	\item $B@h$NNc$G$O!"A4BN$r$^$H$a$F%P%C%A=hM}$9$k<0$HC`<!?dDj$9$k<0$,Ey$7$$$N$G!"L@$i$+$KF1$82r$,F@$i$l$k(B
-	\item $B$3$NJ}K!$GC`<!%"%k%4%j%:%`$rF3=P$9$k$3$H$,!"$$$D$b$G$-$k$o$1$G$O$J$$(B
-	\item Robbins-Morno$B%"%k%4%j%:%`$rF3F~$9$k(B
+	\item 先の例では、全体をまとめてバッチ処理する式と逐次推定する式が等しいので、明らかに同じ解が得られる
+	\item この方法で逐次アルゴリズムを導出することが、いつもできるわけではない
+	\item Robbins-Mornoアルゴリズムを導入する
  \end{itemize}
 \end{frame}
 
 
-%%TODO $B?^(B2.10$B$NA^F~(B
+%%TODO 図2.10の挿入
  \begin{frame}
 	\begin{itemize}
-	 \item $BF1;~J,I[(B$p(z,\theta)$$B$K=>$&3NN(JQ?t(B$\theta$$B$H(B$z$$B$NBP$r9M$($k(B
-	 \item $\theta$$B$,M?$($i$l$?$H$-$N(B$z$$B$N>r7oIU$-4|BTO@$K$h$C$F!"7hDjO@E*$J4X?t(B$f(\theta)$$B$rDj5A$9$k(B
+	 \item 同時分布$p(z,\theta)$に従う確率変数$\theta$と$z$の対を考える
+	 \item $\theta$が与えられたときの$z$の条件付き期待論によって、決定論的な関数$f(\theta)$を定義する
 				 \begin{equation}
 					f(\theta) \equiv E[z|\theta] = \int zp(z|\theta)dz
 				 \end{equation}
 				 \begin{itemize}
-					\item $B$3$N$h$&$KDj5A$5$l$?4X?t$r2s5"4X?t$H8F$V(B
+					\item このように定義された関数を回帰関数と呼ぶ
 				 \end{itemize}
-	 \item $B$3$3$G$NL\I8$O!"(B$f(\theta^\ast)=0$$B$N:,(B$\theta\ast$$B$r5a$a$k$3$H(B
+	 \item ここでの目標は、$f(\theta^\ast)=0$の根$\theta\ast$を求めること
 	\end{itemize}
  \end{frame}
 
- \begin{frame}{$B2>Dj(B}
+ \begin{frame}{仮定}
 	\begin{itemize}
-	 \item $B<!$N$h$&$J2>Dj$rCV$/(B
+	 \item 次のような仮定を置く
 				 \begin{eqnarray}
 					E[(z-f)^2|\theta] &<& \infty\\
 					\theta^{(N)}&=& \theta^{(N-1)}-a_Nz(\theta^{N-1})
 				 \end{eqnarray}
-	 \item $B$?$@$7!"(B$z(\theta^{(N)})$$B$O(B$\theta$$B$,CM(B$\theta^{(N)}$$B$r<h$k$H$-$K4QB,$5$l$k(B$z$$B$NCM(B
-	 \item $B78?t(B$\{a_N\}$$B$O0J2<$N>r7o$rK~$?$9@5?t$N7ONs(B
+	 \item ただし、$z(\theta^{(N)})$は$\theta$が値$\theta^{(N)}$を取るときに観測される$z$の値
+	 \item 係数$\{a_N\}$は以下の条件を満たす正数の系列
 				 \begin{equation}
 					\lim_{N \rightarrow \infty}a_N=0
 				 \end{equation}
 				 \begin{itemize}
-					\item $B$3$N2aDx$,6K8BCM$K<}B+$G$-$k$h$&$K!"2r$NC`<!E*$J=$@5NL$r8:$i$9$3$H$rJ]>Z(B
+					\item この過程が極限値に収束できるように、解の逐次的な修正量を減らすことを保証
 				 \end{itemize}
 				 \begin{equation}
 					\sum_{N=1}^{\infty}a_N=\infty
 				 \end{equation}
 				 \begin{itemize}
-					\item $B%"%k%4%j%:%`$,:,0J30$KB.$9$.$k<}B+$r$7$J$$$3$H$rJ]>Z(B
+					\item アルゴリズムが根以外に速すぎる収束をしないことを保証
 				 \end{itemize}
 				 \begin{equation}
 					\sum_{N=1}^{\infty}a_N^2 < \infty
 				 \end{equation}
 				 \begin{itemize}
-					\item $BC_@Q$5$l$?%N%$%:$NJ,;6$rM-8B$KM^$(!"<}B+$rAK32$7$J$$$3$H$rJ]>Z(B
+					\item 蓄積されたノイズの分散を有限に抑え、収束を阻害しないことを保証
 				 \end{itemize}
 	\end{itemize}
  \end{frame}
 
- %%TODO $BBg%+%C%3$rBg$-$/$9$k(B
- \begin{frame}{Roobins-Monro$B%"%k%4%j%:%`(B}
+ %%TODO 大カッコを大きくする
+ \begin{frame}{Roobins-Monroアルゴリズム}
 	\begin{itemize}
-	 \item $BDj5A$h$j!":GL`?dDj2r(B$\theta_{ML}$$B$OIi$NBP?tL`EY4X?t$NDdN1E@$G$"$k$?$a!"(B
+	 \item 定義より、最尤推定解$\theta_{ML}$は負の対数尤度関数の停留点であるため、
 				 \begin{equation}
 					-\frac{\partial }{\partial \theta}\{\frac{1}{N}\sum_{n=1}^{N}\ln  p(x_n|\theta)\}|_{\theta_{ML}} = 0
 				 \end{equation}
-	 \item $BHyJ,$HAmOB$N1i;;$r8r49$7!"(B$N\rightarrow\infty$$B$N6K8B$r9M$($k$H<!$N<0$rF@$k(B
+	 \item 微分と総和の演算を交換し、$N\rightarrow\infty$の極限を考えると次の式を得る
 				 \begin{equation}
 -\lim_{N \rightarrow \infty}\frac{1}{N}\sum_{n=1}^{N}\frac{\partial}{\partial \theta}\ln p(x_n|\theta)=E_x[-\frac{\partial}{\partial \theta}\ln p(x|\theta)]
 				 \end{equation}
-	 \item $B:GL`?dDj2r$r5a$a$k$3$H$O!"2s5"4X?t$N:,$r5a$a$k$3$H$KAjEv$9$k$3$H$,$o$+$k(B
+	 \item 最尤推定解を求めることは、回帰関数の根を求めることに相当することがわかる
 	\end{itemize}
  \end{frame}
 
  \begin{frame}
 	\begin{itemize}
-	 \item $B$f$($K!"<!$N7A$G(BRobbins-Monro$B<jB3$-$rE,MQ$G$-$k(B
+	 \item ゆえに、次の形でRobbins-Monro手続きを適用できる
 \begin{equation}
  \theta^{(N)}=\theta^{(N-1)}-a_{N-1}\frac{\partial}{\partial \theta^{(N-1)}}[-\ln p(x_N|\theta^{(N-1)})]
 \end{equation}
 	\end{itemize}
  \end{frame}
 
-  \begin{frame}{$B%,%&%9J,I[$X$NE,MQ(B}
+  \begin{frame}{ガウス分布への適用}
 	\begin{itemize}
-	 \item $B%Q%i%a!<%?(B$\theta^{(N)}$$B$O%,%&%9J,I[$NJ?6Q$N?dDjNL(B$\mu_{ML}^{(N)}$$B$G$"$j!"3NN(JQ?t(B$z$$B$O(B
+	 \item パラメータ$\theta^{(N)}$はガウス分布の平均の推定量$\mu_{ML}^{(N)}$であり、確率変数$z$は
 \begin{equation}
 z=-\frac{\partial}{\partial \mu_{ML}} \ln p(x|\mu_{ML}, \sigma^2) = -\frac{1}{\sigma^2}(x-\mu_{ML})
 \end{equation}
-	 \item $B$3$M$3$M$$$8$k$H!"A0$N<0$,=P$F$/$k!#(B
+	 \item こねこねいじると、前の式が出てくる。
 	\end{itemize}
  \end{frame}

@@ -1,4 +1,4 @@
-LATEX           = platex
+LATEX           = platex -kanji=utf8
 TETEX2_ENABLED  = false     # falseにしないとthesis.flsを探しに行って失敗する
 #BIBTEX          = bibtex   # bibtexのコマンドも指定してあげる
 DVIPDFM         = dvipdfmx
