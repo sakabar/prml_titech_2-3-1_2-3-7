@@ -10,6 +10,7 @@ TEXDEPS[]   =
 	introduce.tex
 	2-3-1.tex
 	2-3-2.tex
+	2-3-3.tex
 
 LaTeXDocument(slide, slide)
 
