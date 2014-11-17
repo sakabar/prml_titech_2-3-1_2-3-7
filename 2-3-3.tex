@@ -1,40 +1,40 @@
 \begin{frame}
  \begin{itemize}
-	\item $B$"$k%,%&%9<~JUJ,I[(B$p(x)$$B$HJ?6Q$,(B$x$$B$N@~7A4X?t$G!"6&J,;6$O(B$x$$B$HFHN)$G$"$k$h$&$J%,%&%9>r7oIU$-J,I[(B$p(y|x)$$B$,M?$($i$l$?$H$9$k(B
-	\item $B<~JUJ,I[(B$p(y)$$B$H>r7oIU$-J,I[(B$p(x|y)$$B$r5a$a$kLdBj$r9M$($k(B
+	\item あるガウス周辺分布$p(x)$と平均が$x$の線形関数で、共分散は$x$と独立であるようなガウス条件付き分布$p(y|x)$が与えられたとする
+	\item 周辺分布$p(y)$と条件付き分布$p(x|y)$を求める問題を考える
 \begin{itemize}
- \item $B$3$NLdBj$O0J8e$N>O$G$h$/8=$l$k$N$G!"$3$3$G0lHLE*$J7k2L$r5a$a$F$*$/(B
+ \item この問題は以後の章でよく現れるので、ここで一般的な結果を求めておく
 \end{itemize}
  \end{itemize}
 \end{frame}
 
 \begin{frame}
  \begin{itemize}
-	\item $B<~JUJ,I[$H>r7oIU$-J,I[$r(B
+	\item 周辺分布と条件付き分布を
 				 \begin{eqnarray}
 					p(x) = N(x|\mu , \Lambda^{-1})\\
 					p(y|x) = N(y|Ax+b, L^{-1})
 				 \end{eqnarray}
-				 $B$H$9$k!#(B
+				 とする。
  \end{itemize}
 \end{frame}
 
 \begin{frame}
  \begin{itemize}
-	\item $B7W;;N,(B
+	\item 計算略
  \end{itemize}
 \end{frame}
 
-\begin{frame}{$B7k2L(B}
+\begin{frame}{結果}
  \begin{itemize}
-	\item $B7k2L$O<!$N$H$*$j(B
+	\item 結果は次のとおり
 \begin{eqnarray}
  E[y] &= &A\mu +b\\
  cov &=& L^{-1} + A\Lambda^{-1}A^T\\
  E[x|y]& =& (\Lambda+A^TLA)^{-1}\{A^TL(y-b)+\Lambda\mu\}\\
 cov[x|y] &= & (\Lambda+A^TLA)^{-1}
 \end{eqnarray}
-\item $B>r7oIU$-J,I[$O%Y%$%:$NDjM}$NNc$H$7$F$b8+$k$3$H$,$G$-$k(B($B$O$"(B?)
+\item 条件付き分布はベイズの定理の例としても見ることができる(はあ?)
  \end{itemize}
 
 \end{frame}

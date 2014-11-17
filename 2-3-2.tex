@@ -1,18 +1,18 @@
-\begin{frame}{$B<~JU%,%&%9J,I[(B}
+\begin{frame}{周辺ガウス分布}
 \begin{itemize}
- \item $BF1;~J,I[(B$p(x_a,x_b)$$B$,%,%&%9J,I[$G$"$l$P!">r7oIU$-J,I[(B$p(x_a|x_b)$$B$b%,%&%9J,I[$K$J$k$3$H$r<($7$?!#(B
- \item $B$3$N<~JUJ,I[(B
+ \item 同時分布$p(x_a,x_b)$がガウス分布であれば、条件付き分布$p(x_a|x_b)$もガウス分布になることを示した。
+ \item この周辺分布
 \begin{equation}
  p(x_a) = \int p(x_a,x_b)dx_b
 \end{equation}
-			 $B$,%,%&%9J,I[$K$J$k$3$H$r<($9(B
+			 がガウス分布になることを示す
 \end{itemize}
 \end{frame}
 
 \begin{frame}{ho}
 \begin{itemize}
- \item $x_b$$B$K4X78$7$?9`$r=hM}$7$F$+$i!"@QJ,$rMF0W$K$9$k$?$a$KJ?J}40@.$9$k(B
-\item $x_b$$B$r4^$`9`$r<h$j=P$9$H(B
+ \item $x_b$に関係した項を処理してから、積分を容易にするために平方完成する
+\item $x_b$を含む項を取り出すと
 			\begin{eqnarray}
 			 &&-\frac{1}{2}x^T_b\Lambda_{bb}x_b+x^T_bm \\
 				&=& -\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m) + \frac{1}{2}m^T\Lambda_{bb}^{-1}m \\
@@ -23,32 +23,32 @@
 
 \begin{frame}
  \begin{itemize}
-	\item $x_b$$B$K0MB8$9$kItJ,$r<h$j=P$7$F@QJ,$9$k(B
+	\item $x_b$に依存する部分を取り出して積分する
 				\begin{eqnarray}
 				 \int exp\{-\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m)\}dx_b
 				\end{eqnarray}
-	\item $B$3$N@QJ,$O@55,2=$5$l$F$$$J$$%,%&%9J,I[$J$N$G!"@55,2=78?t$N5U?t$K$J$k!#(B
-	\item $B$3$N78?t$O!"J?6Q$H$OFHN)$G!"6&J,;69TNs$N$_$K0MB8$9$k(B
+	\item この積分は正規化されていないガウス分布なので、正規化係数の逆数になる。
+	\item この係数は、平均とは独立で、共分散行列のみに依存する
  \end{itemize}
 \end{frame}
 
 
-\begin{frame}{$BESCf7W;;(B}
+\begin{frame}{途中計算}
 \begin{itemize}
- \item $B$H$j$"$($:>J$/(B
+ \item とりあえず省く
 \end{itemize}
 \end{frame}
 
-\begin{frame}{$B7kO@(B}
+\begin{frame}{結論}
 \begin{itemize}
- \item $B<~JUJ,I[(B$p(x_a)$$B$NJ?6Q$H6&J,;6$O<!$N$h$&$K$J$k(B
+ \item 周辺分布$p(x_a)$の平均と共分散は次のようになる
 			\begin{eqnarray}
 			 E[x_a] &=&  \mu_a\\
 			 cov[x_a]&=&\Sigma_{aa}
 			\end{eqnarray}
- \item $BJ,3d$5$l$?6&J,;69TNs$K$D$$$F4J7i$KI=8=$5$l$k(B
+ \item 分割された共分散行列について簡潔に表現される
 			 \begin{itemize}
-				\item $B>r7oIU$-J,I[$N$H$-$HBP>HE*(B
+				\item 条件付き分布のときと対照的
 			 \end{itemize}
 \end{itemize}
 \end{frame}

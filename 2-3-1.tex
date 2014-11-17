@@ -1,7 +1,7 @@
-%%TODO $B=D%Y%/%H%k$O$I$&=q$/(B?frame
-\begin{frame}{$B>r7oIU$-%,%&%9J,I[(B($BF3F~(B)}
+%%TODO 縦ベクトルはどう書く?frame
+\begin{frame}{条件付きガウス分布(導入)}
 \begin{itemize}
- \item $BB?JQNL%,%&%9J,I[$N>r7oIU$-J,I[$r9M$($k(B
+ \item 多変量ガウス分布の条件付き分布を考える
        \begin{equation}
 				x\sim N(x|\mu, \Sigma)
        \end{equation}
@@ -12,12 +12,12 @@
 	\mu = (\mu_a, \mu_b)
        \end{equation}
 
- \item $B@:EY9TNs(B$\Lambda$$B$rF3F~$9$k(B
+ \item 精度行列$\Lambda$を導入する
  \begin{equation}
 	\Lambda \equiv \Sigma^{-1}
  \end{equation}
 
- \item $B%Y%/%H%k(B$x$$B$NJ,3d$KBP1~$9$k!"J,3d$5$l$?7A<0$N@:EY9TNs$rF3F~$9$k(B
+ \item ベクトル$x$の分割に対応する、分割された形式の精度行列を導入する
        \begin{equation}
 				\Lambda=
 				 \begin{pmatrix}
@@ -28,25 +28,25 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{$B$d$k$3$H(B}
+\begin{frame}{やること}
 \begin{itemize}
- \item $B>r7oIU$-%,%&%9J,I[$b%,%&%9J,I[$K=>$&$3$H$r<($9(B
- \item $B>r7oIU$-%,%&%9J,I[$O!"(B
+ \item 条件付きガウス分布もガウス分布に従うことを示す
+ \item 条件付きガウス分布は、
 			 \begin{equation}
 				 % p(x_a | x_b) \sim N(x | \mu_{a|b}, \Sigma_{a|b})
  p(x_a | x_b) = \frac{p(x_a, x_b)}{p(x_b)}
 			 \end{equation}
- \item $x_b$$B$r4QB,:Q$NCM$G8GDj$9$k(B
- \item $B$3$3$G!"(B$p(x_b)$$B$O@55,2=$9$k$?$a$N78?t(B
- \item $B$^$:(B$p(x_a,x_b)$$B$N;X?tIt$KCmL\$9$k(B
+ \item $x_b$を観測済の値で固定する
+ \item ここで、$p(x_b)$は正規化するための係数
+ \item まず$p(x_a,x_b)$の指数部に注目する
 
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{$B>r7oIU$-J,I[$NI=8=(B}
+\begin{frame}{条件付き分布の表現}
 \begin{itemize}
- \item $B%,%&%9J,I[$N;X?tItJ,$KCmL\$9$k(B
+ \item ガウス分布の指数部分に注目する
 			 \begin{eqnarray*}
 				-\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x-\mu) &= &
 				 -\frac{1}{2}(x_a - \mu_a)^{T}\Sigma_{aa}^{-1}(x_a-\mu_a) \\
@@ -54,34 +54,34 @@
 				 &&-\frac{1}{2}(x_b - \mu_b)^{T}\Sigma_{ba}^{-1}(x_a-\mu_a) \\
 				 &&-\frac{1}{2}(x_b - \mu_b)^{T}\Sigma_{bb}^{-1}(x_b-\mu_b)
 			 \end{eqnarray*}
- \item $x_a$$B$N4X?t$H$7$F8+$k$H!"$3$l$bFs<!7A<0$K$J$C$F$$$k(B
- \item $BBP1~$9$k>r7oIU$-J,I[(B$p(x_a | x_b)$$B$b%,%&%9J,I[$H$J$k(B
+ \item $x_a$の関数として見ると、これも二次形式になっている
+ \item 対応する条件付き分布$p(x_a | x_b)$もガウス分布となる
 \end{itemize}
 \end{frame}
 
-\begin{frame}{$BJ?J}40@.(B}
+\begin{frame}{平方完成}
 \begin{itemize}
- \item $BJ?J}40@.$H$O!"!{!{$9$k$3$H(B %TODO
+ \item 平方完成とは、○○すること %TODO
 \begin{equation}
  -\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu) = -\frac{1}{2}x^T\Sigma^{-1}x+x^T\Sigma^{-1}\mu + const\label{135015_17Nov14}
 \end{equation}
- \item $BJ?J}40@.$7$?$$<0$r<0(B(\ref{135015_17Nov14})$B$N1&JU$N7A<0$GI=8=$9$k(B
- \item $x$$B$N(B2$B<!$N9`$H(B1$B<!$N9`$N78?t$rHf3S$9$k$3$H$G!"(B$\Sigma$$B$H(B$\mu$$B$r5a$a$k(B
+ \item 平方完成したい式を式(\ref{135015_17Nov14})の右辺の形式で表現する
+ \item $x$の2次の項と1次の項の係数を比較することで、$\Sigma$と$\mu$を求める
 \end{itemize}
 \end{frame}
 
-\begin{frame}{$BJ?J}40@.(B}
+\begin{frame}{平方完成}
 \begin{itemize}
-  \item $\mu_{a|b}, \Sigma_{a|b}$$B$r5a$a$k(B
+  \item $\mu_{a|b}, \Sigma_{a|b}$を求める
 				\begin{equation}
 					p(x_a | x_b) \sim N(x | \mu_{a|b}, \Sigma_{a|b})
 					\end{equation}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{$B<B:]$K$d$C$F$_$?(B}
+\begin{frame}{実際にやってみた}
  \begin{itemize}
-	\item $B>r7oIU$-%,%&%9J,I[$KBP$7$FE,1~$9$k(B
+	\item 条件付きガウス分布に対して適応する
 			 \begin{eqnarray*}
 				-\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x-\mu) &= &
 				 -\frac{1}{2}(x_a - \mu_a)^{T}\Sigma_{aa}^{-1}(x_a-\mu_a) \\
@@ -89,25 +89,25 @@
 				 &&-\frac{1}{2}(x_b - \mu_b)^{T}\Sigma_{ba}^{-1}(x_a-\mu_a) \\
 				 &&-\frac{1}{2}(x_b - \mu_b)^{T}\Sigma_{bb}^{-1}(x_b-\mu_b)
 			 \end{eqnarray*}
-	\item $x_a$$B$K$D$$$F$N(B2$B<!$N9`$rA4$F<h$j=P$9$H!"(B
+	\item $x_a$についての2次の項を全て取り出すと、
 				\begin{equation}
 				 -\frac{1}{2}x_a^T\Lambda_{aa}x_a
 				\end{equation}
-$B$rF@$k(B
-				\item $B$3$3$+$i(B
+を得る
+				\item ここから
 							\begin{equation}
 							 \Sigma_{a|b} = \Lambda_{aa}
 							\end{equation}
  \end{itemize}
 \end{frame}
 
-\begin{frame}{$BJ?6Q(B}
+\begin{frame}{平均}
 \begin{itemize}
- \item $x_a$$B$K$D$$$F$N@~7A$N9`$r$9$Y$F9M$($k(B
+ \item $x_a$についての線形の項をすべて考える
 	\begin{equation}
 	 x_a^T\{ \Lambda_{aa}\mu_a-\Lambda_{ab}(x_b)-\mu_b\}
 	\end{equation}
- \item $B0lHL7A$K$D$$$F$N5DO@$+$i!"$3$N<0$N(B$x_a$$B$N78?t$O(B$\Sigma^{-1}_{a|b}\mu_{a|b}$$B$HEy$7$/$J$k(B
+ \item 一般形についての議論から、この式の$x_a$の係数は$\Sigma^{-1}_{a|b}\mu_{a|b}$と等しくなる
 			 \begin{eqnarray}
 \mu_{a|b} &=& \Sigma_{a|b}\{\Lambda_{aa}\mu_a-\Lambda_{ab}(x_b-\mu_b)\}\\
 				& & \mu_a - \Lambda_{aa}^{-1}\Lambda_{ab}(x_b-\mu_b)
@@ -115,13 +115,13 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{$B@:EY9TNs$r;H$o$J$$$G5a$a$k(B}
+\begin{frame}{精度行列を使わないで求める}
 
 \end{frame}
 
 \begin{frame}{hoge}
  \begin{itemize}
-	\item 2$B$D$N7k2L$rHf$Y$k(B
+	\item 2つの結果を比べる
 				\begin{eqnarray*}
 				 \mu_{a|b} &=& \mu_a + \Sigma_{ab}\Sigma_{bb}^{-1}(x_b-\mu_b)\\
 				 &=& \mu_a-\Lambda_{aa}^{-1}\Lambda_{ab}(x_b-\mu_b)
@@ -130,12 +130,12 @@
 				\Sigma_{a|b} &=& \Sigma_{aa} - \Sigma_{ab}\Sigma_{bb}^{-1}\Sigma_{ba} \\
 & =& \Lambda_{aa}^{-1}
 			 \end{eqnarray*}
- \item $B>r7oIU$-J,I[(B$p(x_a|x_b)$$B$O!"J,3d$5$l$?6&J,;69TNs$h$j$b!"J,3d$5$l$?@:EY9TNs$r;H$C$FI=8=$9$kJ}$,4J7i(B
+ \item 条件付き分布$p(x_a|x_b)$は、分割された共分散行列よりも、分割された精度行列を使って表現する方が簡潔
  \end{itemize}
 \end{frame}
-% \begin{frame}{$B>r7oIU$-%,%&%9J,I[$NJ?6Q$H6&J,;6(B}
+% \begin{frame}{条件付きガウス分布の平均と共分散}
 % \begin{itemize}
-%  \item $B0lHL$N%,%&%9$N;X?tItJ,$KCmL\$9$k(B
+%  \item 一般のガウスの指数部分に注目する
 
 
 % \end{itemize}

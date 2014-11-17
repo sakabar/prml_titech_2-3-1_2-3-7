@@ -1,26 +1,26 @@
 \begin{frame}
  \begin{itemize}
-	\item  $B$"$kB?JQNL%,%&%9J,I[$+$i!"4QB,CM(B$\{x_n\}$$B$,FHN)$KF@$i$l$?$H2>Dj$7$?%G!<%?=89g(B
+	\item  ある多変量ガウス分布から、観測値$\{x_n\}$が独立に得られたと仮定したデータ集合
 				 \begin{equation}
 					X=(x_1,...,x_n)^T
 				 \end{equation}
-				 $B$,$"$k$H$-!"$=$NJ,I[$N%Q%i%a!<%?$O:GL`?dDjK!$G?dDj$G$-$k(B
-	\item $BL`EY4X?t$O!"(B
+				 があるとき、その分布のパラメータは最尤推定法で推定できる
+	\item 尤度関数は、
 				\begin{equation}
 				 \ln  p(X|\mu, \Sigma) = -\frac{ND}{2}\ln (2\pi)-\frac{N}{2}\ln |\Sigma|-\frac{1}{2}\sum_{n=1}^{N}(x_n-\mu)^T\Sigma^{-1}(x_n-\mu)
 \end{equation}
-	\item $B$3$l$r@0M}$9$k$H!"L`EY4X?t$O<!$N(B2$B$D$NNL$K$h$C$F$N$_0MB8$7$F$$$k$3$H$,J,$+$k(B
+	\item これを整理すると、尤度関数は次の2つの量によってのみ依存していることが分かる
 				\begin{eqnarray}
 				 \sum_{n=1}^{N}x_n\\
 				 \sum_{n=1}^{N}x_nx_n^T
 				\end{eqnarray}
-	\item $B$3$l$i$r%,%&%9J,I[$N==J,E}7WNL$H$$$&(B
+	\item これらをガウス分布の十分統計量という
  \end{itemize}
 \end{frame}
 
-\begin{frame}{$B7k2L(B}
+\begin{frame}{結果}
  \begin{itemize}
-	\item $B7k2L$O<!$N$H$*$j(B
+	\item 結果は次のとおり
 				\begin{eqnarray}
 				\mu_{ML} &=& \frac{1}{N}\sum_{n=1}^{N}x_n\\
 				 \Sigma_{ML}=\frac{1}{N}\sum_{n=1}^{N}(x_n-\mu_{ML})(x_n-\mu_{ML})^T
@@ -28,18 +28,18 @@
  \end{itemize}
 \end{frame}
 
-\begin{frame}{$B:GL`?dDj2r$N4|BTCM(B}
+\begin{frame}{最尤推定解の期待値}
 \begin{itemize}
- \item $B<!$N$h$&$K$J$k(B
+ \item 次のようになる
 			 \begin{eqnarray}
 				E[\mu_{ML}]&=&\mu\\
 				E[\Sigma_{ML}]=\frac{N-1}{N}\Sigma
 			 \end{eqnarray}
- \item $BJP$j$,$"$k$,!"$3$l$OJL$N?dDjNL(B$\Sigma$
+ \item 偏りがあるが、これは別の推定量$\Sigma$
 			 \begin{equation}
 				\Sigma = \frac{1}{N-1}\sum_{n=1}^{N}(x_n-\mu_{ML})(x_n-\mu_{ML})^T
 			 \end{equation}
-			 $B$rDj5A$9$k$3$H$GJd@5$9$k$3$H$,$G$-$k(B
+			 を定義することで補正することができる
 
 \end{itemize}
 
