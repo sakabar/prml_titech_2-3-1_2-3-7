@@ -1,0 +1,54 @@
+\begin{frame}{周辺ガウス分布}
+\begin{itemize}
+ \item 同時分布$p(x_a,x_b)$がガウス分布であれば、条件付き分布$p(x_a|x_b)$もガウス分布になることを示した。
+ \item この周辺分布
+\begin{equation}
+ p(x_a) = \int p(x_a,x_b)dx_b
+\end{equation}
+			 がガウス分布になることを示す
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ho}
+\begin{itemize}
+ \item $x_b$に関係した項を処理してから、積分を容易にするために平方完成する
+\item $x_b$を含む項を取り出すと
+			\begin{eqnarray}
+			 &&-\frac{1}{2}x^T_b\Lambda_{bb}x_b+x^T_bm \\
+				&=& -\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m) + \frac{1}{2}m^T\Lambda_{bb}^{-1}m \\
+				m &=& \Lambda_{bb}\mu_b - \Lambda_{ba}(x_a-\mu_a)
+			\end{eqnarray}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+ \begin{itemize}
+	\item $x_b$に依存する部分を取り出して積分する
+				\begin{eqnarray}
+				 \int exp\{-\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m)\}dx_b
+				\end{eqnarray}
+	\item この積分は正規化されていないガウス分布なので、正規化係数の逆数になる。
+	\item この係数は、平均とは独立で、共分散行列のみに依存する
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}{途中計算}
+\begin{itemize}
+ \item とりあえず省く
+\end{itemize}
+\end{frame}
+
+\begin{frame}{結論}
+\begin{itemize}
+ \item 周辺分布$p(x_a)$の平均と共分散は次のようになる
+			\begin{eqnarray}
+			 E[x_a] &=&  \mu_a\\
+			 cov[x_a]&=&\Sigma_{aa}
+			\end{eqnarray}
+ \item 分割された共分散行列について簡潔に表現される
+			 \begin{itemize}
+				\item 条件付き分布のときと対照的
+			 \end{itemize}
+\end{itemize}
+\end{frame}

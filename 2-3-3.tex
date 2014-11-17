@@ -1,0 +1,40 @@
+\begin{frame}
+ \begin{itemize}
+	\item あるガウス周辺分布$p(x)$と平均が$x$の線形関数で、共分散は$x$と独立であるようなガウス条件付き分布$p(y|x)$が与えられたとする
+	\item 周辺分布$p(y)$と条件付き分布$p(x|y)$を求める問題を考える
+\begin{itemize}
+ \item この問題は以後の章でよく現れるので、ここで一般的な結果を求めておく
+\end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \begin{itemize}
+	\item 周辺分布と条件付き分布を
+				 \begin{eqnarray}
+					p(x) = N(x|\mu , \Lambda^{-1})\\
+					p(y|x) = N(y|Ax+b, L^{-1})
+				 \end{eqnarray}
+				 とする。
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \begin{itemize}
+	\item 計算略
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{結果}
+ \begin{itemize}
+	\item 結果は次のとおり
+\begin{eqnarray}
+ E[y] &= &A\mu +b\\
+ cov &=& L^{-1} + A\Lambda^{-1}A^T\\
+ E[x|y]& =& (\Lambda+A^TLA)^{-1}\{A^TL(y-b)+\Lambda\mu\}\\
+cov[x|y] &= & (\Lambda+A^TLA)^{-1}
+\end{eqnarray}
+\item 条件付き分布はベイズの定理の例としても見ることができる(はあ?)
+ \end{itemize}
+
+\end{frame}
