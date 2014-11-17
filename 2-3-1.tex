@@ -1,4 +1,4 @@
-%%TODO 縦ベクトルはどう書く?
+%%TODO 縦ベクトルはどう書く?frame
 \begin{frame}{条件付きガウス分布(導入)}
 \begin{itemize}
  \item 多変量ガウス分布の条件付き分布を考える
@@ -28,6 +28,22 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{やること}
+\begin{itemize}
+ \item 条件付きガウス分布もガウス分布に従うことを示す
+ \item 条件付きガウス分布は、
+			 \begin{equation}
+				 % p(x_a | x_b) \sim N(x | \mu_{a|b}, \Sigma_{a|b})
+ p(x_a | x_b) = \frac{p(x_a, x_b)}{p(x_b)}
+			 \end{equation}
+ \item $x_b$を観測済の値で固定する
+ \item ここで、$p(x_b)$は正規化するための係数
+ \item まず$p(x_a,x_b)$の指数部に注目する
+
+\end{itemize}
+
+\end{frame}
+
 \begin{frame}{条件付き分布の表現}
 \begin{itemize}
  \item ガウス分布の指数部分に注目する
@@ -49,12 +65,74 @@
 \begin{equation}
  -\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu) = -\frac{1}{2}x^T\Sigma^{-1}x+x^T\Sigma^{-1}\mu + const\label{135015_17Nov14}
 \end{equation}
- \item 平方完成したい式を式\ref{135015_17Nov14}の右辺の形式で表現する
+ \item 平方完成したい式を式(\ref{135015_17Nov14})の右辺の形式で表現する
  \item $x$の2次の項と1次の項の係数を比較することで、$\Sigma$と$\mu$を求める
 \end{itemize}
 \end{frame}
 
+\begin{frame}{平方完成}
+\begin{itemize}
+  \item $\mu_{a|b}, \Sigma_{a|b}$を求める
+				\begin{equation}
+					p(x_a | x_b) \sim N(x | \mu_{a|b}, \Sigma_{a|b})
+					\end{equation}
+\end{itemize}
+\end{frame}
 
+\begin{frame}{実際にやってみた}
+ \begin{itemize}
+	\item 条件付きガウス分布に対して適応する
+			 \begin{eqnarray*}
+				-\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x-\mu) &= &
+				 -\frac{1}{2}(x_a - \mu_a)^{T}\Sigma_{aa}^{-1}(x_a-\mu_a) \\
+				&&-\frac{1}{2}(x_a - \mu_a)^{T}\Sigma_{ab}^{-1}(x_b-\mu_b) \\
+				 &&-\frac{1}{2}(x_b - \mu_b)^{T}\Sigma_{ba}^{-1}(x_a-\mu_a) \\
+				 &&-\frac{1}{2}(x_b - \mu_b)^{T}\Sigma_{bb}^{-1}(x_b-\mu_b)
+			 \end{eqnarray*}
+	\item $x_a$についての2次の項を全て取り出すと、
+				\begin{equation}
+				 -\frac{1}{2}x_a^T\Lambda_{aa}x_a
+				\end{equation}
+を得る
+				\item ここから
+							\begin{equation}
+							 \Sigma_{a|b} = \Lambda_{aa}
+							\end{equation}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{平均}
+\begin{itemize}
+ \item $x_a$についての線形の項をすべて考える
+	\begin{equation}
+	 x_a^T\{ \Lambda_{aa}\mu_a-\Lambda_{ab}(x_b)-\mu_b\}
+	\end{equation}
+ \item 一般形についての議論から、この式の$x_a$の係数は$\Sigma^{-1}_{a|b}\mu_{a|b}$と等しくなる
+			 \begin{eqnarray}
+\mu_{a|b} &=& \Sigma_{a|b}\{\Lambda_{aa}\mu_a-\Lambda_{ab}(x_b-\mu_b)\}\\
+				& & \mu_a - \Lambda_{aa}^{-1}\Lambda_{ab}(x_b-\mu_b)
+			 \end{eqnarray}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{精度行列を使わないで求める}
+
+\end{frame}
+
+\begin{frame}{hoge}
+ \begin{itemize}
+	\item 2つの結果を比べる
+				\begin{eqnarray*}
+				 \mu_{a|b} &=& \mu_a + \Sigma_{ab}\Sigma_{bb}^{-1}(x_b-\mu_b)\\
+				 &=& \mu_a-\Lambda_{aa}^{-1}\Lambda_{ab}(x_b-\mu_b)
+				\end{eqnarray*}
+			 \begin{eqnarray*}
+				\Sigma_{a|b} &=& \Sigma_{aa} - \Sigma_{ab}\Sigma_{bb}^{-1}\Sigma_{ba} \\
+& =& \Lambda_{aa}^{-1}
+			 \end{eqnarray*}
+ \item 条件付き分布$p(x_a|x_b)$は、分割された共分散行列よりも、分割された精度行列を使って表現する方が簡潔
+ \end{itemize}
+\end{frame}
 % \begin{frame}{条件付きガウス分布の平均と共分散}
 % \begin{itemize}
 %  \item 一般のガウスの指数部分に注目する
