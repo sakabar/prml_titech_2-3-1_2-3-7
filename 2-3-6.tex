@@ -1,5 +1,62 @@
-\begin{frame}{新しいフレーム}
+\begin{frame}{$B%,%&%9J,I[$KBP$9$k%Y%$%:?dO@(B}
  \begin{itemize}
-	\item
+	\item $B:#$^$G$O:GL`?dDj$NOHAH$_$G%Q%i%a!<%?(B$\mu$$B$H(B$\Sigma$$B$HE@?dDjNL$rF@$?(B
+	\item $B<!$K!";vA0J,I[$rF3F~$7$F%Y%$%:<g5AE*$K07$&(B
  \end{itemize}
 \end{frame}
+
+\begin{frame}{$B;vA0J,I[(B}
+ \begin{itemize}
+	\item $BJ,;6(B$\sigma^2$$B$O4{CN$H$7!"M?$($i$l$?(B$N$$B8D$N4QB,CM=89g(B$x=\{x_1,...,x_N\}$$B$+$i!"J?6Q(B$\mu$$B$r?dDj$9$k(B
+	\item $\mu$$B$,M?$($i$l$?$H$-$K4QB,%G!<%?$,@8$8$k3NN($G$"$kL`EY4X?t$O(B$\mu$$B$N4X?t$H8+$J$;$F!"(B
+\begin{eqnarray*}
+ p(X|\mu) &= &\prod_{n=1}^{N}p(x_n|\mu) \\
+ &=& \frac{1}{(2\pi\sigma^2)^{N/2}}exp\{-\frac{1}{2\sigma^2}\sum_{n=1}^{N}(x_n-\mu)^2\}
+\end{eqnarray*}
+	\item $B$?$@$7!"L`EY4X?t$O(B$\mu$$B>e$N3NN(J,I[$G$O$J$/!"@55,2=$b$5$l$F$$$J$$(B
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{$B6&Lr;vA0J,I[(B}
+ \begin{itemize}
+	\item $BL`EY4X?t$r8+$k$H!"(B$\mu$$B$K$D$$$F$NFs<!7A<0$N;X?t$N7A$r<h$C$F$$$k(B
+	\item $BA0;vJ,I[(B$p(\mu)$$B$K%,%&%9J,I[$rA*$Y$P!"$3$NL`EY4X?t$N6&Lr;vA0J,I[$H$J$k(B
+	\item $B;vA0J,I[$r<!$N$h$&$K$9$k(B
+	\begin{equation}
+	 p(\mu) = N(\mu|\mu_0,\sigma_0^2)
+	\end{equation}
+	\item $B$9$k$H;v8eJ,I[$O(B
+\begin{equation}
+ p(\mu|X) \propto p(X|\mu)p(\mu)
+\end{equation}
+				$B$H$J$k(B
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{hoge}
+ \begin{itemize}
+	\item $B;X?tItJ,$rJ?J}40@.$9$k$H!"(B
+				\begin{eqnarray}
+				 p(\mu|X)&=&N(\mu|\mu_N,\sigma_N^2)
+				\end{eqnarray}
+				$B$?$@$7!"(B
+				\begin{eqnarray}
+				 				 \mu_N& = & \frac{\sigma^2}{N\sigma_0^2+\sigma^2}\mu_0 + \frac{N\sigma_0^2}{N\sigma_0^2+\sigma^2}\mu_{ML}\label{223654_18Nov14}\\
+				 \frac{1}{\sigma_N^2}&= & \frac{1}{\sigma_0^2} + \frac{N}{\sigma^2}\\
+				 \mu_ML&= & \frac{1}{N}\sum_{n=1}^{N}x_n
+				\end{eqnarray}
+	\item $N\rightarrow0$$B$J$i!"M=A[DL$j<0(B(\ref{223654_18Nov14})$B$O;vA0J,I[$NJ?6Q(B
+	\item $N\rightarrow\infty$$B$J$i!";v8eJ,I[$N:GL`?dDj2r$H$J$k(B
+	\item $BJ,;6$N@-<A$O!"(B... %TODO
+ \end{itemize}
+\end{frame}
+
+%%$B$3$3$^$G!"(BP96$B$/$i$$(B
+%%$B;D$j(B6$B%Z!<%8!"%U%!%$%H$C(B
+
+
+% \begin{frame}{$B9M;!(B}
+%  \begin{itemize}
+% 	\item $N\rightarrow0$
+%  \end{itemize}
+% \end{frame}
