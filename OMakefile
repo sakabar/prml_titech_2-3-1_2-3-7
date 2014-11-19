@@ -1,6 +1,6 @@
-LATEX           = platex -kanji=utf8
-TETEX2_ENABLED  = false     # falseにしないとthesis.flsを探しに行って失敗する
-#BIBTEX          = bibtex   # bibtexのコマンドも指定してあげる
+LATEX           = platex --kanji=utf8 #文字コードはUTF-8を利用
+TETEX2_ENABLED  = false     # falseにしないとslide.flsを探しに行って失敗する...らしい?
+#BIBTEX          = bibtex   # bibtexのコマンドも指定する(使う場合)
 DVIPDFM         = dvipdfmx
 DVIPDFMFLAGS    = -p a4     # デフォルトではUS-Letterサイズが出力される
 
@@ -13,7 +13,8 @@ TEXDEPS[]   =
 	2-3-3.tex
 	2-3-4.tex
 	2-3-5.tex
-
+	2-3-6.tex
+	2-3-7.tex
 
 LaTeXDocument(slide, slide)
 
