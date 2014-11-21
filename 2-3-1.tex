@@ -71,7 +71,7 @@
          p(x_a | x_b) = \frac{p(x_a, x_b)}{p(x_b)}
         \end{equation}
         \begin{itemize}
-         \item $x_b$を観測済の値で固定する
+         \item $x_b$を観測済の値で\alert{固定}する
          \item 正規化係数を求めるのは後回し
         \end{itemize}
   % \item まず$p(x_a,x_b)$の指数部に注目する
@@ -94,16 +94,19 @@
          &&\label{003314_21Nov14}
         \end{eqnarray}
   \item $x_a$の関数として見ると、これも\alert{二次形式}になっている
-  \item 対応する条件付き分布$p(x_a | x_b)$もガウス分布となる
+  % \item 対応する条件付き分布$p(x_a | x_b)$もガウス分布となる
  \end{itemize}
 \end{frame}
 
 \begin{frame}{平方完成}
  \begin{itemize}
-  \item 式(\ref{135015_17Nov14})の右辺から左辺への変形を\alert{平方完成}と呼ぶ
+		\item うまく変数$\mu_{a|b},\Sigma_{a|b}$を定めると、式(\ref{003314_21Nov14})の右辺は、式(\ref{135015_17Nov14})の右辺の形にすることができる
+	\item 式(\ref{003314_21Nov14})の左辺の形に直すことで、ガウス分布の指数部の形にする
         \begin{equation}
-         -\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu) = -\frac{1}{2}x^T\Sigma^{-1}x+x^T\Sigma^{-1}\mu + const\label{135015_17Nov14}
+         -\frac{1}{2}(x_a-\mu_{a|b})^{T}\Sigma_{a|b}^{-1}(x_a-\mu_{a|b}) = -\frac{1}{2}x_a^T\Sigma_{a|b}^{-1}x_a+x_a^T\Sigma_{a|b}^{-1}\mu_{a|b} + const\label{135015_17Nov14}
         \end{equation}
+  \item 式(\ref{135015_17Nov14})の右辺から左辺への変形を\alert{平方完成}と呼ぶ
+
   % \item 平方完成したい式を式(\ref{135015_17Nov14})の右辺の形式で表現する
   % \item 式(\ref{135015_17Nov14})の右辺のように表現した式を左辺の形式に直す
   \item 与えられたガウス分布中の指数項を定める二次形式を平方完成するためには、分布の平均と分散を求める必要がある
