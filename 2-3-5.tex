@@ -1,118 +1,120 @@
-\begin{frame}{逐次推定・前置き}
+\begin{frame}{2.3.5 逐次推定}
  \begin{itemize}
-	\item 略
+  \item 逐次的な方法では、データ点を一度に1つずつ処理しては、それを廃棄する
+  \item オンラインな応用分野や、すべてのデータ点を一度に一括処理することが不可能な大規模データ集合を扱う場合に重要
+  \item まずは、平均の最尤推定量$\mu_{ML}$について考える
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{平均の最尤推定量の逐次推定}
+ \begin{itemize}
+  \item $\mu_{ML}^{N}$を変形すると、次のようになる
+        \begin{eqnarray}
+         \mu_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \nonumber \\
+         & =& \frac{1}{N}x_n+\frac{1}{N}\sum_{n=1}^{n-1}x_n \nonumber \\
+         & =& \frac{1}{N}x_n + \frac{N-1}{N}\mu_{ML}^{(N-1)}\nonumber \\
+         & =& \mu_{ML}^{(N-1)} +\frac{1}{N} (x_N-\mu_{ML}^{(N-1)})\label{162008_21Nov14}
+        \end{eqnarray}
  \end{itemize}
 \end{frame}
 
 \begin{frame}{逐次推定}
  \begin{itemize}
-	\item さて
-				\begin{eqnarray}
-				 \mu_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \\
-				 & =& \frac{1}{N}x_n+\frac{1}{N}\sum_{n=1}^{n-1}x_n \\
-				 & =& \frac{1}{N}x_n + \frac{N-1}{N}\mu_{ML}^{(N-1)}\\
-				 & =& \mu_{ML}^{(N-1)} +\frac{1}{N} (x_N-\mu_{ML}^{(N-1)})
-				\end{eqnarray}
- \end{itemize}
-\end{frame}
-
-\begin{frame}{逐次推定}
- \begin{itemize}
-	\item この結果は次のように分かりやすく解釈できる(うーん?)
-				\begin{eqnarray}
-				 \mu_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \\
-				 & =& \mu_{ML}^{(N-1)} +\frac{1}{N} (x_N-\mu_{ML}^{(N-1)})
-				\end{eqnarray}
-	\item $N-1$個のデータを観測した時点で、$\mu$の推定値は$\mu_{ML}^{(N-1)}$となっている。
-	\item ここで、データ点$x_N$を観測すると、$1/N$に比例する小さな量だけ「誤差信号」$(x_N-\mu_{ML}^{(N-1)})$の方へ、古い推定量を移動させて推定量$\mu_{ML}^{(N)}$を修正する
-	\item Nが増えるにつれて、後続のデータ点からの影響はより小さくなる
+  \item この結果は次のように分かりやすく解釈できる
+        \begin{eqnarray}
+         \mu_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \\
+         & =& \mu_{ML}^{(N-1)} +\frac{1}{N} (x_N-\mu_{ML}^{(N-1)})
+        \end{eqnarray}
+  \item $N-1$個のデータを観測した時点で、$\mu$の推定値は$\mu_{ML}^{(N-1)}$となっている。
+  \item ここで、データ点$x_N$を観測すると、$1/N$に比例する小さな量だけ「誤差信号」$(x_N-\mu_{ML}^{(N-1)})$の方へ、古い推定量を移動させて推定量$\mu_{ML}^{(N)}$を修正する
+  \item Nが増えるにつれて、後続のデータ点からの影響はより小さくなる
  \end{itemize}
 \end{frame}
 
 \begin{frame}{汎用的な逐次学習の定式化}
  \begin{itemize}
-	\item 先の例では、全体をまとめてバッチ処理する式と逐次推定する式が等しいので、明らかに同じ解が得られる
-	\item この方法で逐次アルゴリズムを導出することが、いつもできるわけではない
-	\item Robbins-Mornoアルゴリズムを導入する
+  \item 先の例では、全体をまとめてバッチ処理する式と逐次推定する式が等しいので、明らかに同じ解が得られる
+  \item しかしこの方法で逐次アルゴリズムを導出することが、いつもできるわけではない
+  \item \alert{Robbins-Mornoアルゴリズム}を導入する
  \end{itemize}
 \end{frame}
 
 
 %%TODO 図2.10の挿入
- \begin{frame}
-	\begin{itemize}
-	 \item 同時分布$p(z,\theta)$に従う確率変数$\theta$と$z$の対を考える
-	 \item $\theta$が与えられたときの$z$の条件付き期待論によって、決定論的な関数$f(\theta)$を定義する
-				 \begin{equation}
-					f(\theta) \equiv E[z|\theta] = \int zp(z|\theta)dz
-				 \end{equation}
-				 \begin{itemize}
-					\item このように定義された関数を回帰関数と呼ぶ
-				 \end{itemize}
-	 \item ここでの目標は、$f(\theta^\ast)=0$の根$\theta\ast$を求めること
-	\end{itemize}
- \end{frame}
+\begin{frame}{準備}
+ \begin{itemize}
+  \item 同時分布$p(z,\theta)$に従う確率変数$\theta$と$z$の対を考える
+  \item $\theta$が与えられたときの$z$の条件付き期待論によって、決定論的な関数$f(\theta)$を定義する
+        \begin{equation}
+         f(\theta) \equiv E[z|\theta] = \int zp(z|\theta)dz
+        \end{equation}
+        \begin{itemize}
+         \item このように定義された関数を回帰関数と呼ぶ
+        \end{itemize}
+  \item ここでの目標は、$f(\theta^\ast)=0$の根$\theta\ast$を求めること
+ \end{itemize}
+\end{frame}
 
- \begin{frame}{仮定}
-	\begin{itemize}
-	 \item 次のような仮定を置く
-				 \begin{eqnarray}
-					E[(z-f)^2|\theta] &<& \infty\\
-					\theta^{(N)}&=& \theta^{(N-1)}-a_Nz(\theta^{N-1})
-				 \end{eqnarray}
-	 \item ただし、$z(\theta^{(N)})$は$\theta$が値$\theta^{(N)}$を取るときに観測される$z$の値
-	 \item 係数$\{a_N\}$は以下の条件を満たす正数の系列
-				 \begin{equation}
-					\lim_{N \rightarrow \infty}a_N=0
-				 \end{equation}
-				 \begin{itemize}
-					\item この過程が極限値に収束できるように、解の逐次的な修正量を減らすことを保証
-				 \end{itemize}
-				 \begin{equation}
-					\sum_{N=1}^{\infty}a_N=\infty
-				 \end{equation}
-				 \begin{itemize}
-					\item アルゴリズムが根以外に速すぎる収束をしないことを保証
-				 \end{itemize}
-				 \begin{equation}
-					\sum_{N=1}^{\infty}a_N^2 < \infty
-				 \end{equation}
-				 \begin{itemize}
-					\item 蓄積されたノイズの分散を有限に抑え、収束を阻害しないことを保証
-				 \end{itemize}
-	\end{itemize}
- \end{frame}
+\begin{frame}{仮定}
+ \begin{itemize}
+  \item 次のような仮定を置く
+        \begin{eqnarray}
+         E[(z-f)^2|\theta] &<& \infty\\
+         \theta^{(N)}&=& \theta^{(N-1)}-a_Nz(\theta^{N-1})
+        \end{eqnarray}
+  \item ただし、$z(\theta^{(N)})$は$\theta$が値$\theta^{(N)}$を取るときに観測される$z$の値
+  \item 係数$\{a_N\}$は以下の条件を満たす正数の系列
+        \begin{equation}
+         \lim_{N \rightarrow \infty}a_N=0
+        \end{equation}
+        \begin{itemize}
+         \item この過程が極限値に収束できるように、解の逐次的な修正量を減らすことを保証
+        \end{itemize}
+        \begin{equation}
+         \sum_{N=1}^{\infty}a_N=\infty
+        \end{equation}
+        \begin{itemize}
+         \item アルゴリズムが根以外に速すぎる収束をしないことを保証
+        \end{itemize}
+        \begin{equation}
+         \sum_{N=1}^{\infty}a_N^2 < \infty
+        \end{equation}
+        \begin{itemize}
+         \item 蓄積されたノイズの分散を有限に抑え、収束を阻害しないことを保証
+        \end{itemize}
+ \end{itemize}
+\end{frame}
 
- %%TODO 大カッコを大きくする
- \begin{frame}{Roobins-Monroアルゴリズム}
-	\begin{itemize}
-	 \item 定義より、最尤推定解$\theta_{ML}$は負の対数尤度関数の停留点であるため、
-				 \begin{equation}
-					-\frac{\partial }{\partial \theta}\{\frac{1}{N}\sum_{n=1}^{N}\ln  p(x_n|\theta)\}|_{\theta_{ML}} = 0
-				 \end{equation}
-	 \item 微分と総和の演算を交換し、$N\rightarrow\infty$の極限を考えると次の式を得る
-				 \begin{equation}
--\lim_{N \rightarrow \infty}\frac{1}{N}\sum_{n=1}^{N}\frac{\partial}{\partial \theta}\ln p(x_n|\theta)=E_x[-\frac{\partial}{\partial \theta}\ln p(x|\theta)]
-				 \end{equation}
-	 \item 最尤推定解を求めることは、回帰関数の根を求めることに相当することがわかる
-	\end{itemize}
- \end{frame}
+%%TODO 大カッコを大きくする
+\begin{frame}{Roobins-Monroアルゴリズム}
+ \begin{itemize}
+  \item 定義より、最尤推定解$\theta_{ML}$は負の対数尤度関数の停留点であるため、
+        \begin{equation}
+         -\frac{\partial }{\partial \theta}\left\{\frac{1}{N}\sum_{n=1}^{N}\ln  p(x_n|\theta)\right\}|_{\theta_{ML}} = 0
+        \end{equation}
+  \item 微分と総和の演算を交換し、$N\rightarrow\infty$の極限を考えると次の式を得る
+        \begin{equation}
+         -\lim_{N \rightarrow \infty}\frac{1}{N}\sum_{n=1}^{N}\frac{\partial}{\partial \theta}\ln p(x_n|\theta)=E_x\left[-\frac{\partial}{\partial \theta}\ln p(x|\theta)\right]
+        \end{equation}
+ \end{itemize}
+\end{frame}
 
- \begin{frame}
-	\begin{itemize}
-	 \item ゆえに、次の形でRobbins-Monro手続きを適用できる
-\begin{equation}
- \theta^{(N)}=\theta^{(N-1)}-a_{N-1}\frac{\partial}{\partial \theta^{(N-1)}}[-\ln p(x_N|\theta^{(N-1)})]
-\end{equation}
-	\end{itemize}
- \end{frame}
+\begin{frame}{Robbins-Morno手続きの適用}
+ \begin{itemize}
+  \item 最尤推定解を求めることは、回帰関数の根を求めることに相当することがわかる
+  \item ゆえに、次の形でRobbins-Monro手続きを適用できる
+        \begin{equation}
+         \theta^{(N)}=\theta^{(N-1)}-a_{N-1}\frac{\partial}{\partial \theta^{(N-1)}}[-\ln p(x_N|\theta^{(N-1)})]\label{161911_21Nov14}
+        \end{equation}
+ \end{itemize}
+\end{frame}
 
-  \begin{frame}{ガウス分布への適用}
-	\begin{itemize}
-	 \item パラメータ$\theta^{(N)}$はガウス分布の平均の推定量$\mu_{ML}^{(N)}$であり、確率変数$z$は
-\begin{equation}
-z=-\frac{\partial}{\partial \mu_{ML}} \ln p(x|\mu_{ML}, \sigma^2) = -\frac{1}{\sigma^2}(x-\mu_{ML})
-\end{equation}
-	 \item こねこねいじると、前の式が出てくる。
-	\end{itemize}
- \end{frame}
+\begin{frame}{ガウス分布への適用}
+ \begin{itemize}
+  \item パラメータ$\theta^{(N)}$はガウス分布の平均の推定量$\mu_{ML}^{(N)}$であり、確率変数$z$は
+        \begin{equation}
+         z=-\frac{\partial}{\partial \mu_{ML}} \ln p(x|\mu_{ML}, \sigma^2) = -\frac{1}{\sigma^2}(x-\mu_{ML})\label{161904_21Nov14}
+        \end{equation}
+  \item 式(\ref{161904_21Nov14})を式(\ref{161911_21Nov14})に代入し、係数$a_N$を$a_N=\sigma^2/N$となるように選ぶと、式(\ref{162008_21Nov14})の1変数の形式のものが得られる
+ \end{itemize}
+\end{frame}

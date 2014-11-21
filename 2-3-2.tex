@@ -1,54 +1,95 @@
-\begin{frame}{周辺ガウス分布}
-\begin{itemize}
- \item 同時分布$p(x_a,x_b)$がガウス分布であれば、条件付き分布$p(x_a|x_b)$もガウス分布になることを示した。
- \item この周辺分布
-\begin{equation}
- p(x_a) = \int p(x_a,x_b)dx_b
-\end{equation}
-			 がガウス分布になることを示す
-\end{itemize}
-\end{frame}
-
-\begin{frame}{ho}
-\begin{itemize}
- \item $x_b$に関係した項を処理してから、積分を容易にするために平方完成する
-\item $x_b$を含む項を取り出すと
-			\begin{eqnarray}
-			 &&-\frac{1}{2}x^T_b\Lambda_{bb}x_b+x^T_bm \\
-				&=& -\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m) + \frac{1}{2}m^T\Lambda_{bb}^{-1}m \\
-				m &=& \Lambda_{bb}\mu_b - \Lambda_{ba}(x_a-\mu_a)
-			\end{eqnarray}
-\end{itemize}
-\end{frame}
-
-\begin{frame}
+\begin{frame}{2.3.2 周辺ガウス分布}
  \begin{itemize}
-	\item $x_b$に依存する部分を取り出して積分する
-				\begin{eqnarray}
-				 \int exp\{-\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m)\}dx_b
-				\end{eqnarray}
-	\item この積分は正規化されていないガウス分布なので、正規化係数の逆数になる。
-	\item この係数は、平均とは独立で、共分散行列のみに依存する
+  \item 同時分布$p(x_a,x_b)$がガウス分布であれば、条件付き分布$p(x_a|x_b)$もガウス分布になることを示した。
+  \item この周辺分布
+        \begin{equation}
+         p(x_a) = \int p(x_a,x_b)dx_b
+        \end{equation}
+        がガウス分布になることを示す
+  \item ここでも同時分布の指数部分の二次形式に注目し、周辺分布$p(x_a)$の平均と共分散を特定することで効率的に計算できる
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}{計算の流れ}
+ \begin{itemize}
+  % \item 指数部の$x_b$に関係した項を処理してから、積分を容易にするために平方完成する
+  \item $x_b$に関係ない項を$C_2$とおき$x_b$に関係した項に注目
+        \begin{eqnarray*}
+         && \int p(x_a,x_b)dx_b \\
+         &=& \int \frac{1}{C_1}exp\left\{(x_b-\mu_1)^T\Lambda(x_b-\mu_1)+C_2\right\}dx_b \\
+         &=& \frac{1}{C_1}exp\{C_2\}\underline{\int exp\left\{(x_b-\mu_1)^T\Lambda(x_b-\mu_1)\right\}dx_b}
+        \end{eqnarray*}
+        \begin{itemize}
+         \item 下線部はガウス分布の積分なので積分結果は正規化係数の逆数(積分結果を$C_3$とおく)
+        \end{itemize}
+        \begin{eqnarray*}
+         &=&\frac{1}{C_1}exp\{C_2\}C_3 \\
+         &=&\frac{1}{C_1}exp\{(x_a-\mu_2)^T\Lambda (x_a-\mu_2)+C_4\}C_3\\
+         &=&\frac{C_3}{C_1}\underline{exp\{C_4\}exp\{(x_a-\mu_2)^T\Lambda (x_a-\mu_2)}\}
+        \end{eqnarray*}
+  \item 指数部がガウス分布の形になる
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}{計算}
+ \begin{itemize}
+  \item 指数部の$x_b$に関係した項を処理してから、積分を容易にするために平方完成する
+  \item $x_b$を含む項を取り出すと
+        \begin{eqnarray*}
+         && -\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x-\mu) \\
+         &=&-\frac{1}{2}x^T_b\Lambda_{bb}x_b+x^T_bm \\
+         &=& -\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m) + \frac{1}{2}m^T\Lambda_{bb}^{-1}m
+        \end{eqnarray*}
+        ただし、
+        \begin{equation*}
+         m =  \Lambda_{bb}\mu_b - \Lambda_{ba}(x_a-\mu_a)
+        \end{equation*}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{$x_b$の指数部}
+ \begin{itemize}
+  \item 指数部の式は次のとおり
+        \begin{equation}
+         -\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m) + \frac{1}{2}m^T\Lambda_{bb}^{-1}m
+        \end{equation}
+        \begin{itemize}
+         \item 右辺第1項はガウス分布の標準的な二次形式
+         \item 残りの項は$x_b$に依存しない
+        \end{itemize}
+  \item $x_b$に関係しない部分を無視して考え、後で正規化係数を求めてつじつまを合わせる
+        % \begin{equation}
+        %  \int exp(f(x)+c)dx = exp(c)\int exp(f(x))dx
+          % \end{equation}
  \end{itemize}
 \end{frame}
 
 
 \begin{frame}{途中計算}
-\begin{itemize}
- \item とりあえず省く
-\end{itemize}
+ \begin{itemize}
+  \item この二次形式の指数を取り、$x_b$で積分する
+        % $x_b$に依存する部分を取り出して積分する
+        \begin{eqnarray}
+         \int exp\left\{-\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m)\right\}dx_b
+        \end{eqnarray}
+  \item この積分は正規化されていないガウス分布なので、正規化係数の逆数になる。
+  \item ガウス分布の正規化係数は平均とは独立で、共分散行列のみに依存するため、この積分も共分散行列のみに依存する
+  \item 残った$x_a$に関する項を変形する
+ \end{itemize}
 \end{frame}
 
 \begin{frame}{結論}
-\begin{itemize}
- \item 周辺分布$p(x_a)$の平均と共分散は次のようになる
-			\begin{eqnarray}
-			 E[x_a] &=&  \mu_a\\
-			 cov[x_a]&=&\Sigma_{aa}
-			\end{eqnarray}
- \item 分割された共分散行列について簡潔に表現される
-			 \begin{itemize}
-				\item 条件付き分布のときと対照的
-			 \end{itemize}
-\end{itemize}
+ \begin{itemize}
+  \item 周辺分布$p(x_a)$の平均と共分散は次のようになる
+        \begin{eqnarray}
+         E[x_a] &=&  \mu_a\\
+         cov[x_a]&=&\Sigma_{aa}
+        \end{eqnarray}
+  \item 分割された共分散行列について簡潔に表現される
+        \begin{itemize}
+         \item 条件付き分布のときと対照的
+        \end{itemize}
+ \end{itemize}
 \end{frame}

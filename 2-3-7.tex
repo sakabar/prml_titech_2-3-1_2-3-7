@@ -1,59 +1,70 @@
+\begin{frame}{2.3.7 スチューデントのt分布}
+ \begin{itemize}
+  \item 1変数のガウス分布$N(x|\mu, \tau^{-1})$において、ガンマ分布$Gam(\tau|a,b)$の精度の事前分布とし、そこから精度を積分消去し、$z=\tau[b+(x-\mu)^2/2]$の変数の置換を用いると、$x$の周辺分布は次式となる
+        \begin{eqnarray}
+         && p(x|\mu,a,b) \nonumber \\
+         &=& \int_0^\infty N(x|\mu,\tau^{-1})Gam(\tau|a,b)d\tau\label{133939_19Nov14} \\
+         % &= & \int_{0}^{\infty}\frac{b^ae^{-b\tau}\tau^{a-1}}{\Gamma(a)}(\frac{\tau}{2\pi})^{1/2}exp\{-\frac{\tau}{2}(x-\mu)^2\}d\tau \nonumber\\
+         &= & \frac{b^a}{\Gamma(a)}\left(\frac{1}{2\pi}\right)^{1/2}\left[b+\frac{(x-\mu)^2}{2}\right]^{-a-1/2}\Gamma(a+1/2)
+        \end{eqnarray}
+ \end{itemize}
+\end{frame}
+
 \begin{frame}{スチューデントのt分布}
  \begin{itemize}
-	\item 1変数のガウス分布$N(x|\mu, \tau^{-1})$において、ガンマ分布$Gam(\tau|a,b)$の精度の事前分布とし、そこから精度を積分消去し、$z=\tau[b+(x-\mu)^2/2]$の変数の置換を用いると、$x$の周辺分布は次式となる
-				\begin{eqnarray}
-				 p(x|\mu,a,b) &=& \int_0^\infty N(x|\mu,\tau^{-1})Gam(\tau|a,b)d\tau\label{133939_19Nov14} \\
-				 &= & \int_{0}^{\infty}\frac{b^ae^{-b\tau}\tau^{a-1}}{\Gamma(a)}(\frac{\tau}{2\pi}^{1/2})exp\{-\frac{\tau}{2}(x-\mu)^2\}d\tau \nonumber\\
-				 &= & \frac{b^a}{\Gamma(a)}(\frac{1}{2\pi})^{1/2}[b+\frac{(x-\mu)^2}{2}]^{-a-1/2}\Gamma(a+1/2)
-				\end{eqnarray}
-	\item 慣例により、$\nu=2a$と$\lambda=a/b$のパラメータを新たに定義すると、
-\begin{equation}
- St(x|\mu,\lambda,\nu) = \frac{\Gamma(\nu/2+1/2)}{\Gamma(\nu/2)}(\frac{\lambda}{\pi\nu})^{1/2}[1+\frac{\lambda(x-\mu)^2}{\nu}]^{-\nu/2-1/2}
-\end{equation}
-				\begin{itemize}
-				 \item これはスチューデントのt分布として知られる
-				 \item パラメータ$\lambda$はt分布の精度とも呼ばれるが、必ずしも分散の逆数とは限らない
-				 \item パラメータ$\nu=1$ではコーシー分布、$\nu\rightarrow\infty$では平均が$\mu$で精度が$\lambda$のガウス分布になる
-				\end{itemize}
-	\item 式(\ref{133939_19Nov14})より、スチューデントのt分布は、平均は同じだが、精度は異なるようなガウス分布を無限個足し合わせたものであることがわかる
-	\item ガウス分布の無限混合分布(詳細は2.3.9節)
-	\item スチューデントのt分布はガウス分布より一般に「すそ」が長く、頑健性を持つ
-				\begin{itemize}
-				 \item 外れ値となっている少数のデータ点があっても、ガウス分布よりは影響されにくい
-				\end{itemize}
+  \item 慣例により、$\nu=2a$と$\lambda=a/b$のパラメータを新たに定義すると、\alert{スチューデントのt分布}が得られる
+        \begin{equation}
+         St(x|\mu,\lambda,\nu) = \frac{\Gamma(\nu/2+1/2)}{\Gamma(\nu/2)}\left(\frac{\lambda}{\pi\nu}\right)^{1/2}\left[1+\frac{\lambda(x-\mu)^2}{\nu}\right]^{-\nu/2-1/2}
+        \end{equation}
+        \begin{itemize}
+         \item パラメータ$\lambda$はt分布の精度とも呼ばれるが、必ずしも分散の逆数とは限らない
+         \item パラメータ$\nu=1$ではコーシー分布、$\nu\rightarrow\infty$では平均が$\mu$で精度が$\lambda$のガウス分布になる
+        \end{itemize}
+  \item 式(\ref{133939_19Nov14})より、スチューデントのt分布は、平均は同じだが精度は異なるようなガウス分布を無限個足し合わせたものであることがわかる
+  \item ガウス分布の無限混合分布(詳細は2.3.9節)
  \end{itemize}
 \end{frame}
 
-\begin{frame}{回帰}
+
+\begin{frame}{頑健性と回帰問題}
  \begin{itemize}
-	\item 外れ値は、実際にデータを生成する分布のすそが大きい場合や、単純なラベル付けの誤りなどにあるように、実際の問題ではよく生じる
-	\item 頑健性は回帰問題でも重要な性質である
-				\item 回帰での最小二乗法は、条件付きガウス分布の下での最尤推定に相当するので、頑健ではない
-	\item そこで、すその重い分布に基づく回帰モデルを用いる
+  \item スチューデントのt分布はガウス分布より一般に「すそ」が長く、\alert{頑健性}を持つ
+        \begin{itemize}
+         \item 外れ値となっている少数のデータ点があっても、ガウス分布よりは影響されにくい
+        \end{itemize}
+  % \item 外れ値は、実際にデータを生成する分布のすそが大きい場合や、単純なラベル付けの誤りなどにあるように、実際の問題ではよく生じる
+  \item 頑健性は回帰問題でも重要な性質である
+  \item 回帰での最小二乗法は、条件付きガウス分布の下での最尤推定に相当するので、頑健ではない
+  \item そこで、すその重い分布に基づく回帰モデルを用いる
  \end{itemize}
 \end{frame}
 
-\begin{frame}{例}
+\begin{frame}{回帰モデルの例}
  \begin{itemize}
-	\item 式(\ref{133939_19Nov14})に戻って、パラメータを$\nu=2a,\lambda=a/b,$および$\eta=\tau b/a$と置き換えると、t分布は次の形に書ける
-				\begin{equation}
-				 St(x|\mu,\lambda,\nu) = \int_{0}^{\infty}N(x|\mu, (\eta\lambda)^{-1})Gam(\eta|\nu/2,\nu/2)d\eta
-				\end{equation}
-	\item これは多変量ガウス分布の場合に一般化でき、多変量スチューデントt分布に相当するものが次式で得られる
-				\begin{equation}
-				  St(x|\mu,\Lambda,\nu) = \int_{0}^{\infty}N(x|\mu, (\eta\Lambda)^{-1})Gam(\eta|\nu/2,\nu/2)d\eta
-				\end{equation}
-	\item 1変数の場合と同じように、積分を計算すると
-				\begin{eqnarray}
-				 St(x|\mu,\Lambda,\nu) &=& \frac{\Gamma(D/2+\nu/2)}{\Gamma(\nu/2)}\frac{|\Lambda|^{1/2}}{(\pi\nu)^{D/2}}[1+\frac{\Delta^2}{\nu}]^{-D/2-\nu/2} \\
-				 \Delta^2&= & (x-\mu)^T\Lambda(x-\mu)
-				\end{eqnarray}
-				を得る
-	\item これはスチューデントt分布の多変量型で、1変数の結果に対応した、次の性質を満たす
-				\begin{eqnarray}
-				 E[x]&=&\mu\\
-				 cov[x]&=&\frac{\nu}{(\nu-2)}\Lambda^{-1}\\
-				 mode[x]& =& \mu
-				\end{eqnarray}
+  \item 式(\ref{133939_19Nov14})に戻って、パラメータを$\nu=2a,\lambda=a/b,$および$\eta=\tau b/a$と置き換えると、t分布は次の形に書ける
+        \begin{equation}
+         St(x|\mu,\lambda,\nu) = \int_{0}^{\infty}N(x|\mu, (\eta\lambda)^{-1})Gam(\eta|\nu/2,\nu/2)d\eta
+        \end{equation}
+  \item これは多変量ガウス分布の場合に一般化でき、多変量スチューデントt分布に相当するものが次式で得られる
+        \begin{equation}
+         St(x|\mu,\Lambda,\nu) = \int_{0}^{\infty}N(x|\mu, (\eta\Lambda)^{-1})Gam(\eta|\nu/2,\nu/2)d\eta
+        \end{equation}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{回帰モデルの例}
+ \begin{itemize}
+  \item 1変数の場合と同じように、積分を計算すると
+        \begin{eqnarray}
+         St(x|\mu,\Lambda,\nu) &=& \frac{\Gamma(D/2+\nu/2)}{\Gamma(\nu/2)}\frac{|\Lambda|^{1/2}}{(\pi\nu)^{D/2}}\left[1+\frac{\Delta^2}{\nu}\right]^{-D/2-\nu/2} \\
+         \Delta^2&= & (x-\mu)^T\Lambda(x-\mu)
+        \end{eqnarray}
+        を得る
+  \item これはスチューデントt分布の多変量型で、1変数の結果に対応した、次の性質を満たす
+        \begin{eqnarray}
+         E[x]&=&\mu\\
+         cov[x]&=&\frac{\nu}{(\nu-2)}\Lambda^{-1}\\
+         mode[x]& =& \mu
+        \end{eqnarray}
  \end{itemize}
 \end{frame}

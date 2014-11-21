@@ -1,10 +1,14 @@
 \documentclass[dvipdfmx]{beamer}
 \usepackage{amsmath}
 \usepackage{bm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
 
 \title{PRML\_titech 2.3.1 - 2.3.7}
-\author{榊原隆文}
-\date{\today}
+\author{榊原隆文(@saka\_bar)}
+\date{November 21, 2014}
+% \date{\today}
 
 \setbeamertemplate{footline}[frame number]
 \setbeamerfont{footline}{size=\small,series=\bfseries}
@@ -12,13 +16,32 @@
 \begin{document}
 \maketitle
 
-\input{introduce}
-\input{2-3-1}
-\input{2-3-2}
-\input{2-3-3}
-\input{2-3-4}
-\input{2-3-5}
-\input{2-3-6}
-\input{2-3-7}
+ \section*{自己紹介}
+ \input{introduce}
+
+ \begin{frame}{もくじ}
+  \tableofcontents
+ \end{frame}
+
+ \section{2.3.1 条件付きガウス分布}
+ \input{2-3-1}
+
+ \section{2.3.2 周辺ガウス分布}
+ \input{2-3-2}
+
+ \section{2.3.3 ガウス変数に対するベイズの定理}
+ \input{2-3-3}
+
+ \section{2.3.4 ガウス分布の最尤推定}
+ \input{2-3-4}
+
+ \section{2.3.5 逐次推定}
+ \input{2-3-5}
+
+ \section{2.3.6 ガウス分布に対するベイズ推論}
+ \input{2-3-6}
+
+ \section{2.3.7 スチューデントのt分布}
+ \input{2-3-7}
 
 \end{document}
