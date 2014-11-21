@@ -13,12 +13,22 @@
 
 \begin{frame}{計算の流れ}
  \begin{itemize}
-  \item 指数部の$x_b$に関係した項を処理してから、積分を容易にするために平方完成する
+  % \item 指数部の$x_b$に関係した項を処理してから、積分を容易にするために平方完成する
+  \item $x_b$に関係ない項を$C_2$とおき$x_b$に関係した項に注目
         \begin{eqnarray*}
-         \int p(x_a,x_b)dx_b &=& \int \frac{1}{C_1}exp\left\{x_b^T\Lambda x_b+x_a^T\Lambda x_a\right\}dx_b \\
-         &= &  \frac{1}{C_1}exp(x_a^T\Lambda x_a)\int exp\left\{x_b^T\Lambda x_b\right\}dx_b \\
-         & =& \frac{1}{C_1}exp(x_a^T\Lambda x_a)\cdot C_2
+         && \int p(x_a,x_b)dx_b \\
+         &=& \int \frac{1}{C_1}exp\left\{(x_b-\mu_1)^T\Lambda(x_b-\mu_1)+C_2\right\}dx_b \\
+         &=& \frac{1}{C_1}exp\{C_2\}\underline{\int exp\left\{(x_b-\mu_1)^T\Lambda(x_b-\mu_1)\right\}dx_b}
         \end{eqnarray*}
+        \begin{itemize}
+         \item 下線部はガウス分布の積分なので積分結果は正規化係数の逆数(積分結果を$C_3$とおく)
+        \end{itemize}
+        \begin{eqnarray*}
+         &=&\frac{1}{C_1}exp\{C_2\}C_3 \\
+         &=&\frac{1}{C_1}exp\{(x_a-\mu_2)^T\Lambda (x_a-\mu_2)+C_4\}C_3\\
+         &=&\frac{C_3}{C_1}\underline{exp\{C_4\}exp\{(x_a-\mu_2)^T\Lambda (x_a-\mu_2)}\}
+        \end{eqnarray*}
+  \item 指数部がガウス分布の形になる
  \end{itemize}
 \end{frame}
 
@@ -62,10 +72,11 @@
   \item この二次形式の指数を取り、$x_b$で積分する
         % $x_b$に依存する部分を取り出して積分する
         \begin{eqnarray}
-         \int exp\{-\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m)\}dx_b
+         \int exp\left\{-\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m)\right\}dx_b
         \end{eqnarray}
   \item この積分は正規化されていないガウス分布なので、正規化係数の逆数になる。
   \item ガウス分布の正規化係数は平均とは独立で、共分散行列のみに依存するため、この積分も共分散行列のみに依存する
+  \item 残った$x_a$に関する項を変形する
  \end{itemize}
 \end{frame}
 
