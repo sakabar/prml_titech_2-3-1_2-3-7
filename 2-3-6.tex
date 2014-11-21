@@ -181,7 +181,7 @@
   \item $D$次元変数の多変量ガウス分布の場合に、\alert{精度を既知}とすれば、平均$\mu$の共役事前分布は、またガウス分布になる
   \item \alert{平均が既知}で、精度行列$\Lambda$が未知なら、共役事前分布は次式のウィシャート分布となる
         \begin{equation}
-         W(\Lambda|W,\nu) = B|\Lambda|^{(\nu-D-1)/2}exp(-\frac{1}{2}Tr(W^{-1}\Lambda))
+         W(\Lambda|W,\nu) = B|\Lambda|^{(\nu-D-1)/2}exp\left(-\frac{1}{2}Tr(W^{-1}\Lambda)\right)
         \end{equation}
         % \begin{itemize}
         %  \item $\nu$は分布の自由度パラメータ
@@ -190,7 +190,7 @@
         %  \item $B$は次式
         % \end{itemize}
         \begin{equation}
-         B(W,\nu) = |W|^{-\nu/2}(2^{\nu D/2}\pi^{D(D-1)/4}\prod_{i=1}^D\Gamma(\frac{\nu+1-i}{2}))^{-1}
+         B(W,\nu) = |W|^{-\nu/2}\left(2^{\nu D/2}\pi^{D(D-1)/4}\prod_{i=1}^D\Gamma\left(\frac{\nu+1-i}{2}\right)\right)^{-1}
         \end{equation}
   \item ここでも、精度行列上ではなく、共分散行列上の共役事前分布を定義できる
         \begin{itemize}
