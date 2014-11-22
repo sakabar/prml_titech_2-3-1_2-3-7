@@ -11,8 +11,8 @@
   \item $\mu_{ML}^{N}$を変形すると、次のようになる
         \begin{eqnarray}
          \mu_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \nonumber \\
-         & =& \frac{1}{N}x_n+\frac{1}{N}\sum_{n=1}^{n-1}x_n \nonumber \\
-         & =& \frac{1}{N}x_n + \frac{N-1}{N}\mu_{ML}^{(N-1)}\nonumber \\
+         & =& \frac{1}{N}x_N+\frac{1}{N}\sum_{n=1}^{N-1}x_n \nonumber \\
+         & =& \frac{1}{N}x_N + \frac{N-1}{N}\mu_{ML}^{(N-1)}\nonumber \\
          & =& \mu_{ML}^{(N-1)} +\frac{1}{N} (x_N-\mu_{ML}^{(N-1)})\label{162008_21Nov14}
         \end{eqnarray}
  \end{itemize}
@@ -35,7 +35,7 @@
  \begin{itemize}
   \item 先の例では、全体をまとめてバッチ処理する式と逐次推定する式が等しいので、明らかに同じ解が得られる
   \item しかしこの方法で逐次アルゴリズムを導出することが、いつもできるわけではない
-  \item \alert{Robbins-Mornoアルゴリズム}を導入する
+  \item \alert{Robbins-Monroアルゴリズム}を導入する
  \end{itemize}
 \end{frame}
 
@@ -51,7 +51,7 @@
         \begin{itemize}
          \item このように定義された関数を回帰関数と呼ぶ
         \end{itemize}
-  \item ここでの目標は、$f(\theta^\ast)=0$の根$\theta\ast$を求めること
+  \item ここでの目標は、$f(\theta^\ast)=0$の根$\theta^\ast$を求めること
  \end{itemize}
 \end{frame}
 
@@ -60,7 +60,7 @@
   \item 次のような仮定を置く
         \begin{eqnarray}
          E[(z-f)^2|\theta] &<& \infty\\
-         \theta^{(N)}&=& \theta^{(N-1)}-a_Nz(\theta^{N-1})
+         \theta^{(N)}&=& \theta^{(N-1)}-a_{N-1}z(\theta^{(N-1)})
         \end{eqnarray}
   \item ただし、$z(\theta^{(N)})$は$\theta$が値$\theta^{(N)}$を取るときに観測される$z$の値
   \item 係数$\{a_N\}$は以下の条件を満たす正数の系列
@@ -90,7 +90,7 @@
  \begin{itemize}
   \item 定義より、最尤推定解$\theta_{ML}$は負の対数尤度関数の停留点であるため、
         \begin{equation}
-         -\frac{\partial }{\partial \theta}\left\{\frac{1}{N}\sum_{n=1}^{N}\ln  p(x_n|\theta)\right\}|_{\theta_{ML}} = 0
+         -\frac{\partial }{\partial \theta}\left\{\left.\frac{1}{N}\sum_{n=1}^{N}\ln  p(x_n|\theta)\right\}\right|_{\theta_{ML}} = 0
         \end{equation}
   \item 微分と総和の演算を交換し、$N\rightarrow\infty$の極限を考えると次の式を得る
         \begin{equation}
@@ -99,7 +99,7 @@
  \end{itemize}
 \end{frame}
 
-\begin{frame}{Robbins-Morno手続きの適用}
+\begin{frame}{Robbins-Monro手続きの適用}
  \begin{itemize}
   \item 最尤推定解を求めることは、回帰関数の根を求めることに相当することがわかる
   \item ゆえに、次の形でRobbins-Monro手続きを適用できる

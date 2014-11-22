@@ -30,6 +30,9 @@
 \begin{frame}{同時分布の対数}
  \begin{itemize}
   \item そして、同時分布の対数を考える
+  \begin{itemize}
+   \item ここで対数を考えるのは、いちいち「指数に注目」という手間を省くためだと考えられる
+  \end{itemize}
         \begin{eqnarray}
          \ln p(z) &=& \ln p(x) + \ln p(y|x) \nonumber \\
          &= & -\frac{1}{2}(x-\mu)^T\Lambda(x-\mu) \nonumber \\
@@ -52,7 +55,7 @@
           \begin{pmatrix}
            \Lambda+A^TLA & -A^TL\\
            -LA & L
-          \end{pmatrix}^T
+          \end{pmatrix}
           \begin{pmatrix}
            x \\
            y
@@ -65,7 +68,7 @@
           \begin{pmatrix}
            \Lambda+A^TLA & -A^TL\\
            -LA & L
-          \end{pmatrix}^T
+          \end{pmatrix}
         \end{equation}
         になる
  \end{itemize}
@@ -75,7 +78,7 @@
  \begin{itemize}
   \item 共分散行列は、行列の逆行列に関する公式(\ref{053319_21Nov14})を適用して精度の逆行列を求めることで求られる(演習2.29)
         \begin{equation}
-         cov[z]=^{-1}=
+         cov[z]=R^{-1}=
           \begin{pmatrix}
            \Lambda^{-1} & \Lambda^{-1}A^T \\
            A\Lambda^{-1} & L^{-1} + A\Lambda^{-1}A^T
