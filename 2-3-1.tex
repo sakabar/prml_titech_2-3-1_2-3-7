@@ -66,6 +66,12 @@
 \begin{frame}{条件付きガウス分布}
  \begin{itemize}
   \item 条件付きガウス分布$p(x_a|x_b)$もガウス分布に従うことを示す
+	\begin{itemize}
+	 \item ガウス分布の式の形に変形できればよい
+	\end{itemize}
+ \begin{equation}
+  N(x|\mu,\Sigma) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\Sigma|^{1/2}}exp\left\{-\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x-\mu)\right\}
+ \end{equation}
   \item 条件付きガウス分布は、次式のとおりである
         \begin{equation}
          p(x_a | x_b) = \frac{p(x_a, x_b)}{p(x_b)}
@@ -77,9 +83,6 @@
   % \item まず$p(x_a,x_b)$の指数部に注目する
   \item まずガウス分布の同時分布$p(x_a,x_b)$の指数部に注目する
  \end{itemize}
- \begin{equation}
-  p(x_a,x_b) \sim N(x|\mu,\Sigma) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\Sigma|^{1/2}}exp\left\{-\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x-\mu)\right\}
- \end{equation}
 \end{frame}
 
 \begin{frame}{条件付き分布の表現}
