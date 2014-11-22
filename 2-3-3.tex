@@ -52,7 +52,7 @@
           \begin{pmatrix}
            \Lambda+A^TLA & -A^TL\\
            -LA & L
-          \end{pmatrix}^T
+          \end{pmatrix}
           \begin{pmatrix}
            x \\
            y
@@ -65,7 +65,7 @@
           \begin{pmatrix}
            \Lambda+A^TLA & -A^TL\\
            -LA & L
-          \end{pmatrix}^T
+          \end{pmatrix}
         \end{equation}
         になる
  \end{itemize}
@@ -75,7 +75,7 @@
  \begin{itemize}
   \item 共分散行列は、行列の逆行列に関する公式(\ref{053319_21Nov14})を適用して精度の逆行列を求めることで求られる(演習2.29)
         \begin{equation}
-         cov[z]=^{-1}=
+         cov[z]=R^{-1}=
           \begin{pmatrix}
            \Lambda^{-1} & \Lambda^{-1}A^T \\
            A\Lambda^{-1} & L^{-1} + A\Lambda^{-1}A^T
