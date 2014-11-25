@@ -47,7 +47,7 @@
         \end{equation}
   \item これは多変量ガウス分布の場合に一般化でき、多変量スチューデントt分布に相当するものが次式で得られる
         \begin{equation}
-         St(x|\mu,\Lambda,\nu) = \int_{0}^{\infty}N(x|\mu, (\eta\Lambda)^{-1})Gam(\eta|\nu/2,\nu/2)d\eta
+         St(x|\mu,\bm{\Lambda},\nu) = \int_{0}^{\infty}N(x|\mu, (\eta\bm{\Lambda})^{-1})Gam(\eta|\nu/2,\nu/2)d\eta
         \end{equation}
  \end{itemize}
 \end{frame}
@@ -56,14 +56,14 @@
  \begin{itemize}
   \item 1変数の場合と同じように、積分を計算すると
         \begin{eqnarray}
-         St(x|\mu,\Lambda,\nu) &=& \frac{\Gamma(D/2+\nu/2)}{\Gamma(\nu/2)}\frac{|\Lambda|^{1/2}}{(\pi\nu)^{D/2}}\left[1+\frac{\Delta^2}{\nu}\right]^{-D/2-\nu/2} \\
-         \Delta^2&= & (x-\mu)^{\mathrm{T}}\Lambda(x-\mu)
+         St(x|\mu,\bm{\Lambda},\nu) &=& \frac{\Gamma(D/2+\nu/2)}{\Gamma(\nu/2)}\frac{|\bm{\Lambda}|^{1/2}}{(\pi\nu)^{D/2}}\left[1+\frac{\Delta^2}{\nu}\right]^{-D/2-\nu/2} \\
+         \Delta^2&= & (x-\mu)^{\mathrm{T}}\bm{\Lambda}(x-\mu)
         \end{eqnarray}
         を得る
   \item これはスチューデントt分布の多変量型で、1変数の結果に対応した、次の性質を満たす
         \begin{eqnarray}
          \mathbb{E}[x]&=&\mu\\
-         cov[x]&=&\frac{\nu}{(\nu-2)}\Lambda^{-1}\\
+         cov[x]&=&\frac{\nu}{(\nu-2)}\bm{\Lambda}^{-1}\\
          mode[x]& =& \mu
         \end{eqnarray}
  \end{itemize}
