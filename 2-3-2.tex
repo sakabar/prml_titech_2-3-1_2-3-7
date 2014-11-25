@@ -17,16 +17,16 @@
   \item $x_b$に関係ない項を$C_2$とおき$x_b$に関係した項に注目
         \begin{eqnarray*}
          && \int p(x_a,x_b)dx_b \\
-         &=& \int \frac{1}{C_1}exp\left\{(x_b-\mu_1)^T\Lambda(x_b-\mu_1)+C_2\right\}dx_b \\
-         &=& \frac{1}{C_1}exp\{C_2\}\underline{\int exp\left\{(x_b-\mu_1)^T\Lambda(x_b-\mu_1)\right\}dx_b}
+         &=& \int \frac{1}{C_1}exp\left\{(x_b-\mu_1)^{\mathrm{T}}\Lambda(x_b-\mu_1)+C_2\right\}dx_b \\
+         &=& \frac{1}{C_1}exp\{C_2\}\underline{\int exp\left\{(x_b-\mu_1)^{\mathrm{T}}\Lambda(x_b-\mu_1)\right\}dx_b}
         \end{eqnarray*}
         \begin{itemize}
          \item 下線部はガウス分布の積分なので積分結果は正規化係数の逆数(積分結果を$C_3$とおく)
         \end{itemize}
         \begin{eqnarray*}
          &=&\frac{1}{C_1}exp\{C_2\}C_3 \\
-         &=&\frac{1}{C_1}exp\{(x_a-\mu_2)^T\Lambda (x_a-\mu_2)+C_4\}C_3\\
-         &=&\frac{C_3}{C_1}\underline{exp\{C_4\}exp\{(x_a-\mu_2)^T\Lambda (x_a-\mu_2)}\}
+         &=&\frac{1}{C_1}exp\{(x_a-\mu_2)^{\mathrm{T}}\Lambda (x_a-\mu_2)+C_4\}C_3\\
+         &=&\frac{C_3}{C_1}\underline{exp\{C_4\}exp\{(x_a-\mu_2)^{\mathrm{T}}\Lambda (x_a-\mu_2)}\}
         \end{eqnarray*}
   \item 指数部がガウス分布の形になる
  \end{itemize}
@@ -38,9 +38,9 @@
   \item 指数部の$x_b$に関係した項を処理してから、積分を容易にするために平方完成する
   \item $x_b$を含む項を取り出すと
         \begin{eqnarray*}
-         && -\frac{1}{2}(x - \mu)^{T}\bm{\Sigma}^{-1}(x-\mu) \\
-         &=&-\frac{1}{2}x^T_b\Lambda_{bb}x_b+x^T_bm \\
-         &=& -\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m) + \frac{1}{2}m^T\Lambda_{bb}^{-1}m
+         && -\frac{1}{2}(x - \mu)^{\mathrm{T}}\bm{\Sigma}^{-1}(x-\mu) \\
+         &=&-\frac{1}{2}x^{\mathrm{T}}_b\Lambda_{bb}x_b+x^{\mathrm{T}}_bm \\
+         &=& -\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^{\mathrm{T}}\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m) + \frac{1}{2}m^{\mathrm{T}}\Lambda_{bb}^{-1}m
         \end{eqnarray*}
         ただし、
         \begin{equation*}
@@ -53,7 +53,7 @@
  \begin{itemize}
   \item 指数部の式は次のとおり
         \begin{equation}
-         -\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m) + \frac{1}{2}m^T\Lambda_{bb}^{-1}m
+         -\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^{\mathrm{T}}\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m) + \frac{1}{2}m^{\mathrm{T}}\Lambda_{bb}^{-1}m
         \end{equation}
         \begin{itemize}
          \item 右辺第1項はガウス分布の標準的な二次形式
@@ -72,7 +72,7 @@
   \item この二次形式の指数を取り、$x_b$で積分する
         % $x_b$に依存する部分を取り出して積分する
         \begin{eqnarray}
-         \int exp\left\{-\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m)\right\}dx_b
+         \int exp\left\{-\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^{\mathrm{T}}\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m)\right\}dx_b
         \end{eqnarray}
   \item この積分は正規化されていないガウス分布なので、正規化係数の逆数になる。
   \item ガウス分布の正規化係数は平均とは独立で、共分散行列のみに依存するため、この積分も共分散行列のみに依存する

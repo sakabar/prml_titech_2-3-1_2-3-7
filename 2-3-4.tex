@@ -2,16 +2,16 @@
  \begin{itemize}
   \item  ある多変量ガウス分布から、観測値$\{x_n\}$が独立に得られたと仮定したデータ集合
          \begin{equation}
-          X=(x_1,...,x_n)^T
+          X=(x_1,...,x_n)^{\mathrm{T}}
          \end{equation}
          がある時その分布のパラメータは最尤推定法で推定できる
   \item 尤度関数は、
         \begin{equation}
-         \ln  p(X|\mu, \bm{\Sigma}) = -\frac{ND}{2}\ln (2\pi)-\frac{N}{2}\ln |\bm{\Sigma}|-\frac{1}{2}\sum_{n=1}^{N}(x_n-\mu)^T\bm{\Sigma}^{-1}(x_n-\mu)
+         \ln  p(X|\mu, \bm{\Sigma}) = -\frac{ND}{2}\ln (2\pi)-\frac{N}{2}\ln |\bm{\Sigma}|-\frac{1}{2}\sum_{n=1}^{N}(x_n-\mu)^{\mathrm{T}}\bm{\Sigma}^{-1}(x_n-\mu)
         \end{equation}
   \item これを整理すると、尤度関数は次の2つの量によってのみ依存していることが分かる
         \begin{eqnarray}
-         \sum_{n=1}^{N}x_n, \ \ \  \sum_{n=1}^{N}x_nx_n^T
+         \sum_{n=1}^{N}x_n, \ \ \  \sum_{n=1}^{N}x_nx_n^{\mathrm{T}}
         \end{eqnarray}
   \item これらをガウス分布の\alert{十分統計量}という
  \end{itemize}
@@ -22,7 +22,7 @@
   \item 最尤推定解は次のとおり
         \begin{eqnarray}
          \mu_{ML} &=& \frac{1}{N}\sum_{n=1}^{N}x_n\\
-         \bm{\Sigma}_{ML}&=&\frac{1}{N}\sum_{n=1}^{N}(x_n-\mu_{ML})(x_n-\mu_{ML})^T
+         \bm{\Sigma}_{ML}&=&\frac{1}{N}\sum_{n=1}^{N}(x_n-\mu_{ML})(x_n-\mu_{ML})^{\mathrm{T}}
         \end{eqnarray}
  \end{itemize}
 \end{frame}
@@ -38,7 +38,7 @@
          \item 平均についての最尤推定量の期待論は真の平均に等しい
          \item 共分散の最尤推定量の期待論は真の値より小さいが、これは別の推定量$\widetilde{\bm{\Sigma}}$
                \begin{equation}
-                \widetilde{\bm{\Sigma}} = \frac{1}{N-1}\sum_{n=1}^{N}(x_n-\mu_{ML})(x_n-\mu_{ML})^T
+                \widetilde{\bm{\Sigma}} = \frac{1}{N-1}\sum_{n=1}^{N}(x_n-\mu_{ML})(x_n-\mu_{ML})^{\mathrm{T}}
                \end{equation}
                を定義することで補正することができる
         \end{itemize}
