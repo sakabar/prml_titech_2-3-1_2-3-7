@@ -66,12 +66,12 @@
 \begin{frame}{条件付きガウス分布}
  \begin{itemize}
   \item 条件付きガウス分布$p(\bm{x}_a|\bm{x}_b)$もガウス分布に従うことを示す
-	\begin{itemize}
-	 \item ガウス分布の式の形に変形できればよい
-	\end{itemize}
- \begin{equation}
-  N(\bm{x}|\bm{\mu},\Sigma) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\Sigma|^{1/2}}exp\left\{-\frac{1}{2}(\bm{x} - \bm{\mu})^{T}\Sigma^{-1}(\bm{x}-\bm{\mu})\right\}
- \end{equation}
+        \begin{itemize}
+         \item ガウス分布の式の形に変形できればよい
+        \end{itemize}
+        \begin{equation}
+         N(\bm{x}|\bm{\mu},\Sigma) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\Sigma|^{1/2}}\exp\left\{-\frac{1}{2}(\bm{x} - \bm{\mu})^{T}\Sigma^{-1}(\bm{x}-\bm{\mu})\right\}
+        \end{equation}
   \item 条件付きガウス分布は、次式のとおりである
         \begin{equation}
          p(\bm{x}_a | \bm{x}_b) = \frac{p(\bm{x}_a, \bm{x}_b)}{p(\bm{x}_b)}
@@ -103,8 +103,8 @@
 
 \begin{frame}{平方完成}
  \begin{itemize}
-		\item うまく変数$\bm{\mu}_{a|b},\Sigma_{a|b}$を定めると、式(\ref{003314_21Nov14})の右辺は、式(\ref{135015_17Nov14})の右辺の形にすることができる
-	\item 式(\ref{003314_21Nov14})の左辺の形に直すことで、ガウス分布の指数部の形にする
+  \item うまく変数$\bm{\mu}_{a|b},\Sigma_{a|b}$を定めると、式(\ref{003314_21Nov14})の右辺は、式(\ref{135015_17Nov14})の右辺の形にすることができる
+  \item 式(\ref{003314_21Nov14})の左辺の形に直すことで、ガウス分布の指数部の形にする
         \begin{equation}
          -\frac{1}{2}(\bm{x}_a-\bm{\mu}_{a|b})^{T}\Sigma_{a|b}^{-1}(\bm{x}_a-\bm{\mu}_{a|b}) = -\frac{1}{2}\bm{x}_a^T\Sigma_{a|b}^{-1}\bm{x}_a+\bm{x}_a^T\Sigma_{a|b}^{-1}\bm{\mu}_{a|b} + const\label{135015_17Nov14}
         \end{equation}
