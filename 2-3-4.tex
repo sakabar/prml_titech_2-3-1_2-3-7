@@ -6,9 +6,10 @@
          \end{equation}
          がある時その分布のパラメータは最尤推定法で推定できる
   \item 尤度関数は、
-        \begin{equation}
-         \ln  p(X|\bm{\mu}, \bm{\Sigma}) = -\frac{ND}{2}\ln (2\pi)-\frac{N}{2}\ln |\bm{\Sigma}|-\frac{1}{2}\sum_{n=1}^{N}(\bm{x}_n-\bm{\mu})^{\mathrm{T}}\bm{\Sigma}^{-1}(\bm{x}_n-\bm{\mu})
-        \end{equation}
+        \begin{eqnarray*}
+         && \ln  p(X|\bm{\mu}, \bm{\Sigma}) \\
+         &=& -\frac{ND}{2}\ln (2\pi)-\frac{N}{2}\ln |\bm{\Sigma}|-\frac{1}{2}\sum_{n=1}^{N}(\bm{x}_n-\bm{\mu})^{\mathrm{T}}\bm{\Sigma}^{-1}(\bm{x}_n-\bm{\mu})
+        \end{eqnarray*}
   \item これを整理すると、尤度関数は次の2つの量によってのみ依存していることが分かる
         \begin{eqnarray}
          \sum_{n=1}^{N}\bm{x}_n, \ \ \  \sum_{n=1}^{N}\bm{x}_n\bm{x}_n^{\mathrm{T}}
