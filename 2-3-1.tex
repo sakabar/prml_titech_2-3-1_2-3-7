@@ -13,7 +13,7 @@
  \begin{itemize}
   \item 多変量ガウス分布の条件付き分布を考える
         \begin{equation}
-         \bm{x}\sim N(\bm{x}|\bm{\mu}, \bm{\Sigma})
+         \bm{x}\sim \mathcal{N}(\bm{x}|\bm{\mu}, \bm{\Sigma})
         \end{equation}
         「$\sim$」はある分布に従う、ということ
   \item この$D$次元ベクトル$\bm{x}$を2つの互いに素な部分集合$\bm{x}_a$と$\bm{x}_b$に分割する
@@ -70,7 +70,7 @@
          \item ガウス分布の式の形に変形できればよい
         \end{itemize}
         \begin{equation}
-         N(\bm{x}|\bm{\mu},\bm{\Sigma}) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\bm{\Sigma}|^{1/2}}\exp\left\{-\frac{1}{2}(\bm{x} - \bm{\mu})^{\mathrm{T}}\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu})\right\}
+         \mathcal{N}(\bm{x}|\bm{\mu},\bm{\Sigma}) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\bm{\Sigma}|^{1/2}}\exp\left\{-\frac{1}{2}(\bm{x} - \bm{\mu})^{\mathrm{T}}\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu})\right\}
         \end{equation}
   \item 条件付きガウス分布は、次式のとおりである
         \begin{equation}
@@ -121,7 +121,7 @@
  \begin{itemize}
   \item 考えている条件付き分布はガウス分布に従うので、
         \begin{equation}
-         p(\bm{x}_a | \bm{x}_b) \sim N(\bm{x} | \bm{\mu}_{a|b}, \bm{\Sigma}_{a|b})
+         p(\bm{x}_a | \bm{x}_b) \sim \mathcal{N}(\bm{x} | \bm{\mu}_{a|b}, \bm{\Sigma}_{a|b})
         \end{equation}
         と表せる
   \item まずは分散$\bm{\Sigma}_{a|b}$を求める
