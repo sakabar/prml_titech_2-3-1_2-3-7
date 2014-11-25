@@ -2,18 +2,18 @@
  \begin{itemize}
   \item 逐次的な方法では、データ点を一度に1つずつ処理しては、それを廃棄する
   \item オンラインな応用分野や、すべてのデータ点を一度に一括処理することが不可能な大規模データ集合を扱う場合に重要
-  \item まずは、平均の最尤推定量$\mu_{ML}$について考える
+  \item まずは、平均の最尤推定量$\bm{\mu}_{ML}$について考える
  \end{itemize}
 \end{frame}
 
 \begin{frame}{平均の最尤推定量の逐次推定}
  \begin{itemize}
-  \item $\mu_{ML}^{N}$を変形すると、次のようになる
+  \item $\bm{\mu}_{ML}^{N}$を変形すると、次のようになる
         \begin{eqnarray}
-         \mu_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \nonumber \\
+         \bm{\mu}_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \nonumber \\
          & =& \frac{1}{N}x_N+\frac{1}{N}\sum_{n=1}^{N-1}x_n \nonumber \\
-         & =& \frac{1}{N}x_N + \frac{N-1}{N}\mu_{ML}^{(N-1)}\nonumber \\
-         & =& \mu_{ML}^{(N-1)} +\frac{1}{N} (x_N-\mu_{ML}^{(N-1)})\label{162008_21Nov14}
+         & =& \frac{1}{N}x_N + \frac{N-1}{N}\bm{\mu}_{ML}^{(N-1)}\nonumber \\
+         & =& \bm{\mu}_{ML}^{(N-1)} +\frac{1}{N} (x_N-\bm{\mu}_{ML}^{(N-1)})\label{162008_21Nov14}
         \end{eqnarray}
  \end{itemize}
 \end{frame}
@@ -22,11 +22,11 @@
  \begin{itemize}
   \item この結果は次のように分かりやすく解釈できる
         \begin{eqnarray}
-         \mu_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \\
-         & =& \mu_{ML}^{(N-1)} +\frac{1}{N} (x_N-\mu_{ML}^{(N-1)})
+         \bm{\mu}_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \\
+         & =& \bm{\mu}_{ML}^{(N-1)} +\frac{1}{N} (x_N-\bm{\mu}_{ML}^{(N-1)})
         \end{eqnarray}
-  \item $N-1$個のデータを観測した時点で、$\mu$の推定値は$\mu_{ML}^{(N-1)}$となっている。
-  \item ここで、データ点$x_N$を観測すると、$1/N$に比例する小さな量だけ「誤差信号」$(x_N-\mu_{ML}^{(N-1)})$の方へ、古い推定量を移動させて推定量$\mu_{ML}^{(N)}$を修正する
+  \item $N-1$個のデータを観測した時点で、$\bm{\mu}$の推定値は$\bm{\mu}_{ML}^{(N-1)}$となっている。
+  \item ここで、データ点$x_N$を観測すると、$1/N$に比例する小さな量だけ「誤差信号」$(x_N-\bm{\mu}_{ML}^{(N-1)})$の方へ、古い推定量を移動させて推定量$\bm{\mu}_{ML}^{(N)}$を修正する
   \item Nが増えるにつれて、後続のデータ点からの影響はより小さくなる
  \end{itemize}
 \end{frame}
@@ -111,9 +111,9 @@
 
 \begin{frame}{ガウス分布への適用}
  \begin{itemize}
-  \item パラメータ$\theta^{(N)}$はガウス分布の平均の推定量$\mu_{ML}^{(N)}$であり、確率変数$z$は
+  \item パラメータ$\theta^{(N)}$はガウス分布の平均の推定量$\bm{\mu}_{ML}^{(N)}$であり、確率変数$z$は
         \begin{equation}
-         z=-\frac{\partial}{\partial \mu_{ML}} \ln p(x|\mu_{ML}, \sigma^2) = -\frac{1}{\sigma^2}(x-\mu_{ML})\label{161904_21Nov14}
+         z=-\frac{\partial}{\partial \bm{\mu}_{ML}} \ln p(x|\bm{\mu}_{ML}, \sigma^2) = -\frac{1}{\sigma^2}(x-\bm{\mu}_{ML})\label{161904_21Nov14}
         \end{equation}
   \item 式(\ref{161904_21Nov14})を式(\ref{161911_21Nov14})に代入し、係数$a_N$を$a_N=\sigma^2/N$となるように選ぶと、式(\ref{162008_21Nov14})の1変数の形式のものが得られる
  \end{itemize}

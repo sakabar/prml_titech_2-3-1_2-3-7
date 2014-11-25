@@ -7,7 +7,7 @@
          がある時その分布のパラメータは最尤推定法で推定できる
   \item 尤度関数は、
         \begin{equation}
-         \ln  p(X|\mu, \bm{\Sigma}) = -\frac{ND}{2}\ln (2\pi)-\frac{N}{2}\ln |\bm{\Sigma}|-\frac{1}{2}\sum_{n=1}^{N}(x_n-\mu)^{\mathrm{T}}\bm{\Sigma}^{-1}(x_n-\mu)
+         \ln  p(X|\bm{\mu}, \bm{\Sigma}) = -\frac{ND}{2}\ln (2\pi)-\frac{N}{2}\ln |\bm{\Sigma}|-\frac{1}{2}\sum_{n=1}^{N}(x_n-\bm{\mu})^{\mathrm{T}}\bm{\Sigma}^{-1}(x_n-\bm{\mu})
         \end{equation}
   \item これを整理すると、尤度関数は次の2つの量によってのみ依存していることが分かる
         \begin{eqnarray}
@@ -21,8 +21,8 @@
  \begin{itemize}
   \item 最尤推定解は次のとおり
         \begin{eqnarray}
-         \mu_{ML} &=& \frac{1}{N}\sum_{n=1}^{N}x_n\\
-         \bm{\Sigma}_{ML}&=&\frac{1}{N}\sum_{n=1}^{N}(x_n-\mu_{ML})(x_n-\mu_{ML})^{\mathrm{T}}
+         \bm{\mu}_{ML} &=& \frac{1}{N}\sum_{n=1}^{N}x_n\\
+         \bm{\Sigma}_{ML}&=&\frac{1}{N}\sum_{n=1}^{N}(x_n-\bm{\mu}_{ML})(x_n-\bm{\mu}_{ML})^{\mathrm{T}}
         \end{eqnarray}
  \end{itemize}
 \end{frame}
@@ -31,14 +31,14 @@
  \begin{itemize}
   \item 真の分布の下での最尤推定解の期待論を評価すると、次の結果を得る(演習2.35)
         \begin{eqnarray}
-         \mathbb{E}[\mu_{ML}]&=&\mu\\
+         \mathbb{E}[\bm{\mu}_{ML}]&=&\bm{\mu}\\
          \mathbb{E}[\bm{\Sigma}_{ML}]&=&\frac{N-1}{N}\bm{\Sigma}
         \end{eqnarray}
         \begin{itemize}
          \item 平均についての最尤推定量の期待論は真の平均に等しい
          \item 共分散の最尤推定量の期待論は真の値より小さいが、これは別の推定量$\widetilde{\bm{\Sigma}}$
                \begin{equation}
-                \widetilde{\bm{\Sigma}} = \frac{1}{N-1}\sum_{n=1}^{N}(x_n-\mu_{ML})(x_n-\mu_{ML})^{\mathrm{T}}
+                \widetilde{\bm{\Sigma}} = \frac{1}{N-1}\sum_{n=1}^{N}(x_n-\bm{\mu}_{ML})(x_n-\bm{\mu}_{ML})^{\mathrm{T}}
                \end{equation}
                を定義することで補正することができる
         \end{itemize}

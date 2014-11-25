@@ -1,6 +1,6 @@
 \begin{frame}{2.3.6 ガウス分布に対するベイズ推論}
  \begin{itemize}
-  \item 今までは最尤推定の枠組みのガウス分布パラメータ$\mu$と$\bm{\Sigma}$の点推定量を得た
+  \item 今までは最尤推定の枠組みのガウス分布パラメータ$\bm{\mu}$と$\bm{\Sigma}$の点推定量を得た
   \item 次に、事前分布を導入してベイズ主義的に扱う
         \begin{itemize}
          \item 分散が既知のとき
@@ -12,15 +12,15 @@
 
 \begin{frame}{分散が既知のときの事前分布}
  \begin{itemize}
-  \item \alert{分散$\sigma^2$は既知}とし、与えられた$N$個の観測値集合$x=\{x_1,...,x_N\}$から、平均$\mu$を推定する
-  \item $\mu$が与えられたときに観測データが生じる確率である尤度関数は$\mu$の関数と見なせて、
+  \item \alert{分散$\sigma^2$は既知}とし、与えられた$N$個の観測値集合$x=\{x_1,...,x_N\}$から、平均$\bm{\mu}$を推定する
+  \item $\bm{\mu}$が与えられたときに観測データが生じる確率である尤度関数は$\bm{\mu}$の関数と見なせて、
         \begin{eqnarray*}
-         p(X|\mu) &= &\prod_{n=1}^{N}p(x_n|\mu) \\
-         &=& \frac{1}{(2\pi\sigma^2)^{N/2}}\exp\left\{-\frac{1}{2\sigma^2}\sum_{n=1}^{N}(x_n-\mu)^2\right\}
+         p(X|\bm{\mu}) &= &\prod_{n=1}^{N}p(x_n|\bm{\mu}) \\
+         &=& \frac{1}{(2\pi\sigma^2)^{N/2}}\exp\left\{-\frac{1}{2\sigma^2}\sum_{n=1}^{N}(x_n-\bm{\mu})^2\right\}
         \end{eqnarray*}
-  % \item ただし、尤度関数は$\mu$上の確率分布ではなく、正規化もされていない
-  \item 尤度関数を見ると、$\mu$についての二次形式の指数の形を取っている
-  \item 前事分布$p(\mu)$にガウス分布を選べば、この尤度関数の共役事前分布となる
+  % \item ただし、尤度関数は$\bm{\mu}$上の確率分布ではなく、正規化もされていない
+  \item 尤度関数を見ると、$\bm{\mu}$についての二次形式の指数の形を取っている
+  \item 前事分布$p(\bm{\mu})$にガウス分布を選べば、この尤度関数の共役事前分布となる
  \end{itemize}
 \end{frame}
 
@@ -29,11 +29,11 @@
 
   \item 事前分布を次のようにする
         \begin{equation}
-         p(\mu) = N(\mu|\mu_0,\sigma_0^2)
+         p(\bm{\mu}) = N(\bm{\mu}|\bm{\mu}_0,\sigma_0^2)
         \end{equation}
   \item すると事後分布は
         \begin{equation}
-         p(\mu|X) \propto p(X|\mu)p(\mu)w
+         p(\bm{\mu}|X) \propto p(X|\bm{\mu})p(\bm{\mu})w
         \end{equation}
         となる
  \end{itemize}
@@ -43,21 +43,21 @@
  \begin{itemize}
   \item 事後分布の指数部分は、
         \begin{eqnarray}
-         & &\exp\left\{-\frac{1}{2\sigma_0^2}(\mu-\mu_0)^2\right\} \exp\left\{-\frac{1}{2\sigma^2}\sum_{n=1}^{N}(\mu-x_n)^2\right\} \nonumber \\
-         &= & \exp\left\{-\frac{1}{2}\left(\frac{1}{\sigma_0^2}+\frac{N}{\sigma^2}\right)\mu^2 +\left(\frac{\mu_0}{\sigma_0^2}+\frac{1}{\sigma^2}\sum_{n=1}^{N}x_n\right)\mu +C_0 \right\} \nonumber
+         & &\exp\left\{-\frac{1}{2\sigma_0^2}(\bm{\mu}-\bm{\mu}_0)^2\right\} \exp\left\{-\frac{1}{2\sigma^2}\sum_{n=1}^{N}(\bm{\mu}-x_n)^2\right\} \nonumber \\
+         &= & \exp\left\{-\frac{1}{2}\left(\frac{1}{\sigma_0^2}+\frac{N}{\sigma^2}\right)\bm{\mu}^2 +\left(\frac{\bm{\mu}_0}{\sigma_0^2}+\frac{1}{\sigma^2}\sum_{n=1}^{N}x_n\right)\bm{\mu} +C_0 \right\} \nonumber
         \end{eqnarray}
-  \item 平方完成と正規化によって平均$\mu_N$,分布$\sigma_N^2$のガウス分布の形にすることができる。ただし、
+  \item 平方完成と正規化によって平均$\bm{\mu}_N$,分布$\sigma_N^2$のガウス分布の形にすることができる。ただし、
         \begin{eqnarray}
-         \mu_N& = & \frac{\sigma^2}{N\sigma_0^2+\sigma^2}\mu_0 + \frac{N\sigma_0^2}{N\sigma_0^2+\sigma^2}\mu_{ML}\label{223654_18Nov14}\\
+         \bm{\mu}_N& = & \frac{\sigma^2}{N\sigma_0^2+\sigma^2}\bm{\mu}_0 + \frac{N\sigma_0^2}{N\sigma_0^2+\sigma^2}\bm{\mu}_{ML}\label{223654_18Nov14}\\
          \frac{1}{\sigma_N^2}&= & \frac{1}{\sigma_0^2} + \frac{N}{\sigma^2}\label{181817_24Nov14}\\
-         \mu_{ML}&= & \frac{1}{N}\sum_{n=1}^{N}x_n
+         \bm{\mu}_{ML}&= & \frac{1}{N}\sum_{n=1}^{N}x_n
         \end{eqnarray}
  \end{itemize}
 \end{frame}
 
 \begin{frame}{平均と分散の性質}
  \begin{eqnarray}
-  \mu_N& = & \frac{\sigma^2}{N\sigma_0^2+\sigma^2}\mu_0 + \frac{N\sigma_0^2}{N\sigma_0^2+\sigma^2}\mu_{ML}\label{181902_24Nov14}\\
+  \bm{\mu}_N& = & \frac{\sigma^2}{N\sigma_0^2+\sigma^2}\bm{\mu}_0 + \frac{N\sigma_0^2}{N\sigma_0^2+\sigma^2}\bm{\mu}_{ML}\label{181902_24Nov14}\\
   \frac{1}{\sigma_N^2}&= & \frac{1}{\sigma_0^2} + \frac{N}{\sigma^2}
  \end{eqnarray}
  \begin{itemize}
@@ -79,7 +79,7 @@
   \item $N$個のデータ点を観測した後の平均は、$N$番目のデータ点$x_N$の影響と$N-1$個のデータ点を観測した後の平均とでも表現できた
   \item このことをガウス分布の平均の推論の場合について示す
         \begin{equation}
-         p(\mu|X) \propto \left[p(\mu)\prod_{n=1}^{N-1}p(x_n|\mu)\right]p(x_N|\mu)
+         p(\bm{\mu}|X) \propto \left[p(\bm{\mu})\prod_{n=1}^{N-1}p(x_n|\bm{\mu})\right]p(x_N|\bm{\mu})
         \end{equation}
   \item カギカッコ内の項は正規化係数を除いて、$N-1$個のデータ点を観測した後の事後分布にちょうど一致する
   \item この項を事前分布とし、データ点$x_N$についての尤度関数をベイズの定理によって結合すれば、この式全体は$N$個のータ点を観測した後の事後分布とみなせる
@@ -91,8 +91,8 @@
   % \item \alert{平均が既知}の場合、事前分布に共役な分布を選ぶと計算が単純化
   \item 精度$\lambda\equiv 1/\sigma^2$で操作
         \begin{eqnarray}
-         p(X|\lambda) &=& \prod_{n=1}^{N}N(x_n|\mu,\lambda^{-1}) \nonumber \\
-         &=& \lambda^{N/2}\exp\left\{-\frac{\lambda}{2}\sum_{n=1}^{N}(x_n-\mu)^2\right\}\label{114403_19Nov14}
+         p(X|\lambda) &=& \prod_{n=1}^{N}N(x_n|\bm{\mu},\lambda^{-1}) \nonumber \\
+         &=& \lambda^{N/2}\exp\left\{-\frac{\lambda}{2}\sum_{n=1}^{N}(x_n-\bm{\mu})^2\right\}\label{114403_19Nov14}
         \end{eqnarray}
   \item この式から、精度の共役事前分布は、$\lambda$のベキ乗と、$\lambda$の線形関数の指数の積に比例させる
         \begin{itemize}
@@ -123,13 +123,13 @@
   \item 事前分布$Gam(\lambda|a_0,b_0)$について考える
   \item これに尤度関数(\ref{114403_19Nov14})をかけると、事後分布
         \begin{equation}
-         p(\lambda|X) \propto \lambda^{a_0-1}\lambda^{N/2}\exp\left\{-b_0\lambda-\frac{\lambda}{2}\sum_{n=1}^{N}(x_n-\mu)^2\right\}\label{114734_19Nov14}
+         p(\lambda|X) \propto \lambda^{a_0-1}\lambda^{N/2}\exp\left\{-b_0\lambda-\frac{\lambda}{2}\sum_{n=1}^{N}(x_n-\bm{\mu})^2\right\}\label{114734_19Nov14}
         \end{equation}
         が得られる
   \item これはパラメータを次のように設定したときの、ガンマ分布$Gam(\lambda|a_N,b_N)$であることが分かる
         \begin{eqnarray}
          a_N&=& a_0 + \frac{N}{2}`\label{115004_19Nov14}\\
-         b_N% &= & b_0+\frac{1}{2}\sum_{n=1}^{N}(x_n-\mu)^2\\
+         b_N% &= & b_0+\frac{1}{2}\sum_{n=1}^{N}(x_n-\bm{\mu})^2\\
          &= & b_0+\frac{N}{2}\sigma^2_{ML}\label{115046_19Nov14}
         \end{eqnarray}
  \end{itemize}
@@ -164,26 +164,26 @@
 
 \begin{frame}{平均と分散が未知の場合}
  \begin{itemize}
-  \item \alert{平均と分散が未知}の場合には、共役事前分布を求めるために尤度関数の$\mu$と$\lambda$への依存関係について考える
+  \item \alert{平均と分散が未知}の場合には、共役事前分布を求めるために尤度関数の$\bm{\mu}$と$\lambda$への依存関係について考える
         \begin{eqnarray}
-         p(X|\mu,\lambda) &=& \prod_{n=1}^{N}(\frac{\lambda}{2\pi})^{1/2}\exp\{-\frac{\lambda}{2}(x_n-\mu)^2\} \nonumber \\
-         &\propto & [\lambda^{1/2}\exp(-\frac{\lambda\mu^2}{2})]^{N}\exp\{\lambda\mu\sum_{n=1}^{N}x_n-\frac{\lambda}{2}\sum_{n=1}^{N}x_n^2\}
+         p(X|\bm{\mu},\lambda) &=& \prod_{n=1}^{N}(\frac{\lambda}{2\pi})^{1/2}\exp\{-\frac{\lambda}{2}(x_n-\bm{\mu})^2\} \nonumber \\
+         &\propto & [\lambda^{1/2}\exp(-\frac{\lambda\bm{\mu}^2}{2})]^{N}\exp\{\lambda\bm{\mu}\sum_{n=1}^{N}x_n-\frac{\lambda}{2}\sum_{n=1}^{N}x_n^2\}
         \end{eqnarray}
  \end{itemize}
 \end{frame}
 
 \begin{frame}{事前分布}
  \begin{itemize}
-  \item ここでは、尤度関数と同じ$\mu$と$\lambda$への関数依存性を備えた事前分布$p(\mu,\lambda)$を求めたいので、分布は次の形式になる
+  \item ここでは、尤度関数と同じ$\bm{\mu}$と$\lambda$への関数依存性を備えた事前分布$p(\bm{\mu},\lambda)$を求めたいので、分布は次の形式になる
         \begin{eqnarray}
-         p(\mu,\lambda) &\propto& [\lambda^{1/2}\exp(-\frac{\lambda\mu^2}{2})]^\beta \exp\{c\lambda\mu-d\lambda\} \nonumber \\
-         &= & \exp\{-\frac{\beta\lambda}{2}(\mu-c\beta)^2\}\lambda^{\beta/2}\exp\{-(d-\frac{c^2}{2\beta})\lambda\}
+         p(\bm{\mu},\lambda) &\propto& [\lambda^{1/2}\exp(-\frac{\lambda\bm{\mu}^2}{2})]^\beta \exp\{c\lambda\bm{\mu}-d\lambda\} \nonumber \\
+         &= & \exp\{-\frac{\beta\lambda}{2}(\bm{\mu}-c\beta)^2\}\lambda^{\beta/2}\exp\{-(d-\frac{c^2}{2\beta})\lambda\}
         \end{eqnarray}
-  \item 常に$p(\mu,\lambda)=p(\mu|\lambda)p(\lambda)$と書けるので、$p(\mu|\lambda)$と$p(\lambda)$に対応する部分を見出せばよい
-  \item $p(\mu|\lambda)$は精度が$\lambda$の線形関数であるガウス分布であり、$p(\lambda)$はガンマ分布であることがわかる
-  \item よって、定数$\mu_0=c/\beta, a=(1+\beta)/2,$および$b=d-c^2/2\beta$を新たに定義すると、正規化した事前分布は次の形を取る
+  \item 常に$p(\bm{\mu},\lambda)=p(\bm{\mu}|\lambda)p(\lambda)$と書けるので、$p(\bm{\mu}|\lambda)$と$p(\lambda)$に対応する部分を見出せばよい
+  \item $p(\bm{\mu}|\lambda)$は精度が$\lambda$の線形関数であるガウス分布であり、$p(\lambda)$はガンマ分布であることがわかる
+  \item よって、定数$\bm{\mu}_0=c/\beta, a=(1+\beta)/2,$および$b=d-c^2/2\beta$を新たに定義すると、正規化した事前分布は次の形を取る
         \begin{equation}
-         p(\mu,\lambda)=N(\mu|\mu_0, (\beta\lambda)^{-1})Gam(\lambda|a,b)
+         p(\bm{\mu},\lambda)=N(\bm{\mu}|\bm{\mu}_0, (\beta\lambda)^{-1})Gam(\lambda|a,b)
         \end{equation}
   \item この分布を\alert{正規-ガンマ分布}や\alert{ガウス-ガンマ分布}と呼ぶ
  \end{itemize}
@@ -191,17 +191,17 @@
 
 \begin{frame}{正規-ガンマ分布の特徴}
  \begin{itemize}
-  \item この分布は、独立な$\mu$上のガウス事前分布と$\lambda$上のガンマ事前分布の単純な積ではない
+  \item この分布は、独立な$\bm{\mu}$上のガウス事前分布と$\lambda$上のガンマ事前分布の単純な積ではない
         \begin{itemize}
-         \item $\mu$の分布の精度は$\lambda$の線形関数になっているため
+         \item $\bm{\mu}$の分布の精度は$\lambda$の線形関数になっているため
         \end{itemize}
-  \item たとえ$\mu$と$\lambda$が独立な事前分布を選んでも、事後分布では$\mu$の分布の精度と$\lambda$との間に関連が生じる
+  \item たとえ$\bm{\mu}$と$\lambda$が独立な事前分布を選んでも、事後分布では$\bm{\mu}$の分布の精度と$\lambda$との間に関連が生じる
  \end{itemize}
 \end{frame}
 
 \begin{frame}{ウィシャート分布}
  \begin{itemize}
-  \item $D$次元変数の多変量ガウス分布の場合に、\alert{精度を既知}とすれば、平均$\mu$の共役事前分布は、またガウス分布になる
+  \item $D$次元変数の多変量ガウス分布の場合に、\alert{精度を既知}とすれば、平均$\bm{\mu}$の共役事前分布は、またガウス分布になる
   \item \alert{平均が既知}で、精度行列$\bm{\Lambda}$が未知なら、共役事前分布は次式のウィシャート分布となる
         \begin{equation}
          W(\bm{\Lambda}|W,\nu) = B|\bm{\Lambda}|^{(\nu-D-1)/2}\exp\left(-\frac{1}{2}Tr(W^{-1}\bm{\Lambda})\right)
@@ -226,7 +226,7 @@
  \begin{itemize}
   \item \alert{平均と精度の両方が未知}なら、1変数の場合と同様に考えることで次の共役事前分布が得られる
         \begin{equation}
-         p(\mu,\bm{\Lambda}|\mu_0,\beta,W,\nu) = N(\mu|\mu_0,(\beta\bm{\Lambda})^{-1})W(\lambda|W,\nu)
+         p(\bm{\mu},\bm{\Lambda}|\bm{\mu}_0,\beta,W,\nu) = N(\bm{\mu}|\bm{\mu}_0,(\beta\bm{\Lambda})^{-1})W(\lambda|W,\nu)
         \end{equation}
   \item \alert{正規-ウィシャート分布}または\alert{ガウス-ウィシャート分布}と呼ぶ
  \end{itemize}

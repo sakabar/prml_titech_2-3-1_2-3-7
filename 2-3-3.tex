@@ -12,7 +12,7 @@
  \begin{itemize}
   \item 周辺分布と条件付き分布を
         \begin{eqnarray}
-         p(x) &=& N(x|\mu , \bm{\Lambda}^{-1})\\
+         p(x) &=& N(x|\bm{\mu} , \bm{\Lambda}^{-1})\\
          p(y|x) &=& N(y|Ax+b, L^{-1})
         \end{eqnarray}
         とする。
@@ -35,7 +35,7 @@
   \end{itemize}
         \begin{eqnarray}
          \ln p(z) &=& \ln p(x) + \ln p(y|x) \nonumber \\
-         &= & -\frac{1}{2}(x-\mu)^{\mathrm{T}}\bm{\Lambda}(x-\mu) \nonumber \\
+         &= & -\frac{1}{2}(x-\bm{\mu})^{\mathrm{T}}\bm{\Lambda}(x-\bm{\mu}) \nonumber \\
          &&-\frac{1}{2}(y-Ax-b)^{\mathrm{T}}L(y-Ax-b)+const\label{052313_21Nov14}
         \end{eqnarray}
   \item このガウス分布の精度行列を求めるために、式(\ref{052313_21Nov14})の2次の項についても考察する
@@ -91,13 +91,13 @@
  \begin{itemize}
   \item 同様に、$z$上のガウス分布の平均は、(\ref{052313_21Nov14})の線形の項を調べることで、
         \begin{equation}
-         x^{\mathrm{T}}\bm{\Lambda}\mu-x^{\mathrm{T}}A^{\mathrm{T}}Lb+y^{\mathrm{T}}Lb =
+         x^{\mathrm{T}}\bm{\Lambda}\bm{\mu}-x^{\mathrm{T}}A^{\mathrm{T}}Lb+y^{\mathrm{T}}Lb =
           \begin{pmatrix}
            x \\
            y
           \end{pmatrix}^{\mathrm{T}}
           \begin{pmatrix}
-           \bm{\Lambda}\mu-A^{\mathrm{T}}Lb \\
+           \bm{\Lambda}\bm{\mu}-A^{\mathrm{T}}Lb \\
            Lb
           \end{pmatrix}
         \end{equation}
@@ -106,7 +106,7 @@
         \begin{equation}
          \mathbb{E}[z]=R^{-1}
           \begin{pmatrix}
-           \bm{\Lambda}\mu-A^{\mathrm{T}}Lb \\
+           \bm{\Lambda}\bm{\mu}-A^{\mathrm{T}}Lb \\
            Lb
           \end{pmatrix}
         \end{equation}
@@ -114,8 +114,8 @@
         \begin{equation}
          \mathbb{E}[z]=
           \begin{pmatrix}
-           \mu \\
-           A\mu + b
+           \bm{\mu} \\
+           A\bm{\mu} + b
           \end{pmatrix}
         \end{equation}
         を得る(演習2.30)
@@ -127,7 +127,7 @@
   \item ガウス確率ベクトルの要素の部分集合上の周辺分布を、分割された共分散行列で表したときの結果を利用する
   \item 周辺分布$p(y)$の平均と共分散は
         \begin{eqnarray}
-         \mathbb{E}[y] &= &A\mu +b\\
+         \mathbb{E}[y] &= &A\bm{\mu} +b\\
          cov[y] &=& L^{-1} + A\bm{\Lambda}^{-1}A^{\mathrm{T}}
         \end{eqnarray}
         で与えられることがわかる
@@ -139,7 +139,7 @@
  \begin{itemize}
   \item 同様に、以前の結果を利用する
         \begin{eqnarray}
-         \mathbb{E}[x|y]& =& (\bm{\Lambda}+A^{\mathrm{T}}LA)^{-1}\{A^{\mathrm{T}}L(y-b)+\bm{\Lambda}\mu\}\\
+         \mathbb{E}[x|y]& =& (\bm{\Lambda}+A^{\mathrm{T}}LA)^{-1}\{A^{\mathrm{T}}L(y-b)+\bm{\Lambda}\bm{\mu}\}\\
          cov[x|y] &= & (\bm{\Lambda}+A^{\mathrm{T}}LA)^{-1}
         \end{eqnarray}
   \item この条件付き分布は、ベイズの定理の例としても見ることができる
