@@ -106,7 +106,7 @@
   \item うまく変数$\bm{\mu}_{a|b},\bm{\Sigma}_{a|b}$を定めると、式(\ref{003314_21Nov14})の右辺は、式(\ref{135015_17Nov14})の右辺の形にすることができる
   \item 式(\ref{003314_21Nov14})の左辺の形に直すことで、ガウス分布の指数部の形にする
         \begin{equation}
-         -\frac{1}{2}(\bm{x}_a-\bm{\mu}_{a|b})^{T}\bm{\Sigma}_{a|b}^{-1}(\bm{x}_a-\bm{\mu}_{a|b}) = -\frac{1}{2}\bm{x}_a^T\bm{\Sigma}_{a|b}^{-1}\bm{x}_a+\bm{x}_a^T\bm{\Sigma}_{a|b}^{-1}\bm{\mu}_{a|b} + const\label{135015_17Nov14}
+         -\frac{1}{2}(\bm{x}_a-\bm{\mu}_{a|b})^{T}\bm{\Sigma}_{a|b}^{-1}(\bm{x}_a-\bm{\mu}_{a|b}) = -\frac{1}{2}\bm{x}_a^{\mathrm{T}}\bm{\Sigma}_{a|b}^{-1}\bm{x}_a+\bm{x}_a^{\mathrm{T}}\bm{\Sigma}_{a|b}^{-1}\bm{\mu}_{a|b} + const\label{135015_17Nov14}
         \end{equation}
   \item 式(\ref{135015_17Nov14})の右辺から左辺への変形を\alert{平方完成}と呼ぶ
 
@@ -127,7 +127,7 @@
   \item まずは分散$\bm{\Sigma}_{a|b}$を求める
   \item $\bm{x}_b$を定数とみなして、式(\ref{003314_21Nov14})から$\bm{x}_a$についての2次の項を全て取り出すと、
         \begin{equation}
-         -\frac{1}{2}\bm{x}_a^T\bm{\Lambda}_{aa}\bm{x}_a
+         -\frac{1}{2}\bm{x}_a^{\mathrm{T}}\bm{\Lambda}_{aa}\bm{x}_a
         \end{equation}
         を得る。これより、
         \begin{equation}
@@ -142,7 +142,7 @@
   \item 次に平均$\bm{\mu}_{a|b}$を求める
   \item $\bm{x}_a$についての線形の項をすべて考えると、
         \begin{equation}
-         \bm{x}_a^T\{ \bm{\Lambda}_{aa}\bm{\mu}_a-\bm{\Lambda}_{ab}(\bm{x}_b)-\bm{\mu}_b\}
+         \bm{x}_a^{\mathrm{T}}\{ \bm{\Lambda}_{aa}\bm{\mu}_a-\bm{\Lambda}_{ab}(\bm{x}_b)-\bm{\mu}_b\}
         \end{equation}
         を得る
   \item この式の$\bm{x}_a$の係数は$\bm{\Sigma}^{-1}_{a|b}\bm{\mu}_{a|b}$と等しくなるので、
