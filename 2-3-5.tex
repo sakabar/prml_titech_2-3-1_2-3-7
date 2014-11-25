@@ -10,10 +10,10 @@
  \begin{itemize}
   \item $\bm{\mu}_{ML}^{N}$を変形すると、次のようになる
         \begin{eqnarray}
-         \bm{\mu}_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \nonumber \\
-         & =& \frac{1}{N}x_N+\frac{1}{N}\sum_{n=1}^{N-1}x_n \nonumber \\
-         & =& \frac{1}{N}x_N + \frac{N-1}{N}\bm{\mu}_{ML}^{(N-1)}\nonumber \\
-         & =& \bm{\mu}_{ML}^{(N-1)} +\frac{1}{N} (x_N-\bm{\mu}_{ML}^{(N-1)})\label{162008_21Nov14}
+         \bm{\mu}_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}\bm{x}_n \nonumber \\
+         & =& \frac{1}{N}\bm{x}_N+\frac{1}{N}\sum_{n=1}^{N-1}\bm{x}_n \nonumber \\
+         & =& \frac{1}{N}\bm{x}_N + \frac{N-1}{N}\bm{\mu}_{ML}^{(N-1)}\nonumber \\
+         & =& \bm{\mu}_{ML}^{(N-1)} +\frac{1}{N} (\bm{x}_N-\bm{\mu}_{ML}^{(N-1)})\label{162008_21Nov14}
         \end{eqnarray}
  \end{itemize}
 \end{frame}
@@ -22,11 +22,11 @@
  \begin{itemize}
   \item この結果は次のように分かりやすく解釈できる
         \begin{eqnarray}
-         \bm{\mu}_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}x_n \\
-         & =& \bm{\mu}_{ML}^{(N-1)} +\frac{1}{N} (x_N-\bm{\mu}_{ML}^{(N-1)})
+         \bm{\mu}_{ML}^{(N)} &= &\frac{1}{N}\sum_{n=1}^{N}\bm{x}_n \\
+         & =& \bm{\mu}_{ML}^{(N-1)} +\frac{1}{N} (\bm{x}_N-\bm{\mu}_{ML}^{(N-1)})
         \end{eqnarray}
   \item $N-1$個のデータを観測した時点で、$\bm{\mu}$の推定値は$\bm{\mu}_{ML}^{(N-1)}$となっている。
-  \item ここで、データ点$x_N$を観測すると、$1/N$に比例する小さな量だけ「誤差信号」$(x_N-\bm{\mu}_{ML}^{(N-1)})$の方へ、古い推定量を移動させて推定量$\bm{\mu}_{ML}^{(N)}$を修正する
+  \item ここで、データ点$\bm{x}_N$を観測すると、$1/N$に比例する小さな量だけ「誤差信号」$(\bm{x}_N-\bm{\mu}_{ML}^{(N-1)})$の方へ、古い推定量を移動させて推定量$\bm{\mu}_{ML}^{(N)}$を修正する
   \item Nが増えるにつれて、後続のデータ点からの影響はより小さくなる
  \end{itemize}
 \end{frame}
@@ -90,11 +90,11 @@
  \begin{itemize}
   \item 定義より、最尤推定解$\theta_{ML}$は負の対数尤度関数の停留点であるため、
         \begin{equation}
-         -\frac{\partial }{\partial \theta}\left\{\left.\frac{1}{N}\sum_{n=1}^{N}\ln  p(x_n|\theta)\right\}\right|_{\theta_{ML}} = 0
+         -\frac{\partial }{\partial \theta}\left\{\left.\frac{1}{N}\sum_{n=1}^{N}\ln  p(\bm{x}_n|\theta)\right\}\right|_{\theta_{ML}} = 0
         \end{equation}
   \item 微分と総和の演算を交換し、$N\rightarrow\infty$の極限を考えると次の式を得る
         \begin{equation}
-         -\lim_{N \rightarrow \infty}\frac{1}{N}\sum_{n=1}^{N}\frac{\partial}{\partial \theta}\ln p(x_n|\theta)=E_x\left[-\frac{\partial}{\partial \theta}\ln p(x|\theta)\right]
+         -\lim_{N \rightarrow \infty}\frac{1}{N}\sum_{n=1}^{N}\frac{\partial}{\partial \theta}\ln p(\bm{x}_n|\theta)=E_x\left[-\frac{\partial}{\partial \theta}\ln p(x|\theta)\right]
         \end{equation}
  \end{itemize}
 \end{frame}
@@ -104,7 +104,7 @@
   \item 最尤推定解を求めることは、回帰関数の根を求めることに相当することがわかる
   \item ゆえに、次の形でRobbins-Monro手続きを適用できる
         \begin{equation}
-         \theta^{(N)}=\theta^{(N-1)}-a_{N-1}\frac{\partial}{\partial \theta^{(N-1)}}[-\ln p(x_N|\theta^{(N-1)})]\label{161911_21Nov14}
+         \theta^{(N)}=\theta^{(N-1)}-a_{N-1}\frac{\partial}{\partial \theta^{(N-1)}}[-\ln p(\bm{x}_N|\theta^{(N-1)})]\label{161911_21Nov14}
         \end{equation}
  \end{itemize}
 \end{frame}
