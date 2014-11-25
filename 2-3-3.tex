@@ -36,7 +36,7 @@
         \begin{eqnarray}
          \ln p(z) &=& \ln p(x) + \ln p(y|x) \nonumber \\
          &= & -\frac{1}{2}(x-\bm{\mu})^{\mathrm{T}}\bm{\Lambda}(x-\bm{\mu}) \nonumber \\
-         &&-\frac{1}{2}(y-Ax-b)^{\mathrm{T}}L(y-Ax-b)+const\label{052313_21Nov14}
+         &&-\frac{1}{2}(y-Ax-b)^{\mathrm{T}}L(y-Ax-b)+{\rm const}\label{052313_21Nov14}
         \end{eqnarray}
   \item このガウス分布の精度行列を求めるために、式(\ref{052313_21Nov14})の2次の項についても考察する
  \end{itemize}
@@ -78,7 +78,7 @@
  \begin{itemize}
   \item 共分散行列は、行列の逆行列に関する公式(\ref{053319_21Nov14})を適用して精度の逆行列を求めることで求られる(演習2.29)
         \begin{equation}
-         cov[z]=R^{-1}=
+         {\rm cov}[z]=R^{-1}=
           \begin{pmatrix}
            \bm{\Lambda}^{-1} & \bm{\Lambda}^{-1}A^{\mathrm{T}} \\
            A\bm{\Lambda}^{-1} & L^{-1} + A\bm{\Lambda}^{-1}A^{\mathrm{T}}
@@ -128,7 +128,7 @@
   \item 周辺分布$p(y)$の平均と共分散は
         \begin{eqnarray}
          \mathbb{E}[y] &= &A\bm{\mu} +b\\
-         cov[y] &=& L^{-1} + A\bm{\Lambda}^{-1}A^{\mathrm{T}}
+         {\rm cov}[y] &=& L^{-1} + A\bm{\Lambda}^{-1}A^{\mathrm{T}}
         \end{eqnarray}
         で与えられることがわかる
  \end{itemize}
@@ -140,7 +140,7 @@
   \item 同様に、以前の結果を利用する
         \begin{eqnarray}
          \mathbb{E}[x|y]& =& (\bm{\Lambda}+A^{\mathrm{T}}LA)^{-1}\{A^{\mathrm{T}}L(y-b)+\bm{\Lambda}\bm{\mu}\}\\
-         cov[x|y] &= & (\bm{\Lambda}+A^{\mathrm{T}}LA)^{-1}
+         {\rm cov}[x|y] &= & (\bm{\Lambda}+A^{\mathrm{T}}LA)^{-1}
         \end{eqnarray}
   \item この条件付き分布は、ベイズの定理の例としても見ることができる
         \begin{itemize}
