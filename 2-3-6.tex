@@ -202,9 +202,9 @@
 \begin{frame}{ウィシャート分布}
  \begin{itemize}
   \item $D$次元変数の多変量ガウス分布の場合に、\alert{精度を既知}とすれば、平均$\mu$の共役事前分布は、またガウス分布になる
-  \item \alert{平均が既知}で、精度行列$\Lambda$が未知なら、共役事前分布は次式のウィシャート分布となる
+  \item \alert{平均が既知}で、精度行列$\bm{\Lambda}$が未知なら、共役事前分布は次式のウィシャート分布となる
         \begin{equation}
-         W(\Lambda|W,\nu) = B|\Lambda|^{(\nu-D-1)/2}exp\left(-\frac{1}{2}Tr(W^{-1}\Lambda)\right)
+         W(\bm{\Lambda}|W,\nu) = B|\bm{\Lambda}|^{(\nu-D-1)/2}exp\left(-\frac{1}{2}Tr(W^{-1}\bm{\Lambda})\right)
         \end{equation}
         % \begin{itemize}
   %  \item $\nu$は分布の自由度パラメータ
@@ -226,7 +226,7 @@
  \begin{itemize}
   \item \alert{平均と精度の両方が未知}なら、1変数の場合と同様に考えることで次の共役事前分布が得られる
         \begin{equation}
-         p(\mu,\Lambda|\mu_0,\beta,W,\nu) = N(\mu|\mu_0,(\beta\Lambda)^{-1})W(\lambda|W,\nu)
+         p(\mu,\bm{\Lambda}|\mu_0,\beta,W,\nu) = N(\mu|\mu_0,(\beta\bm{\Lambda})^{-1})W(\lambda|W,\nu)
         \end{equation}
   \item \alert{正規-ウィシャート分布}または\alert{ガウス-ウィシャート分布}と呼ぶ
  \end{itemize}
