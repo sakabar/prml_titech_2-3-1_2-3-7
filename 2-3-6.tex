@@ -25,9 +25,8 @@
  \end{itemize}
 \end{frame}
 
-\begin{frame}{共役事前分布}
+\begin{frame}{事後分布}
  \begin{itemize}
-
   \item 事前分布を次のようにする
         \begin{equation}
          p(\mu) = \mathcal{N}(\mu|\mu_0,\sigma_0^2)
@@ -65,8 +64,12 @@
  \begin{itemize}
   \item $N\rightarrow0$なら、予想通り式(\ref{181902_24Nov14})は事前分布の平均
   \item $N\rightarrow\infty$なら、事後分布の最尤推定解となる
-  \item $N\rightarrow0$なら、事前分布の分散に一致
-  \item $N\rightarrow\infty$なら、分散は最尤推定解に一致
+  \item 事後分布の精度は事前分布の精度に各観測データ点からのデータ精度への影響分を加えたものになる
+        \begin{itemize}
+         \item データ点が増えるにつれ、精度が確実に増加する
+        \end{itemize}
+  % \item $N\rightarrow0$なら、事前分布の分散に一致
+  % \item $N\rightarrow\infty$なら、分散は最尤推定解に一致
  \end{itemize}
 \end{frame}
 
@@ -82,6 +85,10 @@
   % \item カギカッコ内の項は正規化係数を除いて、$N-1$個のデータ点を観測した後の事後分布にちょうど一致する
   \item この項を事前分布とし、データ点$x_N$についての尤度関数をベイズの定理によって結合すれば、この式全体は$N$個のデータ点を観測した後の事後分布とみなせる
  \end{itemize}
+\end{frame}
+
+\begin{frame}{分散が既知の場合:$N$が増えたときの事後分布の変化}
+ \includegraphics[width=\textwidth]{./figure/Figure2.12.eps}
 \end{frame}
 
 \begin{frame}{平均が既知の場合}
@@ -108,13 +115,19 @@
          {\rm Gam}(\lambda|a,b) = \frac{1}{\Gamma(a)}b^a\lambda^{a-1}\exp(-b\lambda)\label{113739_19Nov14}
         \end{equation}
   \item ここで、$\Gamma(a)$は式(\ref{113739_19Nov14})が正しく正規化されることを保証
-        %% TODO ガンマ関数の図を入れる
-  \item ガンマ関数の平均と分散は
+  \item ガンマ分布の平均と分散は
         \begin{eqnarray}
          \mathbb{E}[\lambda] &=& \frac{a}{b}\\
          {\rm var}[\lambda]& =& \frac{a}{b^2}
         \end{eqnarray}
  \end{itemize}
+ \begin{tabular}[tb]{ccc}
+  \includegraphics[width=0.33\textwidth]{./figure/Figure2.13a.eps}
+  &
+  \includegraphics[width=0.33\textwidth]{./figure/Figure2.13b.eps}
+  &
+  \includegraphics[width=0.33\textwidth]{./figure/Figure2.13c.eps}
+ \end{tabular}
 \end{frame}
 
 \begin{frame}{事後分布}
@@ -129,18 +142,18 @@
         \end{itemize}
   \item これはパラメータを次のように設定したときの、ガンマ分布${\rm Gam}(\lambda|a_N,b_N)$であることが分かる
         \begin{eqnarray}
-         a_N&=& a_0 + \frac{N}{2}\label{115004_19Nov14}\\
+         a_N&=& a_0 + \frac{N}{2}\\
          b_N% &= & b_0+\frac{1}{2}\sum_{n=1}^{N}(\bm{x}_n-\mu)^2\\
-         &= & b_0+\frac{N}{2}\sigma^2_{ML}\label{115046_19Nov14}
+         &= & b_0+\frac{N}{2}\sigma^2_{ML}
         \end{eqnarray}
  \end{itemize}
 \end{frame}
 
 \begin{frame}{事前分布のパラメータの解釈}
  \begin{eqnarray*}
-  a_N&=& a_0 + \frac{N}{2}\label{115004_19Nov14}\\
+  a_N&=& a_0 + \frac{N}{2}\\
   b_N% &= & b_0+\frac{1}{2}\sum_{n=1}^{N}(\bm{x}_n-\mu)^2\\
-  &= & b_0+\frac{N}{2}\sigma^2_{ML}\label{115046_19Nov14}
+  &= & b_0+\frac{N}{2}\sigma^2_{ML}
  \end{eqnarray*}
  \begin{itemize}
   \item $a_0$は、$2a_0$個の「有効な」観測値が事前にあると解釈できる
