@@ -1,11 +1,11 @@
 \begin{frame}{2.3.1節と2.3.2節の目的}
  \begin{itemize}
   % \item 2つの変数集合の同時分布$p(x_a,x_b)$がガウス分布に従うなら、一方の変数集合が与えられたときの、もう一方の集合の条件付き分布$p(x_a|x_b)$もガウス分布になる
-  \item 2つの変数集合の同時分布$p(x_a,x_b)$がガウス分布に従うときの、ガウス分布に関する以下の性質を示す
+  \item 2つの変数集合の同時分布$p(\bm{x}_a,\bm{x}_b)$がガウス分布に従うときの、ガウス分布に関する以下の性質を示す
  \end{itemize}
  \begin{enumerate}
-  \item 条件付き分布$p(x_a|x_b),p(x_b|x_a)$もガウス分布になる
-  \item 変数集合の周辺分布$p(x_a),p(x_b)$もガウス分布になる
+  \item 条件付き分布$p(\bm{x}_a|\bm{x}_b),p(\bm{x}_b|\bm{x}_a)$もガウス分布になる
+  \item 変数集合の周辺分布$p(\bm{x}_a),p(\bm{x}_b)$もガウス分布になる
  \end{enumerate}
 \end{frame}
 
@@ -13,24 +13,24 @@
  \begin{itemize}
   \item 多変量ガウス分布の条件付き分布を考える
         \begin{equation}
-         x\sim N(x|\mu, \Sigma)
+         \bm{x}\sim N(\bm{x}|\bm{\mu}, \Sigma)
         \end{equation}
         「$\sim$」はある分布に従う、ということ
-  \item この$D$次元ベクトル$x$を2つの互いに素な部分集合$x_a$と$x_b$に分割する
-  \item 次式のように、$x_a$は$x$の最初の$M$個の要素で、$x_b$は残りの$D-M$個の要素で構成されるとしても一般性は失わない
+  \item この$D$次元ベクトル$\bm{x}$を2つの互いに素な部分集合$\bm{x}_a$と$\bm{x}_b$に分割する
+  \item 次式のように、$\bm{x}_a$は$\bm{x}$の最初の$M$個の要素で、$\bm{x}_b$は残りの$D-M$個の要素で構成されるとしても一般性は失わない
         \begin{equation}
-         x =
+         \bm{x} =
           \begin{pmatrix}
-           x_a \\
-           x_b
+           \bm{x}_a \\
+           \bm{x}_b
           \end{pmatrix}
         \end{equation}
 
         \begin{equation}
-         \mu =
+         \bm{\mu} =
           \begin{pmatrix}
-           \mu_a \\
-           \mu_b
+           \bm{\mu}_a \\
+           \bm{\mu}_b
           \end{pmatrix}
         \end{equation}
   \item 共分散行列も同様に与えられる
@@ -65,23 +65,23 @@
 
 \begin{frame}{条件付きガウス分布}
  \begin{itemize}
-  \item 条件付きガウス分布$p(x_a|x_b)$もガウス分布に従うことを示す
+  \item 条件付きガウス分布$p(\bm{x}_a|\bm{x}_b)$もガウス分布に従うことを示す
 	\begin{itemize}
 	 \item ガウス分布の式の形に変形できればよい
 	\end{itemize}
  \begin{equation}
-  N(x|\mu,\Sigma) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\Sigma|^{1/2}}exp\left\{-\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x-\mu)\right\}
+  N(\bm{x}|\bm{\mu},\Sigma) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\Sigma|^{1/2}}exp\left\{-\frac{1}{2}(\bm{x} - \bm{\mu})^{T}\Sigma^{-1}(\bm{x}-\bm{\mu})\right\}
  \end{equation}
   \item 条件付きガウス分布は、次式のとおりである
         \begin{equation}
-         p(x_a | x_b) = \frac{p(x_a, x_b)}{p(x_b)}
+         p(\bm{x}_a | \bm{x}_b) = \frac{p(\bm{x}_a, \bm{x}_b)}{p(\bm{x}_b)}
         \end{equation}
         \begin{itemize}
-         \item $x_b$を観測済の値で\alert{固定}する
+         \item $\bm{x}_b$を観測済の値で\alert{固定}する
          \item 正規化係数を求めるのは後回し
         \end{itemize}
-  % \item まず$p(x_a,x_b)$の指数部に注目する
-  \item まずガウス分布の同時分布$p(x_a,x_b)$の指数部に注目する
+  % \item まず$p(\bm{x}_a,\bm{x}_b)$の指数部に注目する
+  \item まずガウス分布の同時分布$p(\bm{x}_a,\bm{x}_b)$の指数部に注目する
  \end{itemize}
 \end{frame}
 
@@ -89,31 +89,31 @@
  \begin{itemize}
   \item ガウス分布の指数部分を展開する
         \begin{eqnarray}
-         -\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x-\mu) &= &
-          -\frac{1}{2}(x_a - \mu_a)^{T}\Lambda_{aa}^{-1}(x_a-\mu_a) \nonumber \\
-         &&-\frac{1}{2}(x_a - \mu_a)^{T}\Lambda_{ab}^{-1}(x_b-\mu_b) \nonumber \\
-         &&-\frac{1}{2}(x_b - \mu_b)^{T}\Lambda_{ba}^{-1}(x_a-\mu_a) \nonumber \\
-         &&-\frac{1}{2}(x_b - \mu_b)^{T}\Lambda_{bb}^{-1}(x_b-\mu_b) \nonumber \\
+         -\frac{1}{2}(\bm{x} - \bm{\mu})^{T}\Sigma^{-1}(\bm{x}-\bm{\mu}) &= &
+          -\frac{1}{2}(\bm{x}_a - \bm{\mu}_a)^{T}\Lambda_{aa}^{-1}(\bm{x}_a-\bm{\mu}_a) \nonumber \\
+         &&-\frac{1}{2}(\bm{x}_a - \bm{\mu}_a)^{T}\Lambda_{ab}^{-1}(\bm{x}_b-\bm{\mu}_b) \nonumber \\
+         &&-\frac{1}{2}(\bm{x}_b - \bm{\mu}_b)^{T}\Lambda_{ba}^{-1}(\bm{x}_a-\bm{\mu}_a) \nonumber \\
+         &&-\frac{1}{2}(\bm{x}_b - \bm{\mu}_b)^{T}\Lambda_{bb}^{-1}(\bm{x}_b-\bm{\mu}_b) \nonumber \\
          &&\label{003314_21Nov14}
         \end{eqnarray}
-  \item $x_a$の関数として見ると、これも\alert{二次形式}になっている
-  % \item 対応する条件付き分布$p(x_a | x_b)$もガウス分布となる
+  \item $\bm{x}_a$の関数として見ると、これも\alert{二次形式}になっている
+  % \item 対応する条件付き分布$p(\bm{x}_a | \bm{x}_b)$もガウス分布となる
  \end{itemize}
 \end{frame}
 
 \begin{frame}{平方完成}
  \begin{itemize}
-		\item うまく変数$\mu_{a|b},\Sigma_{a|b}$を定めると、式(\ref{003314_21Nov14})の右辺は、式(\ref{135015_17Nov14})の右辺の形にすることができる
+		\item うまく変数$\bm{\mu}_{a|b},\Sigma_{a|b}$を定めると、式(\ref{003314_21Nov14})の右辺は、式(\ref{135015_17Nov14})の右辺の形にすることができる
 	\item 式(\ref{003314_21Nov14})の左辺の形に直すことで、ガウス分布の指数部の形にする
         \begin{equation}
-         -\frac{1}{2}(x_a-\mu_{a|b})^{T}\Sigma_{a|b}^{-1}(x_a-\mu_{a|b}) = -\frac{1}{2}x_a^T\Sigma_{a|b}^{-1}x_a+x_a^T\Sigma_{a|b}^{-1}\mu_{a|b} + const\label{135015_17Nov14}
+         -\frac{1}{2}(\bm{x}_a-\bm{\mu}_{a|b})^{T}\Sigma_{a|b}^{-1}(\bm{x}_a-\bm{\mu}_{a|b}) = -\frac{1}{2}\bm{x}_a^T\Sigma_{a|b}^{-1}\bm{x}_a+\bm{x}_a^T\Sigma_{a|b}^{-1}\bm{\mu}_{a|b} + const\label{135015_17Nov14}
         \end{equation}
   \item 式(\ref{135015_17Nov14})の右辺から左辺への変形を\alert{平方完成}と呼ぶ
 
   % \item 平方完成したい式を式(\ref{135015_17Nov14})の右辺の形式で表現する
   % \item 式(\ref{135015_17Nov14})の右辺のように表現した式を左辺の形式に直す
   \item 与えられたガウス分布中の指数項を定める二次形式を平方完成するためには、分布の平均と分散を求める必要がある
-  \item $x$の2次の項と1次の項の係数を比較することで、$\Sigma$と$\mu$を求めることができる
+  \item $\bm{x}$の2次の項と1次の項の係数を比較することで、$\Sigma$と$\bm{\mu}$を求めることができる
  \end{itemize}
 \end{frame}
 
@@ -121,13 +121,13 @@
  \begin{itemize}
   \item 考えている条件付き分布はガウス分布に従うので、
         \begin{equation}
-         p(x_a | x_b) \sim N(x | \mu_{a|b}, \Sigma_{a|b})
+         p(\bm{x}_a | \bm{x}_b) \sim N(\bm{x} | \bm{\mu}_{a|b}, \Sigma_{a|b})
         \end{equation}
         と表せる
   \item まずは分散$\Sigma_{a|b}$を求める
-  \item $x_b$を定数とみなして、式(\ref{003314_21Nov14})から$x_a$についての2次の項を全て取り出すと、
+  \item $\bm{x}_b$を定数とみなして、式(\ref{003314_21Nov14})から$\bm{x}_a$についての2次の項を全て取り出すと、
         \begin{equation}
-         -\frac{1}{2}x_a^T\Lambda_{aa}x_a
+         -\frac{1}{2}\bm{x}_a^T\Lambda_{aa}\bm{x}_a
         \end{equation}
         を得る。これより、
         \begin{equation}
@@ -139,16 +139,16 @@
 
 \begin{frame}{条件付きガウス分布の平均}
  \begin{itemize}
-  \item 次に平均$\mu_{a|b}$を求める
-  \item $x_a$についての線形の項をすべて考えると、
+  \item 次に平均$\bm{\mu}_{a|b}$を求める
+  \item $\bm{x}_a$についての線形の項をすべて考えると、
         \begin{equation}
-         x_a^T\{ \Lambda_{aa}\mu_a-\Lambda_{ab}(x_b)-\mu_b\}
+         \bm{x}_a^T\{ \Lambda_{aa}\bm{\mu}_a-\Lambda_{ab}(\bm{x}_b)-\bm{\mu}_b\}
         \end{equation}
         を得る
-  \item この式の$x_a$の係数は$\Sigma^{-1}_{a|b}\mu_{a|b}$と等しくなるので、
+  \item この式の$\bm{x}_a$の係数は$\Sigma^{-1}_{a|b}\bm{\mu}_{a|b}$と等しくなるので、
         \begin{eqnarray}
-         \mu_{a|b} &=& \Sigma_{a|b}\{\Lambda_{aa}\mu_a-\Lambda_{ab}(x_b-\mu_b)\}\\
-         &= & \mu_a - \Lambda_{aa}^{-1}\Lambda_{ab}(x_b-\mu_b)
+         \bm{\mu}_{a|b} &=& \Sigma_{a|b}\{\Lambda_{aa}\bm{\mu}_a-\Lambda_{ab}(\bm{x}_b-\bm{\mu}_b)\}\\
+         &= & \bm{\mu}_a - \Lambda_{aa}^{-1}\Lambda_{ab}(\bm{x}_b-\bm{\mu}_b)
         \end{eqnarray}
  \end{itemize}
 \end{frame}
@@ -194,7 +194,7 @@
   \item これらを
         \begin{eqnarray}
          \Sigma_{a|b} &=& \Lambda_{aa} \\
-         \mu_{a|b}  &= & \mu_a - \Lambda_{aa}^{-1}\Lambda_{ab}(x_b-\mu_b)
+         \bm{\mu}_{a|b}  &= & \bm{\mu}_a - \Lambda_{aa}^{-1}\Lambda_{ab}(\bm{x}_b-\bm{\mu}_b)
         \end{eqnarray}
         の右辺に代入して、精度行列を消去する
  \end{itemize}
@@ -204,13 +204,13 @@
  \begin{itemize}
   \item 得られた2つの表現は次の通りである
         \begin{eqnarray*}
-         \mu_{a|b} &=& \mu_a + \Sigma_{ab}\Sigma_{bb}^{-1}(x_b-\mu_b)\\
-         &=& \mu_a-\Lambda_{aa}^{-1}\Lambda_{ab}(x_b-\mu_b)
+         \bm{\mu}_{a|b} &=& \bm{\mu}_a + \Sigma_{ab}\Sigma_{bb}^{-1}(\bm{x}_b-\bm{\mu}_b)\\
+         &=& \bm{\mu}_a-\Lambda_{aa}^{-1}\Lambda_{ab}(\bm{x}_b-\bm{\mu}_b)
         \end{eqnarray*}
         \begin{eqnarray*}
          \Sigma_{a|b} &=& \Sigma_{aa} - \Sigma_{ab}\Sigma_{bb}^{-1}\Sigma_{ba} \\
          & =& \Lambda_{aa}^{-1}
         \end{eqnarray*}
-  \item 条件付き分布$p(x_a|x_b)$は分割された共分散行列よりも、分割された精度行列を使って表現する方が簡潔
+  \item 条件付き分布$p(\bm{x}_a|\bm{x}_b)$は分割された共分散行列よりも、分割された精度行列を使って表現する方が簡潔
  \end{itemize}
 \end{frame}
