@@ -6,15 +6,15 @@ DVIPDFMFLAGS    = -p a4     # デフォルトではUS-Letterサイズが出力�
 
 # 複数に分割しているファイル達 (.bibファイルも指定しておく)
 TEXDEPS[]   =
-	slide.tex
-	introduce.tex
-	2-3-1.tex
-	2-3-2.tex
-	2-3-3.tex
-	2-3-4.tex
-	2-3-5.tex
-	2-3-6.tex
-	2-3-7.tex
+  slide.tex
+  introduce.tex
+  2-3-1.tex
+  2-3-2.tex
+  2-3-3.tex
+  2-3-4.tex
+  2-3-5.tex
+  2-3-6.tex
+  2-3-7.tex
 
 LaTeXDocument(slide, slide)
 
