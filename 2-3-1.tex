@@ -70,7 +70,7 @@
          \item ガウス分布の式の形に変形できればよい
         \end{itemize}
         \begin{equation}
-         N(\bm{x}|\bm{\mu},\bm{\Sigma}) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\bm{\Sigma}|^{1/2}}\exp\left\{-\frac{1}{2}(\bm{x} - \bm{\mu})^{T}\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu})\right\}
+         N(\bm{x}|\bm{\mu},\bm{\Sigma}) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\bm{\Sigma}|^{1/2}}\exp\left\{-\frac{1}{2}(\bm{x} - \bm{\mu})^{\mathrm{T}}\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu})\right\}
         \end{equation}
   \item 条件付きガウス分布は、次式のとおりである
         \begin{equation}
@@ -89,11 +89,11 @@
  \begin{itemize}
   \item ガウス分布の指数部分を展開する
         \begin{eqnarray}
-         -\frac{1}{2}(\bm{x} - \bm{\mu})^{T}\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu}) &= &
-          -\frac{1}{2}(\bm{x}_a - \bm{\mu}_a)^{T}\bm{\Lambda}_{aa}^{-1}(\bm{x}_a-\bm{\mu}_a) \nonumber \\
-         &&-\frac{1}{2}(\bm{x}_a - \bm{\mu}_a)^{T}\bm{\Lambda}_{ab}^{-1}(\bm{x}_b-\bm{\mu}_b) \nonumber \\
-         &&-\frac{1}{2}(\bm{x}_b - \bm{\mu}_b)^{T}\bm{\Lambda}_{ba}^{-1}(\bm{x}_a-\bm{\mu}_a) \nonumber \\
-         &&-\frac{1}{2}(\bm{x}_b - \bm{\mu}_b)^{T}\bm{\Lambda}_{bb}^{-1}(\bm{x}_b-\bm{\mu}_b) \nonumber \\
+         -\frac{1}{2}(\bm{x} - \bm{\mu})^{\mathrm{T}}\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu}) &= &
+          -\frac{1}{2}(\bm{x}_a - \bm{\mu}_a)^{\mathrm{T}}\bm{\Lambda}_{aa}^{-1}(\bm{x}_a-\bm{\mu}_a) \nonumber \\
+         &&-\frac{1}{2}(\bm{x}_a - \bm{\mu}_a)^{\mathrm{T}}\bm{\Lambda}_{ab}^{-1}(\bm{x}_b-\bm{\mu}_b) \nonumber \\
+         &&-\frac{1}{2}(\bm{x}_b - \bm{\mu}_b)^{\mathrm{T}}\bm{\Lambda}_{ba}^{-1}(\bm{x}_a-\bm{\mu}_a) \nonumber \\
+         &&-\frac{1}{2}(\bm{x}_b - \bm{\mu}_b)^{\mathrm{T}}\bm{\Lambda}_{bb}^{-1}(\bm{x}_b-\bm{\mu}_b) \nonumber \\
          &&\label{003314_21Nov14}
         \end{eqnarray}
   \item $\bm{x}_a$の関数として見ると、これも\alert{二次形式}になっている
@@ -106,7 +106,7 @@
   \item うまく変数$\bm{\mu}_{a|b},\bm{\Sigma}_{a|b}$を定めると、式(\ref{003314_21Nov14})の右辺は、式(\ref{135015_17Nov14})の右辺の形にすることができる
   \item 式(\ref{003314_21Nov14})の左辺の形に直すことで、ガウス分布の指数部の形にする
         \begin{equation}
-         -\frac{1}{2}(\bm{x}_a-\bm{\mu}_{a|b})^{T}\bm{\Sigma}_{a|b}^{-1}(\bm{x}_a-\bm{\mu}_{a|b}) = -\frac{1}{2}\bm{x}_a^{\mathrm{T}}\bm{\Sigma}_{a|b}^{-1}\bm{x}_a+\bm{x}_a^{\mathrm{T}}\bm{\Sigma}_{a|b}^{-1}\bm{\mu}_{a|b} + const\label{135015_17Nov14}
+         -\frac{1}{2}(\bm{x}_a-\bm{\mu}_{a|b})^{\mathrm{T}}\bm{\Sigma}_{a|b}^{-1}(\bm{x}_a-\bm{\mu}_{a|b}) = -\frac{1}{2}\bm{x}_a^{\mathrm{T}}\bm{\Sigma}_{a|b}^{-1}\bm{x}_a+\bm{x}_a^{\mathrm{T}}\bm{\Sigma}_{a|b}^{-1}\bm{\mu}_{a|b} + const\label{135015_17Nov14}
         \end{equation}
   \item 式(\ref{135015_17Nov14})の右辺から左辺への変形を\alert{平方完成}と呼ぶ
 

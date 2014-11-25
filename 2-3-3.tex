@@ -35,8 +35,8 @@
   \end{itemize}
         \begin{eqnarray}
          \ln p(z) &=& \ln p(x) + \ln p(y|x) \nonumber \\
-         &= & -\frac{1}{2}(x-\mu)^T\Lambda(x-\mu) \nonumber \\
-         &&-\frac{1}{2}(y-Ax-b)^TL(y-Ax-b)+const\label{052313_21Nov14}
+         &= & -\frac{1}{2}(x-\mu)^{\mathrm{T}}\Lambda(x-\mu) \nonumber \\
+         &&-\frac{1}{2}(y-Ax-b)^{\mathrm{T}}L(y-Ax-b)+const\label{052313_21Nov14}
         \end{eqnarray}
   \item このガウス分布の精度行列を求めるために、式(\ref{052313_21Nov14})の2次の項についても考察する
  \end{itemize}
@@ -46,27 +46,27 @@
  \begin{itemize}
   \item 2次の項は次のように書ける
         \begin{eqnarray}
-         -\frac{1}{2}x^T(\Lambda+A^TLA)x -\frac{1}{2}y^TLy+\frac{1}{2}y^TLAx+\frac{1}{2}x^TA^TLy \nonumber \\
+         -\frac{1}{2}x^{\mathrm{T}}(\Lambda+A^{\mathrm{T}}LA)x -\frac{1}{2}y^{\mathrm{T}}Ly+\frac{1}{2}y^{\mathrm{T}}LAx+\frac{1}{2}x^{\mathrm{T}}A^{\mathrm{T}}Ly \nonumber \\
          = -\frac{1}{2}
           \begin{pmatrix}
            x \\
            y
-          \end{pmatrix}^T
+          \end{pmatrix}^{\mathrm{T}}
           \begin{pmatrix}
-           \Lambda+A^TLA & -A^TL\\
+           \Lambda+A^{\mathrm{T}}LA & -A^{\mathrm{T}}L\\
            -LA & L
           \end{pmatrix}
           \begin{pmatrix}
            x \\
            y
           \end{pmatrix}
-          = -\frac{1}{2}z^TRz
+          = -\frac{1}{2}z^{\mathrm{T}}Rz
         \end{eqnarray}
   \item よって、$z$上のガウス分布の精度行列は
         \begin{equation}
          R=
           \begin{pmatrix}
-           \Lambda+A^TLA & -A^TL\\
+           \Lambda+A^{\mathrm{T}}LA & -A^{\mathrm{T}}L\\
            -LA & L
           \end{pmatrix}
         \end{equation}
@@ -80,8 +80,8 @@
         \begin{equation}
          cov[z]=R^{-1}=
           \begin{pmatrix}
-           \Lambda^{-1} & \Lambda^{-1}A^T \\
-           A\Lambda^{-1} & L^{-1} + A\Lambda^{-1}A^T
+           \Lambda^{-1} & \Lambda^{-1}A^{\mathrm{T}} \\
+           A\Lambda^{-1} & L^{-1} + A\Lambda^{-1}A^{\mathrm{T}}
           \end{pmatrix}\label{054122_21Nov14}
         \end{equation}
  \end{itemize}
@@ -91,13 +91,13 @@
  \begin{itemize}
   \item 同様に、$z$上のガウス分布の平均は、(\ref{052313_21Nov14})の線形の項を調べることで、
         \begin{equation}
-         x^T\Lambda\mu-x^TA^TLb+y^TLb =
+         x^{\mathrm{T}}\Lambda\mu-x^{\mathrm{T}}A^{\mathrm{T}}Lb+y^{\mathrm{T}}Lb =
           \begin{pmatrix}
            x \\
            y
-          \end{pmatrix}^T
+          \end{pmatrix}^{\mathrm{T}}
           \begin{pmatrix}
-           \Lambda\mu-A^TLb \\
+           \Lambda\mu-A^{\mathrm{T}}Lb \\
            Lb
           \end{pmatrix}
         \end{equation}
@@ -106,7 +106,7 @@
         \begin{equation}
          \mathbb{E}[z]=R^{-1}
           \begin{pmatrix}
-           \Lambda\mu-A^TLb \\
+           \Lambda\mu-A^{\mathrm{T}}Lb \\
            Lb
           \end{pmatrix}
         \end{equation}
@@ -128,7 +128,7 @@
   \item 周辺分布$p(y)$の平均と共分散は
         \begin{eqnarray}
          \mathbb{E}[y] &= &A\mu +b\\
-         cov[y] &=& L^{-1} + A\Lambda^{-1}A^T
+         cov[y] &=& L^{-1} + A\Lambda^{-1}A^{\mathrm{T}}
         \end{eqnarray}
         で与えられることがわかる
  \end{itemize}
@@ -139,8 +139,8 @@
  \begin{itemize}
   \item 同様に、以前の結果を利用する
         \begin{eqnarray}
-         \mathbb{E}[x|y]& =& (\Lambda+A^TLA)^{-1}\{A^TL(y-b)+\Lambda\mu\}\\
-         cov[x|y] &= & (\Lambda+A^TLA)^{-1}
+         \mathbb{E}[x|y]& =& (\Lambda+A^{\mathrm{T}}LA)^{-1}\{A^{\mathrm{T}}L(y-b)+\Lambda\mu\}\\
+         cov[x|y] &= & (\Lambda+A^{\mathrm{T}}LA)^{-1}
         \end{eqnarray}
   \item この条件付き分布は、ベイズの定理の例としても見ることができる
         \begin{itemize}
