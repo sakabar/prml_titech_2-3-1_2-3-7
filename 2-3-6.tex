@@ -191,7 +191,7 @@
    \end{itemize}
   \end{frame}
 
-  \begin{frame}{事前分布}
+  \begin{frame}{事後分布}
    \begin{itemize}
     \item ここでは、尤度関数と同じ$\mu$と$\lambda$への関数依存性を備えた事前分布$p(\mu,\lambda)$を求めたいので、分布は次の形式になる
           \begin{eqnarray}
@@ -211,6 +211,9 @@
   \end{frame}
 
   \begin{frame}{正規-ガンマ分布の特徴}
+   \begin{equation*}
+    p(\mu,\lambda)=\mathcal{N}(\mu|\mu_0, (\beta\lambda)^{-1}){\rm Gam}(\lambda|a,b)
+   \end{equation*}
    \begin{itemize}
     \item この分布は、独立な$\mu$上のガウス事前分布と$\lambda$上のガンマ事前分布の単純な積ではない
           \begin{itemize}
@@ -220,9 +223,24 @@
    \end{itemize}
   \end{frame}
 
-  \begin{frame}{ウィシャート分布}
+  \begin{frame}{多次元変数の場合}
    \begin{itemize}
-    \item $D$次元変数の多変量ガウス分布の場合に、\alert{精度を既知}とすれば、平均$\bm{\mu}$の共役事前分布は、またガウス分布になる
+    \item これまで1次元変数の場合を考えたが、次に$D$次元変数の多変量ガウス分布の場合を考える
+          \begin{itemize}
+           \item 分散が既知のとき
+           \item 平均が既知のとき
+           \item 平均も分散も未知のとき
+          \end{itemize}
+    \item \alert{分散を既知}とすれば、平均$\bm{\mu}$の共役事前分布は、またガウス分布になる
+          \begin{eqnarray*}
+           p(\bm{X}|\mu) &=& \prod_{n=1}^{N}p(x_n|\mu)\\
+           & \propto&\frac{1}{|\bm{\Sigma}|^{N/2}}\exp\left\{\sum_{n=1}^{N}-\frac{1}{2}(\bm{x}_n-\bm{\mu})^{\mathrm{T}}\bm{\Sigma}^{-1}(\bm{x}_n-\bm{\mu})\right\}
+          \end{eqnarray*}
+   \end{itemize}
+  \end{frame}
+
+  \begin{frame}{平均が既知の場合}
+   \begin{itemize}
     \item \alert{平均が既知}で、精度行列$\bm{\Lambda}$が未知なら、共役事前分布は次式のウィシャート分布となる
           \begin{equation}
            \bm{W}(\bm{\Lambda}|\bm{W},\nu) = B|\bm{\Lambda}|^{(\nu-D-1)/2}\exp\left(-\frac{1}{2}Tr(\bm{W}^{-1}\bm{\Lambda})\right)
@@ -243,7 +261,7 @@
    \end{itemize}
   \end{frame}
 
-  \begin{frame}{正規-ウィシャート分布}
+  \begin{frame}{平均と精度の両方が未知の場合}
    \begin{itemize}
     \item \alert{平均と精度の両方が未知}なら、1変数の場合と同様に考えることで次の共役事前分布が得られる
           \begin{equation}
