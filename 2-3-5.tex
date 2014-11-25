@@ -46,7 +46,7 @@
   \item 同時分布$p(z,\theta)$に従う確率変数$\theta$と$z$の対を考える
   \item $\theta$が与えられたときの$z$の条件付き期待論によって、決定論的な関数$f(\theta)$を定義する
         \begin{equation}
-         f(\theta) \equiv E[z|\theta] = \int zp(z|\theta)dz
+         f(\theta) \equiv \mathbb{E}[z|\theta] = \int zp(z|\theta)dz
         \end{equation}
         \begin{itemize}
          \item このように定義された関数を回帰関数と呼ぶ
@@ -59,7 +59,7 @@
  \begin{itemize}
   \item 次のような仮定を置く
         \begin{eqnarray}
-         E[(z-f)^2|\theta] &<& \infty\\
+         \mathbb{E}[(z-f)^2|\theta] &<& \infty\\
          \theta^{(N)}&=& \theta^{(N-1)}-a_{N-1}z(\theta^{(N-1)})
         \end{eqnarray}
   \item ただし、$z(\theta^{(N)})$は$\theta$が値$\theta^{(N)}$を取るときに観測される$z$の値

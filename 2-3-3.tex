@@ -104,7 +104,7 @@
         で与えられる
   \item 多変量ガウス分布の二次形式部分を平方完成して得た以前の結果より、$z$の平均は
         \begin{equation}
-         E[z]=R^{-1}
+         \mathbb{E}[z]=R^{-1}
           \begin{pmatrix}
            \Lambda\mu-A^TLb \\
            Lb
@@ -112,7 +112,7 @@
         \end{equation}
         を得る。式(\ref{054122_21Nov14})より、
         \begin{equation}
-         E[z]=
+         \mathbb{E}[z]=
           \begin{pmatrix}
            \mu \\
            A\mu + b
@@ -127,7 +127,7 @@
   \item ガウス確率ベクトルの要素の部分集合上の周辺分布を、分割された共分散行列で表したときの結果を利用する
   \item 周辺分布$p(y)$の平均と共分散は
         \begin{eqnarray}
-         E[y] &= &A\mu +b\\
+         \mathbb{E}[y] &= &A\mu +b\\
          cov[y] &=& L^{-1} + A\Lambda^{-1}A^T
         \end{eqnarray}
         で与えられることがわかる
@@ -139,7 +139,7 @@
  \begin{itemize}
   \item 同様に、以前の結果を利用する
         \begin{eqnarray}
-         E[x|y]& =& (\Lambda+A^TLA)^{-1}\{A^TL(y-b)+\Lambda\mu\}\\
+         \mathbb{E}[x|y]& =& (\Lambda+A^TLA)^{-1}\{A^TL(y-b)+\Lambda\mu\}\\
          cov[x|y] &= & (\Lambda+A^TLA)^{-1}
         \end{eqnarray}
   \item この条件付き分布は、ベイズの定理の例としても見ることができる
