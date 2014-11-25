@@ -16,7 +16,7 @@
   \item $\mu$が与えられたときに観測データが生じる確率である尤度関数は$\mu$の関数と見なせて、
         \begin{eqnarray*}
          p(X|\mu) &= &\prod_{n=1}^{N}p(x_n|\mu) \\
-         &=& \frac{1}{(2\pi\sigma^2)^{N/2}}exp\left\{-\frac{1}{2\sigma^2}\sum_{n=1}^{N}(x_n-\mu)^2\right\}
+         &=& \frac{1}{(2\pi\sigma^2)^{N/2}}\exp\left\{-\frac{1}{2\sigma^2}\sum_{n=1}^{N}(x_n-\mu)^2\right\}
         \end{eqnarray*}
   % \item ただし、尤度関数は$\mu$上の確率分布ではなく、正規化もされていない
   \item 尤度関数を見ると、$\mu$についての二次形式の指数の形を取っている
@@ -43,8 +43,8 @@
  \begin{itemize}
   \item 事後分布の指数部分は、
         \begin{eqnarray}
-         & &exp\left\{-\frac{1}{2\sigma_0^2}(\mu-\mu_0)^2\right\} exp\left\{-\frac{1}{2\sigma^2}\sum_{n=1}^{N}(\mu-x_n)^2\right\} \nonumber \\
-         &= & exp\left\{-\frac{1}{2}\left(\frac{1}{\sigma_0^2}+\frac{N}{\sigma^2}\right)\mu^2 +\left(\frac{\mu_0}{\sigma_0^2}+\frac{1}{\sigma^2}\sum_{n=1}^{N}x_n\right)\mu +C_0 \right\} \nonumber
+         & &\exp\left\{-\frac{1}{2\sigma_0^2}(\mu-\mu_0)^2\right\} \exp\left\{-\frac{1}{2\sigma^2}\sum_{n=1}^{N}(\mu-x_n)^2\right\} \nonumber \\
+         &= & \exp\left\{-\frac{1}{2}\left(\frac{1}{\sigma_0^2}+\frac{N}{\sigma^2}\right)\mu^2 +\left(\frac{\mu_0}{\sigma_0^2}+\frac{1}{\sigma^2}\sum_{n=1}^{N}x_n\right)\mu +C_0 \right\} \nonumber
         \end{eqnarray}
   \item 平方完成と正規化によって平均$\mu_N$,分布$\sigma_N^2$のガウス分布の形にすることができる。ただし、
         \begin{eqnarray}
@@ -92,7 +92,7 @@
   \item 精度$\lambda\equiv 1/\sigma^2$で操作
         \begin{eqnarray}
          p(X|\lambda) &=& \prod_{n=1}^{N}N(x_n|\mu,\lambda^{-1}) \nonumber \\
-         &=& \lambda^{N/2}exp\left\{-\frac{\lambda}{2}\sum_{n=1}^{N}(x_n-\mu)^2\right\}\label{114403_19Nov14}
+         &=& \lambda^{N/2}\exp\left\{-\frac{\lambda}{2}\sum_{n=1}^{N}(x_n-\mu)^2\right\}\label{114403_19Nov14}
         \end{eqnarray}
   \item この式から、精度の共役事前分布は、$\lambda$のベキ乗と、$\lambda$の線形関数の指数の積に比例させる
         \begin{itemize}
@@ -106,7 +106,7 @@
  \begin{itemize}
   \item ガンマ分布の定義
         \begin{equation}
-         Gam(\lambda|a,b) = \frac{1}{\Gamma(a)}b^a\lambda^{a-1}exp(-b\lambda)\label{113739_19Nov14}
+         Gam(\lambda|a,b) = \frac{1}{\Gamma(a)}b^a\lambda^{a-1}\exp(-b\lambda)\label{113739_19Nov14}
         \end{equation}
   \item ここで、$\Gamma(a)$は式(\ref{113739_19Nov14})が正しく正規化されることを保証
         %% TODO ガンマ関数の図を入れる
@@ -123,7 +123,7 @@
   \item 事前分布$Gam(\lambda|a_0,b_0)$について考える
   \item これに尤度関数(\ref{114403_19Nov14})をかけると、事後分布
         \begin{equation}
-         p(\lambda|X) \propto \lambda^{a_0-1}\lambda^{N/2}exp\left\{-b_0\lambda-\frac{\lambda}{2}\sum_{n=1}^{N}(x_n-\mu)^2\right\}\label{114734_19Nov14}
+         p(\lambda|X) \propto \lambda^{a_0-1}\lambda^{N/2}\exp\left\{-b_0\lambda-\frac{\lambda}{2}\sum_{n=1}^{N}(x_n-\mu)^2\right\}\label{114734_19Nov14}
         \end{equation}
         が得られる
   \item これはパラメータを次のように設定したときの、ガンマ分布$Gam(\lambda|a_N,b_N)$であることが分かる
@@ -166,8 +166,8 @@
  \begin{itemize}
   \item \alert{平均と分散が未知}の場合には、共役事前分布を求めるために尤度関数の$\mu$と$\lambda$への依存関係について考える
         \begin{eqnarray}
-         p(X|\mu,\lambda) &=& \prod_{n=1}^{N}(\frac{\lambda}{2\pi})^{1/2}exp\{-\frac{\lambda}{2}(x_n-\mu)^2\} \nonumber \\
-         &\propto & [\lambda^{1/2}exp(-\frac{\lambda\mu^2}{2})]^{N}exp\{\lambda\mu\sum_{n=1}^{N}x_n-\frac{\lambda}{2}\sum_{n=1}^{N}x_n^2\}
+         p(X|\mu,\lambda) &=& \prod_{n=1}^{N}(\frac{\lambda}{2\pi})^{1/2}\exp\{-\frac{\lambda}{2}(x_n-\mu)^2\} \nonumber \\
+         &\propto & [\lambda^{1/2}\exp(-\frac{\lambda\mu^2}{2})]^{N}\exp\{\lambda\mu\sum_{n=1}^{N}x_n-\frac{\lambda}{2}\sum_{n=1}^{N}x_n^2\}
         \end{eqnarray}
  \end{itemize}
 \end{frame}
@@ -176,8 +176,8 @@
  \begin{itemize}
   \item ここでは、尤度関数と同じ$\mu$と$\lambda$への関数依存性を備えた事前分布$p(\mu,\lambda)$を求めたいので、分布は次の形式になる
         \begin{eqnarray}
-         p(\mu,\lambda) &\propto& [\lambda^{1/2}exp(-\frac{\lambda\mu^2}{2})]^\beta exp\{c\lambda\mu-d\lambda\} \nonumber \\
-         &= & exp\{-\frac{\beta\lambda}{2}(\mu-c\beta)^2\}\lambda^{\beta/2}exp\{-(d-\frac{c^2}{2\beta})\lambda\}
+         p(\mu,\lambda) &\propto& [\lambda^{1/2}\exp(-\frac{\lambda\mu^2}{2})]^\beta \exp\{c\lambda\mu-d\lambda\} \nonumber \\
+         &= & \exp\{-\frac{\beta\lambda}{2}(\mu-c\beta)^2\}\lambda^{\beta/2}\exp\{-(d-\frac{c^2}{2\beta})\lambda\}
         \end{eqnarray}
   \item 常に$p(\mu,\lambda)=p(\mu|\lambda)p(\lambda)$と書けるので、$p(\mu|\lambda)$と$p(\lambda)$に対応する部分を見出せばよい
   \item $p(\mu|\lambda)$は精度が$\lambda$の線形関数であるガウス分布であり、$p(\lambda)$はガンマ分布であることがわかる
@@ -204,7 +204,7 @@
   \item $D$次元変数の多変量ガウス分布の場合に、\alert{精度を既知}とすれば、平均$\mu$の共役事前分布は、またガウス分布になる
   \item \alert{平均が既知}で、精度行列$\bm{\Lambda}$が未知なら、共役事前分布は次式のウィシャート分布となる
         \begin{equation}
-         W(\bm{\Lambda}|W,\nu) = B|\bm{\Lambda}|^{(\nu-D-1)/2}exp\left(-\frac{1}{2}Tr(W^{-1}\bm{\Lambda})\right)
+         W(\bm{\Lambda}|W,\nu) = B|\bm{\Lambda}|^{(\nu-D-1)/2}\exp\left(-\frac{1}{2}Tr(W^{-1}\bm{\Lambda})\right)
         \end{equation}
         % \begin{itemize}
   %  \item $\nu$は分布の自由度パラメータ
