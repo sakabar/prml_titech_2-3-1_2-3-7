@@ -15,7 +15,7 @@
  \begin{itemize}
   \item 慣例により、$\nu=2a$と$\lambda=a/b$のパラメータを新たに定義すると、\alert{スチューデントのt分布}が得られる
         \begin{equation}
-         St(x|\mu,\lambda,\nu) = \frac{\Gamma(\nu/2+1/2)}{\Gamma(\nu/2)}\left(\frac{\lambda}{\pi\nu}\right)^{1/2}\left[1+\frac{\lambda(x-\mu)^2}{\nu}\right]^{-\nu/2-1/2}
+         {\rm St}(x|\mu,\lambda,\nu) = \frac{\Gamma(\nu/2+1/2)}{\Gamma(\nu/2)}\left(\frac{\lambda}{\pi\nu}\right)^{1/2}\left[1+\frac{\lambda(x-\mu)^2}{\nu}\right]^{-\nu/2-1/2}
         \end{equation}
         \begin{itemize}
          \item パラメータ$\lambda$はt分布の精度とも呼ばれるが、必ずしも分散の逆数とは限らない
@@ -44,11 +44,11 @@
  \begin{itemize}
   \item 式(\ref{133939_19Nov14})に戻って、パラメータを$\nu=2a,\lambda=a/b,$および$\eta=\tau b/a$と置き換えると、t分布は次の形に書ける
         \begin{equation}
-         St(x|\mu,\lambda,\nu) = \int_{0}^{\infty}N(x|\mu, (\eta\lambda)^{-1}){\rm Gam}(\eta|\nu/2,\nu/2)d\eta
+         {\rm St}(x|\mu,\lambda,\nu) = \int_{0}^{\infty}N(x|\mu, (\eta\lambda)^{-1}){\rm Gam}(\eta|\nu/2,\nu/2)d\eta
         \end{equation}
   \item これは多変量ガウス分布の場合に一般化でき、多変量スチューデントt分布に相当するものが次式で得られる
         \begin{equation}
-         St(x|\bm{\mu},\bm{\Lambda},\nu) = \int_{0}^{\infty}N(x|\bm{\mu}, (\eta\bm{\Lambda})^{-1}){\rm Gam}(\eta|\nu/2,\nu/2)d\eta
+         {\rm St}(x|\bm{\mu},\bm{\Lambda},\nu) = \int_{0}^{\infty}N(x|\bm{\mu}, (\eta\bm{\Lambda})^{-1}){\rm Gam}(\eta|\nu/2,\nu/2)d\eta
         \end{equation}
  \end{itemize}
 \end{frame}
@@ -57,7 +57,7 @@
  \begin{itemize}
   \item 1変数の場合と同じように、積分を計算すると
         \begin{eqnarray}
-         St(x|\bm{\mu},\bm{\Lambda},\nu) &=& \frac{\Gamma(D/2+\nu/2)}{\Gamma(\nu/2)}\frac{|\bm{\Lambda}|^{1/2}}{(\pi\nu)^{D/2}}\left[1+\frac{\Delta^2}{\nu}\right]^{-D/2-\nu/2} \\
+         {\rm St}(x|\bm{\mu},\bm{\Lambda},\nu) &=& \frac{\Gamma(D/2+\nu/2)}{\Gamma(\nu/2)}\frac{|\bm{\Lambda}|^{1/2}}{(\pi\nu)^{D/2}}\left[1+\frac{\Delta^2}{\nu}\right]^{-D/2-\nu/2} \\
          \Delta^2&= & (x-\bm{\mu})^{\mathrm{T}}\bm{\Lambda}(x-\bm{\mu})
         \end{eqnarray}
         を得る
