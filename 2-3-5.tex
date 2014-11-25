@@ -85,16 +85,15 @@
  \end{itemize}
 \end{frame}
 
-%%TODO 大カッコを大きくする
-\begin{frame}{Roobins-Monroアルゴリズム}
+\begin{frame}{Robbins-Monroアルゴリズム}
  \begin{itemize}
   \item 定義より、最尤推定解$\theta_{ML}$は負の対数尤度関数の停留点であるため、
         \begin{equation}
-         -\frac{\partial }{\partial \theta}\left\{\left.\frac{1}{N}\sum_{n=1}^{N}\ln  p(\bm{x}_n|\theta)\right\}\right|_{\theta_{ML}} = 0
+         -\frac{\partial }{\partial \theta}\left\{\left.\frac{1}{N}\sum_{n=1}^{N}\ln  p(x_n|\theta)\right\}\right|_{\theta_{ML}} = 0
         \end{equation}
   \item 微分と総和の演算を交換し、$N\rightarrow\infty$の極限を考えると次の式を得る
         \begin{equation}
-         -\lim_{N \rightarrow \infty}\frac{1}{N}\sum_{n=1}^{N}\frac{\partial}{\partial \theta}\ln p(\bm{x}_n|\theta)=\mathbb{E}_x\left[-\frac{\partial}{\partial \theta}\ln p(x|\theta)\right]
+         -\lim_{N \rightarrow \infty}\frac{1}{N}\sum_{n=1}^{N}\frac{\partial}{\partial \theta}\ln p(x_n|\theta)=\mathbb{E}_x\left[-\frac{\partial}{\partial \theta}\ln p(x|\theta)\right]
         \end{equation}
  \end{itemize}
 \end{frame}
@@ -104,16 +103,16 @@
   \item 最尤推定解を求めることは、回帰関数の根を求めることに相当することがわかる
   \item ゆえに、次の形でRobbins-Monro手続きを適用できる
         \begin{equation}
-         \theta^{(N)}=\theta^{(N-1)}-a_{N-1}\frac{\partial}{\partial \theta^{(N-1)}}[-\ln p(\bm{x}_N|\theta^{(N-1)})]\label{161911_21Nov14}
+         \theta^{(N)}=\theta^{(N-1)}-a_{N-1}\frac{\partial}{\partial \theta^{(N-1)}}[-\ln p(x_N|\theta^{(N-1)})]\label{161911_21Nov14}
         \end{equation}
  \end{itemize}
 \end{frame}
 
 \begin{frame}{ガウス分布への適用}
  \begin{itemize}
-  \item パラメータ$\theta^{(N)}$はガウス分布の平均の推定量$\bm{\mu}_{ML}^{(N)}$であり、確率変数$z$は
+  \item パラメータ$\theta^{(N)}$はガウス分布の平均の推定量$\mu_{ML}^{(N)}$であり、確率変数$z$は
         \begin{equation}
-         z=-\frac{\partial}{\partial \bm{\mu}_{ML}} \ln p(x|\bm{\mu}_{ML}, \sigma^2) = -\frac{1}{\sigma^2}(x-\bm{\mu}_{ML})\label{161904_21Nov14}
+         z=-\frac{\partial}{\partial \mu_{ML}} \ln p(x|\mu_{ML}, \sigma^2) = -\frac{1}{\sigma^2}(x-\mu_{ML})\label{161904_21Nov14}
         \end{equation}
   \item 式(\ref{161904_21Nov14})を式(\ref{161911_21Nov14})に代入し、係数$a_N$を$a_N=\sigma^2/N$となるように選ぶと、式(\ref{162008_21Nov14})の1変数の形式のものが得られる
  \end{itemize}
