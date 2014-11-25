@@ -1,18 +1,21 @@
-\documentclass[dvipdfmx]{beamer}
+\documentclass[dvipdfm]{beamer}
 \usepackage{amsmath}
 \usepackage{bm}
 \usepackage{graphicx}
 \usepackage{hyperref}
-
+\usepackage{url}
 
 \title{PRML\_titech 2.3.1 - 2.3.7}
 \author{榊原隆文(@saka\_bar)}
 \date{November 21, 2014}
-% \date{\today}
 
 \setbeamertemplate{footline}[frame number]
 \setbeamerfont{footline}{size=\small,series=\bfseries}
 \setbeamercolor{footline}{fg=black,bg=black}
+
+%数式をTeXの元々のフォントにする
+\usefonttheme{professionalfonts}
+
 \begin{document}
 \maketitle
 
@@ -37,13 +40,6 @@
 
  \section{2.3.5 逐次推定}
  \input{2-3-5}
-
-\begin{frame}{ここまで発表済み}
-\begin{itemize}
- \item ここから先はスライドがてきとうになっています
- \item 次回の発表までには改善します
-\end{itemize}
-\end{frame}
 
  \section{2.3.6 ガウス分布に対するベイズ推論}
  \input{2-3-6}

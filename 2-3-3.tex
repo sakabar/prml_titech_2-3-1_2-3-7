@@ -1,7 +1,7 @@
 \begin{frame}{2.3.3 ガウス分布の周辺分布と条件付き分布}
  \begin{itemize}
-  \item あるガウス周辺分布$p(x)$と、平均が$x$の線形関数で共分散は$x$と独立であるようなガウス条件付き分布$p(y|x)$が与えられたとする
-  \item このとき、周辺分布$p(y)$と条件付き分布$p(x|y)$を求める問題を考える
+  \item あるガウス周辺分布$p(\bm{x})$と、平均が$\bm{x}$の線形関数で共分散は$\bm{x}$と独立であるようなガウス条件付き分布$p(\bm{y}|\bm{x})$が与えられたとする
+  \item このとき、周辺分布$p(\bm{y})$と条件付き分布$p(\bm{x}|\bm{y})$を求める問題を考える
         \begin{itemize}
          \item この問題は以後の章でよく現れるので、ここで一般的な結果を求めておく
         \end{itemize}
@@ -12,15 +12,15 @@
  \begin{itemize}
   \item 周辺分布と条件付き分布を
         \begin{eqnarray}
-         p(x) &=& N(x|\mu , \Lambda^{-1})\\
-         p(y|x) &=& N(y|Ax+b, L^{-1})
+         p(\bm{x}) &=& \mathcal{N}(\bm{x}|\bm{\mu} , \bm{\Lambda}^{-1})\\
+         p(\bm{y}|\bm{x}) &=& \mathcal{N}(\bm{y}|\bm{A}\bm{x}+\bm{b}, \bm{L}^{-1})
         \end{eqnarray}
         とする。
-  \item 最初に、$x$と$y$の同時分布の表現を見る
+  \item 最初に、$\bm{x}$と$\bm{y}$の同時分布の表現を見る
         \begin{equation}
-         z = \begin{pmatrix}
-              x \\
-              y
+         \bm{z} = \begin{pmatrix}
+              \bm{x} \\
+              \bm{y}
              \end{pmatrix}
         \end{equation}
         とおく
@@ -34,9 +34,10 @@
    \item ここで対数を考えるのは、いちいち「指数に注目」という手間を省くためだと考えられる
   \end{itemize}
         \begin{eqnarray}
-         \ln p(z) &=& \ln p(x) + \ln p(y|x) \nonumber \\
-         &= & -\frac{1}{2}(x-\mu)^T\Lambda(x-\mu) \nonumber \\
-         &&-\frac{1}{2}(y-Ax-b)^TL(y-Ax-b)+const\label{052313_21Nov14}
+         \ln p(\bm{z}) &=& \ln p(\bm{x}) + \ln p(\bm{y}|\bm{x}) \nonumber \\
+         &= & -\frac{1}{2}(\bm{x}-\bm{\mu})^{\mathrm{T}}\bm{\Lambda}(\bm{x}-\bm{\mu}) \nonumber \\
+         &&-\frac{1}{2}(\bm{y}-\bm{A}\bm{x}-\bm{b})^{\mathrm{T}}\bm{L}(\bm{y}-\bm{A}\bm{x}-\bm{b})+{\rm const} \nonumber\\
+				 & & \label{052313_21Nov14}
         \end{eqnarray}
   \item このガウス分布の精度行列を求めるために、式(\ref{052313_21Nov14})の2次の項についても考察する
  \end{itemize}
@@ -46,28 +47,28 @@
  \begin{itemize}
   \item 2次の項は次のように書ける
         \begin{eqnarray}
-         -\frac{1}{2}x^T(\Lambda+A^TLA)x -\frac{1}{2}y^TLy+\frac{1}{2}y^TLAx+\frac{1}{2}x^TA^TLy \nonumber \\
+         -\frac{1}{2}\bm{x}^{\mathrm{T}}(\bm{\Lambda}+\bm{A}^{\mathrm{T}}\bm{L}\bm{A})\bm{x} -\frac{1}{2}\bm{y}^{\mathrm{T}}\bm{L}\bm{y}+\frac{1}{2}\bm{y}^{\mathrm{T}}\bm{L}\bm{A}\bm{x}+\frac{1}{2}\bm{x}^{\mathrm{T}}\bm{A}^{\mathrm{T}}\bm{L}\bm{y} \nonumber \\
          = -\frac{1}{2}
           \begin{pmatrix}
-           x \\
-           y
-          \end{pmatrix}^T
+           \bm{x} \\
+           \bm{y}
+          \end{pmatrix}^{\mathrm{T}}
           \begin{pmatrix}
-           \Lambda+A^TLA & -A^TL\\
-           -LA & L
+           \bm{\Lambda}+\bm{A}^{\mathrm{T}}\bm{L}\bm{A} & -\bm{A}^{\mathrm{T}}\bm{L}\\
+           -\bm{L}\bm{A} & \bm{L}
           \end{pmatrix}
           \begin{pmatrix}
-           x \\
-           y
+           \bm{x} \\
+           \bm{y}
           \end{pmatrix}
-          = -\frac{1}{2}z^TRz
+          = -\frac{1}{2}\bm{z}^{\mathrm{T}}\bm{R}\bm{z}
         \end{eqnarray}
   \item よって、$z$上のガウス分布の精度行列は
         \begin{equation}
          R=
           \begin{pmatrix}
-           \Lambda+A^TLA & -A^TL\\
-           -LA & L
+           \bm{\Lambda}+\bm{A}^{\mathrm{T}}\bm{L}\bm{A} & -\bm{A}^{\mathrm{T}}\bm{L}\\
+           -\bm{L}\bm{A} & \bm{L}
           \end{pmatrix}
         \end{equation}
         になる
@@ -78,10 +79,10 @@
  \begin{itemize}
   \item 共分散行列は、行列の逆行列に関する公式(\ref{053319_21Nov14})を適用して精度の逆行列を求めることで求られる(演習2.29)
         \begin{equation}
-         cov[z]=R^{-1}=
+         {\rm cov}[\bm{z}]=\bm{R}^{-1}=
           \begin{pmatrix}
-           \Lambda^{-1} & \Lambda^{-1}A^T \\
-           A\Lambda^{-1} & L^{-1} + A\Lambda^{-1}A^T
+           \bm{\Lambda}^{-1} & \bm{\Lambda}^{-1}\bm{A}^{\mathrm{T}} \\
+           \bm{A}\bm{\Lambda}^{-1} & \bm{L}^{-1} + \bm{A}\bm{\Lambda}^{-1}\bm{A}^{\mathrm{T}}
           \end{pmatrix}\label{054122_21Nov14}
         \end{equation}
  \end{itemize}
@@ -91,62 +92,62 @@
  \begin{itemize}
   \item 同様に、$z$上のガウス分布の平均は、(\ref{052313_21Nov14})の線形の項を調べることで、
         \begin{equation}
-         x^T\Lambda\mu-x^TA^TLb+y^TLb =
+         \bm{x}^{\mathrm{T}}\bm{\Lambda}\bm{\mu}-\bm{x}^{\mathrm{T}}\bm{A}^{\mathrm{T}}\bm{L}\bm{b}+\bm{y}^{\mathrm{T}}\bm{L}\bm{b} =
           \begin{pmatrix}
-           x \\
-           y
-          \end{pmatrix}^T
+           \bm{x} \\
+           \bm{y}
+          \end{pmatrix}^{\mathrm{T}}
           \begin{pmatrix}
-           \Lambda\mu-A^TLb \\
-           Lb
+           \bm{\Lambda}\bm{\mu}-\bm{A}^{\mathrm{T}}\bm{L}\bm{b} \\
+           \bm{L}\bm{b}
           \end{pmatrix}
         \end{equation}
         で与えられる
   \item 多変量ガウス分布の二次形式部分を平方完成して得た以前の結果より、$z$の平均は
         \begin{equation}
-         E[z]=R^{-1}
+         \mathbb{E}[z]=R^{-1}
           \begin{pmatrix}
-           \Lambda\mu-A^TLb \\
-           Lb
+           \bm{\Lambda}\bm{\mu}-\bm{A}^{\mathrm{T}}\bm{L}\bm{b} \\
+           \bm{L}\bm{b}
           \end{pmatrix}
         \end{equation}
         を得る。式(\ref{054122_21Nov14})より、
         \begin{equation}
-         E[z]=
+         \mathbb{E}[z]=
           \begin{pmatrix}
-           \mu \\
-           A\mu + b
+           \bm{\mu} \\
+           \bm{A}\bm{\mu} + \bm{b}
           \end{pmatrix}
         \end{equation}
         を得る(演習2.30)
  \end{itemize}
 \end{frame}
 
-\begin{frame}{$x$を周辺化した周辺分布$p(y)$}
+\begin{frame}{$\bm{x}$を周辺化した周辺分布$p(\bm{y})$}
  \begin{itemize}
   \item ガウス確率ベクトルの要素の部分集合上の周辺分布を、分割された共分散行列で表したときの結果を利用する
-  \item 周辺分布$p(y)$の平均と共分散は
+  \item 周辺分布$p(\bm{y})$の平均と共分散は
         \begin{eqnarray}
-         E[y] &= &A\mu +b\\
-         cov[y] &=& L^{-1} + A\Lambda^{-1}A^T
+         \mathbb{E}[\bm{y}] &= &\bm{A}\bm{\mu} +\bm{b}\\
+         {\rm cov}[\bm{y}] &=& \bm{L}^{-1} + \bm{A}\bm{\Lambda}^{-1}\bm{A}^{\mathrm{T}}
         \end{eqnarray}
         で与えられることがわかる
  \end{itemize}
 \end{frame}
 
 
-\begin{frame}{条件付き分布$p(x|y)$}
+\begin{frame}{条件付き分布$p(\bm{x}|\bm{y})$}
  \begin{itemize}
   \item 同様に、以前の結果を利用する
         \begin{eqnarray}
-         E[x|y]& =& (\Lambda+A^TLA)^{-1}\{A^TL(y-b)+\Lambda\mu\}\\
-         cov[x|y] &= & (\Lambda+A^TLA)^{-1}
+         \mathbb{E}[\bm{x}|\bm{y}]& =& (\bm{\Lambda}+\bm{A}^{\mathrm{T}}\bm{L}\bm{A})^{-1}\{\bm{A}^{\mathrm{T}}\bm{L}(\bm{y}-\bm{b})+\bm{\Lambda}\bm{\mu}\}\\
+         {\rm cov}[\bm{x}|\bm{y}] &= & (\bm{\Lambda}+\bm{A}^{\mathrm{T}}\bm{L}\bm{A})^{-1}
         \end{eqnarray}
   \item この条件付き分布は、ベイズの定理の例としても見ることができる
         \begin{itemize}
-         \item $p(x)$は$x$上の事前分布と解釈できる
-         \item 変数$y$が観測されれば、条件付き分布$p(x|y)$を用いて、$x$上での事後分布を表せる
-         \item また、周辺分布と条件付き分布を求めれば、同時確率$p(z)=p(x)p(y|x)$は$p(x|y)p(y)$の形でも表現できる
+         \item $p(\bm{x})$は$\bm{x}$上の事前分布と解釈できる
+         \item 変数$\bm{y}$が観測されれば、条件付き分布$p(\bm{x}|\bm{y})$を用いて、$\bm{x}$上での事後分布を表せる
+         \item また、周辺分布と条件付き分布を求めれば、同時確率$p(z)=p(\bm{x})p(\bm{y}|\bm{x})$は$p(\bm{x}|\bm{y})p(\bm{y})$の形でも表現できる
         \end{itemize}
  \end{itemize}
 

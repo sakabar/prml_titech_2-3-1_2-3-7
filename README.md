@@ -11,6 +11,7 @@ prml_titech_2-3-1_2-3-7
 
 OMakeを使わないならば、  
     $git clone https://github.com/sakabar/prml_titech_2-3-1_2-3-7/  
+    $cd prml_titech_2-3-1_2-3-7/  
     $platex slide.tex  
     $platex slide.tex  
     $dvipdfmx slide.dvi

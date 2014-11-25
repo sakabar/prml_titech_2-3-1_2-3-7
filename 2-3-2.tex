@@ -1,32 +1,32 @@
 \begin{frame}{2.3.2 周辺ガウス分布}
  \begin{itemize}
-  \item 同時分布$p(x_a,x_b)$がガウス分布であれば、条件付き分布$p(x_a|x_b)$もガウス分布になることを示した。
+  \item 同時分布$p(\bm{x}_a,\bm{x}_b)$がガウス分布であれば、条件付き分布$p(\bm{x}_a|\bm{x}_b)$もガウス分布になることを示した。
   \item この周辺分布
         \begin{equation}
-         p(x_a) = \int p(x_a,x_b)dx_b
+         p(\bm{x}_a) = \int p(\bm{x}_a,\bm{x}_b)d\bm{x}_b
         \end{equation}
         がガウス分布になることを示す
-  \item ここでも同時分布の指数部分の二次形式に注目し、周辺分布$p(x_a)$の平均と共分散を特定することで効率的に計算できる
+  \item ここでも同時分布の指数部分の二次形式に注目し、周辺分布$p(\bm{x}_a)$の平均と共分散を特定することで効率的に計算できる
  \end{itemize}
 \end{frame}
 
 
-\begin{frame}{計算の流れ}
+\begin{frame}{計算の流れ(アバウト)}
  \begin{itemize}
-  % \item 指数部の$x_b$に関係した項を処理してから、積分を容易にするために平方完成する
-  \item $x_b$に関係ない項を$C_2$とおき$x_b$に関係した項に注目
+  % \item 指数部の$\bm{x}_b$に関係した項を処理してから、積分を容易にするために平方完成する
+  \item $\bm{x}_b$に関係ない項を$C_2$とおき$\bm{x}_b$に関係した項に注目
         \begin{eqnarray*}
-         && \int p(x_a,x_b)dx_b \\
-         &=& \int \frac{1}{C_1}exp\left\{(x_b-\mu_1)^T\Lambda(x_b-\mu_1)+C_2\right\}dx_b \\
-         &=& \frac{1}{C_1}exp\{C_2\}\underline{\int exp\left\{(x_b-\mu_1)^T\Lambda(x_b-\mu_1)\right\}dx_b}
+         && \int p(\bm{x}_a,\bm{x}_b)d\bm{x}_b \\
+         &=& \int \frac{1}{C_1}\exp\left\{(\bm{x}_b-\bm{\mu}_1)^{\mathrm{T}}\bm{\Lambda}(\bm{x}_b-\bm{\mu}_1)+C_2\right\}d\bm{x}_b \\
+         &=& \frac{1}{C_1}\exp\{C_2\}\underline{\int \exp\left\{(\bm{x}_b-\bm{\mu}_1)^{\mathrm{T}}\bm{\Lambda}(\bm{x}_b-\bm{\mu}_1)\right\}d\bm{x}_b}
         \end{eqnarray*}
         \begin{itemize}
-         \item 下線部はガウス分布の積分なので積分結果は正規化係数の逆数(積分結果を$C_3$とおく)
+         \item 下線部はガウス分布の積分なので積分結果は正規化係数の逆数である(積分結果を$C_3$とおく)
         \end{itemize}
         \begin{eqnarray*}
-         &=&\frac{1}{C_1}exp\{C_2\}C_3 \\
-         &=&\frac{1}{C_1}exp\{(x_a-\mu_2)^T\Lambda (x_a-\mu_2)+C_4\}C_3\\
-         &=&\frac{C_3}{C_1}\underline{exp\{C_4\}exp\{(x_a-\mu_2)^T\Lambda (x_a-\mu_2)}\}
+         &=&\frac{1}{C_1}\exp\{C_2\}C_3 \\
+         &=&\frac{1}{C_1}\exp\{(\bm{x}_a-\bm{\mu}_2)^{\mathrm{T}}\bm{\Lambda} (\bm{x}_a-\bm{\mu}_2)+C_4\}C_3\\
+         &=&\frac{C_3}{C_1}\exp\{C_4\}\underline{\exp\{(\bm{x}_a-\bm{\mu}_2)^{\mathrm{T}}\bm{\Lambda} (\bm{x}_a-\bm{\mu}_2)}\}
         \end{eqnarray*}
   \item 指数部がガウス分布の形になる
  \end{itemize}
@@ -35,33 +35,33 @@
 
 \begin{frame}{計算}
  \begin{itemize}
-  \item 指数部の$x_b$に関係した項を処理してから、積分を容易にするために平方完成する
-  \item $x_b$を含む項を取り出すと
+  \item 指数部の$\bm{x}_b$に関係した項を処理してから、積分を容易にするために平方完成する
+  \item $\bm{x}_b$を含む項を取り出すと
         \begin{eqnarray*}
-         && -\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x-\mu) \\
-         &=&-\frac{1}{2}x^T_b\Lambda_{bb}x_b+x^T_bm \\
-         &=& -\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m) + \frac{1}{2}m^T\Lambda_{bb}^{-1}m
+         && -\frac{1}{2}(\bm{x} - \bm{\mu})^{\mathrm{T}}\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu}) \\
+         &=&-\frac{1}{2}\bm{x}^{\mathrm{T}}_b\bm{\Lambda}_{bb}\bm{x}_b+\bm{x}^{\mathrm{T}}_b\bm{m} \\
+         &=& -\frac{1}{2}(\bm{x}_b-\bm{\Lambda}_{bb}^{-1}\bm{m})^{\mathrm{T}}\bm{\Lambda}_{bb}(\bm{x}_b-\bm{\Lambda}_{bb}^{-1}\bm{m}) + \frac{1}{2}\bm{m}^{\mathrm{T}}\bm{\Lambda}_{bb}^{-1}\bm{m}
         \end{eqnarray*}
         ただし、
         \begin{equation*}
-         m =  \Lambda_{bb}\mu_b - \Lambda_{ba}(x_a-\mu_a)
+         \bm{m} =  \bm{\Lambda}_{bb}\bm{\mu}_b - \bm{\Lambda}_{ba}(\bm{x}_a-\bm{\mu}_a)
         \end{equation*}
  \end{itemize}
 \end{frame}
 
-\begin{frame}{$x_b$の指数部}
+\begin{frame}{$\bm{x}_b$の指数部}
  \begin{itemize}
   \item 指数部の式は次のとおり
         \begin{equation}
-         -\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m) + \frac{1}{2}m^T\Lambda_{bb}^{-1}m
+         -\frac{1}{2}(\bm{x}_b-\bm{\Lambda}_{bb}^{-1}\bm{m})^{\mathrm{T}}\bm{\Lambda}_{bb}(\bm{x}_b-\bm{\Lambda}_{bb}^{-1}\bm{m}) + \frac{1}{2}\bm{m}^{\mathrm{T}}\bm{\Lambda}_{bb}^{-1}\bm{m}
         \end{equation}
         \begin{itemize}
          \item 右辺第1項はガウス分布の標準的な二次形式
-         \item 残りの項は$x_b$に依存しない
+         \item 残りの項は$\bm{x}_b$に依存しない
         \end{itemize}
-  \item $x_b$に関係しない部分を無視して考え、後で正規化係数を求めてつじつまを合わせる
+  \item $\bm{x}_b$に関係しない部分を無視して考え、後で正規化係数を求めてつじつまを合わせる
         % \begin{equation}
-        %  \int exp(f(x)+c)dx = exp(c)\int exp(f(x))dx
+        %  \int \exp(f(x)+c)dx = \exp(c)\int \exp(f(x))dx
           % \end{equation}
  \end{itemize}
 \end{frame}
@@ -69,23 +69,23 @@
 
 \begin{frame}{途中計算}
  \begin{itemize}
-  \item この二次形式の指数を取り、$x_b$で積分する
-        % $x_b$に依存する部分を取り出して積分する
+  \item この二次形式の指数を取り、$\bm{x}_b$で積分する
+        % $\bm{x}_b$に依存する部分を取り出して積分する
         \begin{eqnarray}
-         \int exp\left\{-\frac{1}{2}(x_b-\Lambda_{bb}^{-1}m)^T\Lambda_{bb}(x_b-\Lambda_{bb}^{-1}m)\right\}dx_b
+         \int \exp\left\{-\frac{1}{2}(\bm{x}_b-\bm{\Lambda}_{bb}^{-1}\bm{m})^{\mathrm{T}}\bm{\Lambda}_{bb}(\bm{x}_b-\bm{\Lambda}_{bb}^{-1}\bm{m})\right\}d\bm{x}_b
         \end{eqnarray}
   \item この積分は正規化されていないガウス分布なので、正規化係数の逆数になる。
   \item ガウス分布の正規化係数は平均とは独立で、共分散行列のみに依存するため、この積分も共分散行列のみに依存する
-  \item 残った$x_a$に関する項を変形する
+  \item 残った$\bm{x}_a$に関する項を変形する
  \end{itemize}
 \end{frame}
 
 \begin{frame}{結論}
  \begin{itemize}
-  \item 周辺分布$p(x_a)$の平均と共分散は次のようになる
+  \item 周辺分布$p(\bm{x}_a)$の平均と共分散は次のようになる
         \begin{eqnarray}
-         E[x_a] &=&  \mu_a\\
-         cov[x_a]&=&\Sigma_{aa}
+         \mathbb{E}[\bm{x}_a] &=&  \bm{\mu}_a\\
+         {\rm cov}[\bm{x}_a]&=&\bm{\Sigma}_{aa}
         \end{eqnarray}
   \item 分割された共分散行列について簡潔に表現される
         \begin{itemize}
