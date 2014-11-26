@@ -1,4 +1,5 @@
-LATEX           = platex --kanji=utf8 #文字コードはUTF-8を利用
+LATEX           = platex
+LATEXFLAGS      = -kanji=utf8 -interaction=nonstopmode
 TETEX2_ENABLED  = false     # falseにしないとslide.flsを探しに行って失敗する...らしい?
 #BIBTEX          = bibtex   # bibtexのコマンドも指定する(使う場合)
 DVIPDFM         = dvipdfmx
