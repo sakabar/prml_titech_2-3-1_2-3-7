@@ -2,7 +2,7 @@ LATEX           = platex
 LATEXFLAGS      = -kanji=utf8 -interaction=nonstopmode
 TETEX2_ENABLED  = false     # falseにしないとslide.flsを探しに行って失敗する...らしい?
 #BIBTEX          = bibtex   # bibtexのコマンドも指定する(使う場合)
-DVIPDFM         = dvipdfmx
+DVIPDFM         = dvipdfm
 DVIPDFMFLAGS    = -p a4     # デフォルトではUS-Letterサイズが出力される
 
 # 複数に分割しているファイル達 (.bibファイルも指定しておく)
